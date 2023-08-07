@@ -22,6 +22,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('clients')->name('clients.')->group(function () {
-    Route::get('/', Index::class)->name('index');
+Route::prefix('admin')
+    ->name('admin.')
+    // ->middleware('auth')
+    ->group(function () {
+    Route::prefix('clients')->name('clients.')->group(function () {
+        Route::get('/', Index::class)->name('index');
+        Route::get('/create', Index::class)->name('create');
+    });
 });
