@@ -27,35 +27,35 @@
 
   <!-- Favicon icon-->
   <link
-    href="../assets/images/favicon/favicon.ico"
+    href="logo3.svg"
     rel="shortcut icon"
     type="image/x-icon"
   >
 
   <!-- Libs CSS -->
   <link
-    href="../assets/fonts/feather/feather.css"
+    href="../../assets/fonts/feather/feather.css"
     rel="stylesheet"
   >
   <link
-    href="../assets/libs/bootstrap-icons/font/bootstrap-icons.css"
+    href="../../assets/libs/bootstrap-icons/font/bootstrap-icons.css"
     rel="stylesheet"
   />
   <link
-    href="../assets/libs/@mdi/font/css/materialdesignicons.min.css"
+    href="../../assets/libs/@mdi/font/css/materialdesignicons.min.css"
     rel="stylesheet"
   />
   <link
-    href="../assets/libs/simplebar/dist/simplebar.min.css"
+    href="../../assets/libs/simplebar/dist/simplebar.min.css"
     rel="stylesheet"
   >
 
   <!-- Theme CSS -->
   <link
-    href="../assets/css/theme.min.css"
+    href="../../assets/css/theme.min.css"
     rel="stylesheet"
   >
-  <title>Sign in | Geeks - Bootstrap 5 Template </title>
+  <title>Login | Dcvanguard </title>
 </head>
 
 <body>
@@ -69,18 +69,16 @@
           <div class="card shadow">
             <!-- Card body -->
             <div class="card-body p-6">
-              <div class="mb-4">
-                <a href="../index.html"><img
-                    alt="logo-icon"
-                    class="mb-4"
-                    src="../assets/images/brand/logo/logo-icon.svg"
-                  ></a>
-                <h1 class="fw-bold mb-1">Sign in</h1>
-                <span>Don’t have an account? <a
-                    class="ms-1"
-                    href="sign-up.html"
-                  >Sign up</a></span>
+
+              <div class="d-flex align-items-center">
+                <img
+                  alt="logo"
+                  class="mb-4 me-2"
+                  src="logo3.svg"
+                ></img>
+                <h3 class="mb-3 ms-2">The Dcvanguard Security and Investigation Agency Inc. </h3>
               </div>
+
               <!-- Form -->
               <form
                 action="{{ route('login') }}"
@@ -92,7 +90,7 @@
                   <label
                     class="form-label"
                     for="email"
-                  >Username or email</label>
+                  >Username or Email</label>
                   <input
                     autocomplete="email"
                     autofocus
@@ -160,55 +158,29 @@
                     <button
                       class="btn btn-primary"
                       type="submit"
-                    >Sign in</button>
+                    >Log in</button>
                   </div>
                 </div>
-                <hr class="my-4">
                 <div class="mt-4 text-center">
-                  <!--Facebook-->
-                  <a
-                    class="btn-social btn-social-outline btn-facebook"
-                    href="#"
-                  >
-                    <i class="mdi mdi-facebook fs-4"></i>
-                  </a>
-                  <!--Twitter-->
-                  <a
-                    class="btn-social btn-social-outline btn-twitter"
-                    href="#"
-                  >
-                    <i class="mdi mdi-twitter fs-4"></i>
-                  </a>
-                  <!--LinkedIn-->
-                  <a
-                    class="btn-social btn-social-outline btn-linkedin"
-                    href="#"
-                  >
-                    <i class="mdi mdi-linkedin"></i>
-                  </a>
-                  <!--GitHub-->
-                  <a
-                    class="btn-social btn-social-outline btn-github"
-                    href="#"
-                  >
-                    <i class="mdi mdi-github"></i>
-                  </a>
+                  Don’t have an account yet? <a href="sign-up.html">Sign up</a>
+
                 </div>
-              </form>
             </div>
+            </form>
           </div>
         </div>
+      </div>
       </div>
     </section>
   </main>
   <!-- Scripts -->
   <!-- Libs JS -->
-  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
 
   <!-- Theme JS -->
-  <script src="../assets/js/theme.min.js"></script>
+  <script src="../../assets/js/theme.min.js"></script>
 
 </body>
 
