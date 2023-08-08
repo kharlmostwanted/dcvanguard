@@ -38,7 +38,7 @@
     rel="stylesheet"
   >
   <link
-    href="../../assets/libs/bootstrap-icons/font/bootstrap-icons.css"
+    href="{{ asset('/assets/libs/bootstrap-icons/font/bootstrap-icons.css') }}"
     rel="stylesheet"
   />
   <link
@@ -64,1328 +64,657 @@
 </head>
 
 <body>
-  <div id="db-wrapper">
-    <!-- navbar vertical -->
-    <!-- Sidebar -->
-    <nav class="navbar-vertical navbar">
-      <div
-        class="vh-100"
-        data-simplebar
-      >
-        <!-- Brand logo -->
-        <a
-          class="navbar-brand"
-          href="{{ route('home') }}"
-        >
-          <img
-            alt=""
-            src="../../assets/images/brand/logo/logo-inverse.svg"
-          >
-        </a>
-        <!-- Navbar nav -->
-        <ul
-          class="navbar-nav flex-column"
-          id="sideNavbar"
-        >
-          <li class="nav-item">
-            <a
-              aria-controls="navDashboard"
-              aria-expanded="false"
-              class="nav-link collapsed"
-              data-bs-target="#navDashboard"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="nav-icon fe fe-home me-2"></i> Dashboard
-            </a>
-            <div
-              class="collapse"
-              data-bs-parent="#sideNavbar"
-              id="navDashboard"
-            >
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/admin-dashboard.html"
-                  >
-                    Overview
-                  </a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/dashboard-analytics.html"
-                  >
-                    Analytics
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid px-0">
+      <a
+        class="navbar-brand"
+        href="index.html"
+      ><img
+          alt=""
+          class=""
+          src="logoheader.svg"
+        ></a>
+      <!-- Mobile view nav wrap -->
 
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a
-              aria-controls="navCourses"
-              aria-expanded="false"
-              class="nav-link"
-              data-bs-target="#navCourses"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="nav-icon fe fe-book me-2"></i> Courses
-            </a>
-            <div
-              class="show collapse"
-              data-bs-parent="#sideNavbar"
-              id="navCourses"
-            >
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/admin-course-overview.html"
-                  >
-                    All Courses
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link active"
-                    href="../../pages/dashboard/admin-course-category.html"
-                  >
-                    Courses Category
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/admin-course-category-single.html"
-                  >
-                    Category Single
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              aria-controls="navProfile"
-              aria-expanded="false"
-              class="nav-link collapsed"
-              data-bs-target="#navProfile"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="nav-icon fe fe-user me-2"></i> User
-            </a>
-            <div
-              class="collapse"
-              data-bs-parent="#sideNavbar"
-              id="navProfile"
-            >
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/admin-instructor.html"
-                  >
-                    Instructor
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/admin-students.html"
-                  >Students</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+      <div class="d-flex align-items-center order-lg-3 ms-auto">
 
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              aria-controls="navCMS"
-              aria-expanded="false"
-              class="nav-link collapsed"
-              data-bs-target="#navCMS"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="nav-icon fe fe-book-open me-2"></i> CMS
-            </a>
-            <div
-              class="collapse"
-              data-bs-parent="#sideNavbar"
-              id="navCMS"
-            >
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/admin-cms-overview.html"
-                  >
-                    Overview
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/admin-cms-post.html"
-                  >
-                    All Post
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/admin-cms-post-new.html"
-                  >
-                    New Post
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/admin-cms-post-category.html"
-                  >
-                    Category
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              aria-controls="navProject"
-              aria-expanded="false"
-              class="nav-link collapsed"
-              data-bs-target="#navProject"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="nav-icon fe fe-file me-2"></i> Project
-            </a>
-            <div
-              class="collapse"
-              data-bs-parent="#sideNavbar"
-              id="navProject"
-            >
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/project-grid.html"
-                  >
-                    Grid
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/project-list.html"
-                  >
-                    List
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    aria-controls="navprojectSingle"
-                    aria-expanded="false"
-                    class="nav-link collapsed"
-                    data-bs-target="#navprojectSingle"
-                    data-bs-toggle="collapse"
-                    href="#"
-                  >
-
-                    Single
-                  </a>
-                  <div
-                    class="collapse"
-                    data-bs-parent="#navProject"
-                    id="navprojectSingle"
-                  >
-                    <ul class="nav flex-column">
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="../../pages/dashboard/project-overview.html"
-                        >
-                          Overview
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="../../pages/dashboard/project-task.html"
-                        >
-                          Task
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="../../pages/dashboard/project-budget.html"
-                        >
-                          Budget
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="../../pages/dashboard/project-team.html"
-                        >
-                          Team
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="../../pages/dashboard/project-files.html"
-                        >
-                          Files
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="../../pages/dashboard/project-summary.html"
-                        >
-                          Summary
-                        </a>
-                      </li>
-
-                    </ul>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/add-project.html"
-                  >
-                    Create Project
-                  </a>
-                </li>
-
-              </ul>
-            </div>
-          </li>
-
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              aria-controls="navAuthentication"
-              aria-expanded="false"
-              class="nav-link collapsed"
-              data-bs-target="#navAuthentication"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="nav-icon fe fe-lock me-2"></i> Authentication
-            </a>
-            <div
-              class="collapse"
-              data-bs-parent="#sideNavbar"
-              id="navAuthentication"
-            >
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/sign-in.html"
-                  >Sign In</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/sign-up.html"
-                  >Sign Up</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/forget-password.html"
-                  >
-                    Forget Password
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/notification-history.html"
-                  >
-                    Notifications
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/404-error.html"
-                  > 404 Error</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              aria-controls="navecommerce"
-              aria-expanded="false"
-              class="nav-link collapsed"
-              data-bs-target="#navecommerce"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="nav-icon fe fe-shopping-bag me-2"></i> Ecommerce
-            </a>
-            <div
-              class="collapse"
-              data-bs-parent="#sideNavbar"
-              id="navecommerce"
-            >
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    aria-controls="navproduct"
-                    aria-expanded="false"
-                    class="nav-link collapsed"
-                    data-bs-target="#navproduct"
-                    data-bs-toggle="collapse"
-                    href="#"
-                  >
-
-                    Product
-                  </a>
-                  <div
-                    class="collapse"
-                    data-bs-parent="#navProduct"
-                    id="navproduct"
-                  >
-                    <ul class="nav flex-column">
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="../../pages/dashboard/ecommerce/product-grid.html"
-                        >Grid</a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="../../pages/dashboard/ecommerce/product-grid-with-sidebar.html"
-                        >Grid
-                          Sidebar</a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="../../pages/dashboard/ecommerce/products.html"
-                        >Products</a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="../../pages/dashboard/ecommerce/product-single.html"
-                        >Product
-                          Single</a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="../../pages/dashboard/ecommerce/product-single-v2.html"
-                        >Product
-                          Single v2</a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="../../pages/dashboard/ecommerce/add-product.html"
-                        >Add
-                          Product</a>
-                      </li>
-
-                    </ul>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/ecommerce/shopping-cart.html"
-                  >Shopping Cart</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/ecommerce/checkout.html"
-                  >Checkout</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/ecommerce/order.html"
-                  >Order</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/ecommerce/order-single.html"
-                  >Order
-                    Single</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/ecommerce/order-history.html"
-                  >Order History</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/ecommerce/order-summary.html"
-                  >Order Summary</a>
-                </li>
-
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/ecommerce/customers.html"
-                  >Customers</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/ecommerce/customer-single.html"
-                  >Customer Single</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/ecommerce/add-customer.html"
-                  >Add
-                    Customer</a>
-                </li>
-
-              </ul>
-            </div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              aria-controls="navlayouts"
-              aria-expanded="false"
-              class="nav-link collapsed"
-              data-bs-target="#navlayouts"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="nav-icon fe fe-layout me-2"></i> Layouts
-            </a>
-            <div
-              class="collapse"
-              data-bs-parent="#sideNavbar"
-              id="navlayouts"
-            >
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/layouts/layout-horizontal.html"
-                  >Top</a>
-                </li>
-
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/layouts/layout-compact.html"
-                  >
-                    Compact
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/layouts/layout-vertical.html"
-                  >Vertical</a>
-                </li>
-
-              </ul>
-            </div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <div class="nav-divider"></div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <div class="navbar-heading">Apps</div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="../../pages/dashboard/chat-app.html"
-            >
-              <i class="nav-icon fe fe-message-square me-2"></i> Chat
-
-            </a>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="../../pages/dashboard/task-kanban.html"
-            >
-              <i class="nav-icon mdi mdi-trello me-2"></i>
-              Task
-            </a>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="../../pages/dashboard/mail.html"
-            >
-              <i class="nav-icon mdi mdi-email-outline me-2"></i>
-              Mail
-            </a>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="../../pages/dashboard/calendar.html"
-            >
-              <i class="nav-icon mdi mdi-calendar me-2"></i>
-              Calendar
-            </a>
-          </li>
-          <li class="nav-item">
-            <div class="nav-divider"></div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <div class="navbar-heading">Components</div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              aria-controls="navTables"
-              aria-expanded="false"
-              class="nav-link collapsed"
-              data-bs-target="#navTables"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="nav-icon fe fe-database me-2"></i> Tables
-            </a>
-            <div
-              class="collapse"
-              data-bs-parent="#sideNavbar"
-              id="navTables"
-            >
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/basic-table.html"
-                  >
-                    Basic
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/datatables.html"
-                  >
-                    Data Tables
-                  </a>
-                </li>
-
-              </ul>
-            </div>
-          </li>
-          <!-- Nav item -->
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="../../pages/help-center.html"
-            >
-              <i class="nav-icon fe fe-help-circle me-2"></i> Help Center
-
-            </a>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              aria-controls="navSiteSetting"
-              aria-expanded="false"
-              class="nav-link collapsed"
-              data-bs-target="#navSiteSetting"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="nav-icon fe fe-settings me-2"></i> Site Setting
-            </a>
-            <div
-              class="collapse"
-              data-bs-parent="#sideNavbar"
-              id="navSiteSetting"
-            >
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/setting-general.html"
-                  >
-                    General
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/setting-google.html"
-                  >
-                    Google
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/setting-social.html"
-                  >
-                    Social
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/setting-social-login.html"
-                  >
-                    Social Login
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/setting-payment.html"
-                  >
-                    Payment
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../../pages/dashboard/setting-smpt.html"
-                  >
-                    SMPT
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              aria-controls="navMenuLevel"
-              aria-expanded="false"
-              class="nav-link collapsed"
-              data-bs-target="#navMenuLevel"
-              data-bs-toggle="collapse"
-              href="#"
-            >
-              <i class="nav-icon fe fe-corner-left-down me-2"></i> Menu Level
-            </a>
-            <div
-              class="collapse"
-              data-bs-parent="#sideNavbar"
-              id="navMenuLevel"
-            >
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    aria-controls="navMenuLevelSecond"
-                    aria-expanded="false"
-                    class="nav-link"
-                    data-bs-target="#navMenuLevelSecond"
-                    data-bs-toggle="collapse"
-                    href="#"
-                  >
-                    Two Level
-                  </a>
-                  <div
-                    class="collapse"
-                    data-bs-parent="#navMenuLevel"
-                    id="navMenuLevelSecond"
-                  >
-                    <ul class="nav flex-column">
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="#"
-                        >NavItem 1</a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="#"
-                        >NavItem 2</a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a
-                    aria-controls="navMenuLevelThree"
-                    aria-expanded="false"
-                    class="nav-link collapsed"
-                    data-bs-target="#navMenuLevelThree"
-                    data-bs-toggle="collapse"
-                    href="#"
-                  >
-                    Three Level
-                  </a>
-                  <div
-                    class="collapse"
-                    data-bs-parent="#navMenuLevel"
-                    id="navMenuLevelThree"
-                  >
-                    <ul class="nav flex-column">
-                      <li class="nav-item">
-                        <a
-                          aria-controls="navMenuLevelThreeOne"
-                          aria-expanded="false"
-                          class="nav-link collapsed"
-                          data-bs-target="#navMenuLevelThreeOne"
-                          data-bs-toggle="collapse"
-                          href="#"
-                        >
-                          NavItem 1
-                        </a>
-                        <div
-                          class="collapse collapse"
-                          data-bs-parent="#navMenuLevelThree"
-                          id="navMenuLevelThreeOne"
-                        >
-                          <ul class="nav flex-column">
-                            <li class="nav-item">
-                              <a
-                                class="nav-link"
-                                href="#"
-                              >
-                                NavChild Item 1
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="#"
-                        >Nav
-                          Item 2</a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <div class="nav-divider"></div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <div class="navbar-heading">Documentation</div>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="../../docs/index.html"
-            >
-              <i class="nav-icon fe fe-clipboard me-2"></i> Documentation
-            </a>
-          </li>
-          <!-- Nav item -->
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="../../docs/changelog.html"
-            >
-              <i class="nav-icon fe fe-git-pull-request me-2"></i> Changelog <span
-                class="text-primary ms-1"
-                id="changelog"
-              ></span>
-            </a>
-          </li>
-        </ul>
-        <!-- Card -->
-        <div class="card bg-dark-primary mx-4 my-8 text-center shadow-none">
-          <div class="card-body py-6">
-            <img
-              alt=""
-              src="../../assets/images/background/giftbox.png"
-            >
-            <div class="mt-4">
-              <h5 class="text-white">Unlimited Access</h5>
-              <p class="text-white-50 fs-6">
-                Upgrade your plan from a Free trial, to select ‘Business Plan’. Start Now
-              </p>
-              <a
-                class="btn btn-white btn-sm mt-2"
-                href="#"
-              >Upgrade Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- Page Content -->
-    <main id="page-content">
-      <div class="header">
-        <!-- navbar -->
-        <nav class="navbar-default navbar navbar-expand-lg">
+        <div>
           <a
+            class="form-check form-switch theme-switch btn btn-light btn-icon rounded-circle"
             href="#"
-            id="nav-toggle"
           >
-            <i class="fe fe-menu"></i>
-          </a>
-          <div class="ms-lg-3 d-none d-md-none d-lg-block">
-            <!-- Form -->
-            <form class="d-flex align-items-center">
-              <span class="position-absolute search-icon ps-3">
-                <i class="fe fe-search"></i>
-              </span>
-              <input
-                class="form-control ps-6"
-                placeholder="Search Entire Dashboard"
-                type="search"
-              >
-            </form>
-          </div>
-          <!--Navbar nav -->
-          <div class="d-flex ms-auto">
-            <a
-              class="form-check form-switch theme-switch btn btn-light btn-icon rounded-circle"
-              href="#"
+            <input
+              class="form-check-input"
+              id="flexSwitchCheckDefault"
+              role="switch"
+              type="checkbox"
             >
-              <input
-                class="form-check-input"
-                id="flexSwitchCheckDefault"
-                role="switch"
-                type="checkbox"
-              >
-              <label
-                class="form-check-label"
-                for="flexSwitchCheckDefault"
-              ></label>
+            <label
+              class="form-check-label"
+              for="flexSwitchCheckDefault"
+            >
+            </label>
+          </a>
+        </div>
 
+        <ul class="navbar-nav navbar-right-wrap mx-2 flex-row">
+          <li class="dropdown d-inline-block stopevent position-static">
+            <a
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary"
+              data-bs-toggle="dropdown"
+              href="#"
+              id="dropdownNotificationSecond"
+              role="button"
+            >
+              <i class="fe fe-bell"> </i>
             </a>
-            <ul class="navbar-nav navbar-right-wrap d-flex nav-top-wrap ms-2">
-              <li class="dropdown stopevent">
-                <a
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                  class="btn btn-light btn-icon rounded-circle indicator indicator-primary text-muted"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  id="dropdownNotification"
-                  role="button"
+            <div
+              aria-labelledby="dropdownNotificationSecond"
+              class="dropdown-menu dropdown-menu-end dropdown-menu-lg position-absolute mx-3 my-5"
+            >
+              <div>
+                <div class="border-bottom d-flex justify-content-between align-items-center px-3 pb-3">
+                  <span class="h5 mb-0">Notifications</span>
+                  <a
+                    class="text-muted"
+                    href="# "
+                  ><span class="align-middle"><i class="fe fe-settings me-1"></i></span></a>
+                </div>
+                <ul
+                  class="list-group list-group-flush"
+                  data-simplebar
+                  style="height: 300px;"
                 >
-                  <i class="fe fe-bell"></i>
-                </a>
-                <div
-                  aria-labelledby="dropdownNotification"
-                  class="dropdown-menu dropdown-menu-end dropdown-menu-lg"
-                >
-                  <div>
-                    <div class="border-bottom d-flex justify-content-between align-items-center px-3 pb-3">
-                      <span class="h4 mb-0">Notifications</span>
-                      <a
-                        class="text-muted"
-                        href="# "
-                      >
-                        <span class="align-middle">
-                          <i class="fe fe-settings me-1"></i>
-                        </span>
-                      </a>
-                    </div>
-                    <!-- List group -->
-                    <ul
-                      class="list-group list-group-flush"
-                      data-simplebar
-                      style="max-height: 300px;"
-                    >
-                      <li class="list-group-item bg-light">
-                        <div class="row">
-                          <div class="col">
-                            <a
-                              class="text-body"
-                              href="#"
+                  <li class="list-group-item bg-light">
+                    <div class="row">
+                      <div class="col">
+                        <a
+                          class="text-body"
+                          href="#"
+                        >
+                          <div class="d-flex">
+                            <img
+                              alt=""
+                              class="avatar-md rounded-circle"
+                              src="../../assets/images/avatar/avatar-1.jpg"
                             >
-                              <div class="d-flex">
-                                <img
-                                  alt=""
-                                  class="avatar-md rounded-circle"
-                                  src="../../assets/images/avatar/avatar-1.jpg"
-                                >
-                                <div class="ms-3">
-                                  <h5 class="fw-bold mb-1">Kristin Watson:</h5>
-                                  <p class="mb-3">
-                                    Krisitn Watsan like your comment on course
-                                    Javascript Introduction!
-                                  </p>
-                                  <span class="fs-6 text-muted">
-                                    <span><span class="fe fe-thumbs-up text-success me-1"></span>2
-                                      hours ago,</span>
-                                    <span class="ms-1">2:19 PM</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </a>
-                          </div>
-                          <div class="col-auto me-2 text-center">
-                            <a
-                              class="badge-dot bg-info"
-                              data-bs-placement="top"
-                              data-bs-toggle="tooltip"
-                              href="#"
-                              title="Mark as read"
-                            >
-                            </a>
-                            <div>
-                              <a
-                                class="bg-transparent"
-                                data-bs-placement="top"
-                                data-bs-toggle="tooltip"
-                                href="#"
-                                title="Remove"
-                              >
-                                <i class="fe fe-x text-muted"></i>
-                              </a>
+                            <div class="ms-3">
+                              <h5 class="fw-bold mb-1">Kristin Watson:</h5>
+                              <p class="text-body mb-3">
+                                Krisitn Watsan like your comment on course
+                                Javascript Introduction!
+                              </p>
+                              <span class="fs-6 text-muted">
+                                <span><span class="fe fe-thumbs-up text-success me-1"></span>2
+                                  hours ago,</span>
+                                <span class="ms-1">2:19 PM</span>
+                              </span>
                             </div>
                           </div>
+                        </a>
+                      </div>
+                      <div class="col-auto me-2 text-center">
+
+                        <a
+                          class="badge-dot bg-info"
+                          data-bs-placement="top"
+                          data-bs-toggle="tooltip"
+                          href="#"
+                          title="Mark as read"
+                        >
+                        </a>
+                        <div>
+                          <a
+                            class="bg-transparent"
+                            data-bs-placement="top"
+                            data-bs-toggle="tooltip"
+                            href="#"
+                            title="Remove"
+                          >
+                            <i class="fe fe-x text-muted"></i>
+                          </a>
                         </div>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="row">
-                          <div class="col">
-                            <a
-                              class="text-body"
-                              href="#"
-                            >
-                              <div class="d-flex">
-                                <img
-                                  alt=""
-                                  class="avatar-md rounded-circle"
-                                  src="../../assets/images/avatar/avatar-2.jpg"
-                                >
-                                <div class="ms-3">
-                                  <h5 class="fw-bold mb-1">Brooklyn Simmons</h5>
-                                  <p class="mb-3">
-                                    Just launched a new Courses React for Beginner.
-                                  </p>
-                                  <span class="fs-6 text-muted">
-                                    <span><span class="fe fe-thumbs-up text-success me-1"></span>Oct
-                                      9,</span>
-                                    <span class="ms-1">1:20 PM</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </a>
-                          </div>
-                          <div class="col-auto me-2 text-center">
-                            <a
-                              class="badge-dot bg-secondary"
-                              data-bs-placement="top"
-                              data-bs-toggle="tooltip"
-                              href="#"
-                              title="Mark as unread"
-                            >
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="row">
-                          <div class="col">
-                            <a
-                              class="text-body"
-                              href="#"
-                            >
-                              <div class="d-flex">
-                                <img
-                                  alt=""
-                                  class="avatar-md rounded-circle"
-                                  src="../../assets/images/avatar/avatar-3.jpg"
-                                >
-                                <div class="ms-3">
-                                  <h5 class="fw-bold mb-1">Jenny Wilson</h5>
-                                  <p class="mb-3">
-                                    Krisitn Watsan like your comment on course
-                                    Javascript Introduction!
-                                  </p>
-                                  <span class="fs-6 text-muted">
-                                    <span><span class="fe fe-thumbs-up text-info me-1"></span>Oct
-                                      9,</span>
-                                    <span class="ms-1">1:56 PM</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </a>
-                          </div>
-                          <div class="col-auto me-2 text-center">
-                            <a
-                              class="badge-dot bg-secondary"
-                              data-bs-placement="top"
-                              data-bs-toggle="tooltip"
-                              href="#"
-                              title="Mark as unread"
-                            >
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="row">
-                          <div class="col">
-                            <a
-                              class="text-body"
-                              href="#"
-                            >
-                              <div class="d-flex">
-                                <img
-                                  alt=""
-                                  class="avatar-md rounded-circle"
-                                  src="../../assets/images/avatar/avatar-4.jpg"
-                                >
-                                <div class="ms-3">
-                                  <h5 class="fw-bold mb-1">Sina Ray</h5>
-                                  <p class="mb-3">
-                                    You earn new certificate for complete the
-                                    Javascript
-                                    Beginner course.
-                                  </p>
-                                  <span class="fs-6 text-muted">
-                                    <span><span class="fe fe-award text-warning me-1"></span>Oct
-                                      9,</span>
-                                    <span class="ms-1">1:56 PM</span>
-                                  </span>
-                                </div>
-                              </div>
-                            </a>
-                          </div>
-                          <div class="col-auto me-2 text-center">
-                            <a
-                              class="badge-dot bg-secondary"
-                              data-bs-placement="top"
-                              data-bs-toggle="tooltip"
-                              href="#"
-                              title="Mark as unread"
-                            >
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                    <div class="border-top px-3 pb-0 pt-3">
-                      <a
-                        class="text-link fw-semibold"
-                        href="../../pages/notification-history.html"
-                      >
-                        See all Notifications
-                      </a>
+                      </div>
                     </div>
-                  </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col">
+                        <a
+                          class="text-body"
+                          href="#"
+                        >
+                          <div class="d-flex">
+                            <img
+                              alt=""
+                              class="avatar-md rounded-circle"
+                              src="../../assets/images/avatar/avatar-2.jpg"
+                            >
+                            <div class="ms-3">
+                              <h5 class="fw-bold mb-1">Brooklyn Simmons</h5>
+                              <p class="text-body mb-3">
+                                Just launched a new Courses React for Beginner.
+                              </p>
+                              <span class="fs-6 text-muted">
+                                <span><span class="fe fe-thumbs-up text-success me-1"></span>Oct
+                                  9,</span>
+                                <span class="ms-1">1:20 PM</span>
+                              </span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="border-top px-3 pb-0 pt-3">
+                  <a
+                    class="text-link fw-semibold"
+                    href="../../pages/notification-history.html"
+                  >See
+                    all Notifications</a>
                 </div>
-              </li>
-              <!-- List -->
-              <li class="dropdown ms-2">
-                <a
-                  aria-expanded="false"
+              </div>
+            </div>
+          </li>
+
+          <li class="dropdown d-inline-block position-static ms-2">
+            <a
+              aria-expanded="false"
+              class="rounded-circle"
+              data-bs-display="static"
+              data-bs-toggle="dropdown"
+              href="#"
+            >
+              <div class="avatar avatar-md avatar-indicators avatar-online">
+                <img
+                  alt="avatar"
                   class="rounded-circle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  id="dropdownUser"
-                  role="button"
+                  src="guard.svg"
                 >
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end position-absolute mx-3 my-5">
+              <div class="dropdown-item">
+                <div class="d-flex">
                   <div class="avatar avatar-md avatar-indicators avatar-online">
                     <img
                       alt="avatar"
                       class="rounded-circle"
-                      src="../../assets/images/avatar/avatar-1.jpg"
+                      src="guard.svg"
                     >
                   </div>
-                </a>
-                <div
-                  aria-labelledby="dropdownUser"
-                  class="dropdown-menu dropdown-menu-end"
-                >
-                  <div class="dropdown-item">
-                    <div class="d-flex">
-                      <div class="avatar avatar-md avatar-indicators avatar-online">
-                        <img
-                          alt="avatar"
-                          class="rounded-circle"
-                          src="../../assets/images/avatar/avatar-1.jpg"
-                        >
-                      </div>
-                      <div class="lh-1 ms-3">
-                        <h5 class="mb-1">Annette Black</h5>
-                        <p class="text-muted mb-0">annette@geeksui.com</p>
-                      </div>
-                    </div>
+                  <div class="lh-1 ms-3">
+                    <h5 class="mb-1">Admin</h5>
+                    <p class="text-muted mb-0">vanguard_inc2008@yahoo.com</p>
                   </div>
-                  <div class="dropdown-divider"></div>
-                  <ul class="list-unstyled">
-                    <li class="dropdown-submenu dropstart-lg">
-                      <a
-                        class="dropdown-item dropdown-list-group-item dropdown-toggle"
-                        href="#"
-                      >
-                        <i class="fe fe-circle me-2"></i> Status
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a
-                            class="dropdown-item"
-                            href="#"
-                          >
-                            <span class="badge-dot bg-success me-2"></span> Online
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            class="dropdown-item"
-                            href="#"
-                          >
-                            <span class="badge-dot bg-secondary me-2"></span> Offline
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            class="dropdown-item"
-                            href="#"
-                          >
-                            <span class="badge-dot bg-warning me-2"></span> Away
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            class="dropdown-item"
-                            href="#"
-                          >
-                            <span class="badge-dot bg-danger me-2"></span> Busy
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="../../pages/profile-edit.html"
-                      >
-                        <i class="fe fe-user me-2"></i> Profile
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="../../pages/student-subscriptions.html"
-                      >
-                        <i class="fe fe-star me-2"></i> Subscription
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                      >
-                        <i class="fe fe-settings me-2"></i> Settings
-                      </a>
-                    </li>
-                  </ul>
-                  <div class="dropdown-divider"></div>
-                  <ul class="list-unstyled">
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="{{ route('logout') }}"
-                        onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                      >
-                        <i class="fe fe-power me-2"></i> Sign Out
-                      </a>
-                      <form
-                        action="{{ route('logout') }}"
-                        class="d-none"
-                        id="logout-form"
-                        method="post"
-                      >
-                        @csrf
-                      </form>
-                    </li>
-                  </ul>
                 </div>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-      <!-- Container fluid -->
-      <section class="container-fluid p-4">
-        <div class="row">
-          <!-- Page Header -->
-          <div class="col-lg-12 col-md-12 col-12">
-            <div class="border-bottom d-md-flex align-items-center justify-content-between mb-3 pb-3">
-              <div class="mb-md-0 mb-3">
-                <h1 class="h2 fw-bold mb-1">Courses Category</h1>
-                <!-- Breadcrumb -->
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                      <a href="../dashboard/admin-dashboard.html">Dashboard</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                      <a href="#">Courses</a>
-                    </li>
-                    <li
-                      aria-current="page"
-                      class="breadcrumb-item active"
-                    >
-                      Courses Category
-                    </li>
-                  </ol>
-                </nav>
               </div>
-              <div>
-                <a
-                  class="btn btn-primary"
-                  data-bs-target="#newCatgory"
-                  data-bs-toggle="modal"
-                  href="#"
-                >Add New
-                  Category</a>
+              <div class="dropdown-divider"></div>
+              <ul class="list-unstyled">
+
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="profile-edit.html"
+                  >
+                    <i class="fe fe-user me-2"></i>Profile
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                  >
+                    <i class="fe fe-settings me-2"></i>Settings
+                  </a>
+                </li>
+              </ul>
+              <div class="dropdown-divider"></div>
+              <ul class="list-unstyled">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="login.html"
+                  >
+                    <i class="fe fe-power me-2"></i>Sign Out
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+      <div>
+        <!-- Button -->
+        <button
+          aria-controls="navbar-default"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          class="navbar-toggler collapsed"
+          data-bs-target="#navbar-default"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <span class="icon-bar top-bar mt-0"></span>
+          <span class="icon-bar middle-bar"></span>
+          <span class="icon-bar bottom-bar"></span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+  <!-- Page header-->
+  <main>
+
+    <section class="py-lg-6 bg-primary py-4">
+      <div class="container">
+        <div class="row">
+          <div class="offset-lg-1 col-lg-10 col-md-12 col-12">
+            <div class="d-lg-flex align-items-center justify-content-between">
+              <!-- Content -->
+              <div class="mb-lg-0 mb-4">
+                <h1 class="mb-1 text-white">Add New Company</h1>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          {{ $slot }}
+      </div>
+    </section>
+    <!-- Page Content -->
+    <section class="pb-12">
+      <div class="container">
+        <div
+          class="bs-stepper"
+          id="courseForm"
+        >
+          <div class="row">
+            <div class="offset-lg-1 col-lg-10 col-md-12 col-12">
+              <!-- Stepper Button -->
+              <div
+                class="bs-stepper-header shadow-sm"
+                role="tablist"
+              >
+                <div
+                  class="step"
+                  data-target="#test-l-1"
+                >
+                  <button
+                    aria-controls="test-l-1"
+                    class="step-trigger"
+                    id="courseFormtrigger1"
+                    role="tab"
+                    type="button"
+                  >
+                    <span class="bs-stepper-circle">1</span>
+                    <span class="bs-stepper-label">Basic Information</span>
+                  </button>
+                </div>
+                <div class="bs-stepper-line"></div>
+                <div
+                  class="step"
+                  data-target="#test-l-2"
+                >
+                  <button
+                    aria-controls="test-l-2"
+                    class="step-trigger"
+                    id="courseFormtrigger2"
+                    role="tab"
+                    type="button"
+                  >
+                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-label">Company Media</span>
+                  </button>
+                </div>
+                <div class="bs-stepper-line"></div>
+                <div
+                  class="step"
+                  data-target="#test-l-3"
+                >
+                  <button
+                    aria-controls="test-l-3"
+                    class="step-trigger"
+                    id="courseFormtrigger3"
+                    role="tab"
+                    type="button"
+                  >
+                    <span class="bs-stepper-circle">3</span>
+                    <span class="bs-stepper-label">Address</span>
+                  </button>
+                </div>
+                <div class="bs-stepper-line"></div>
+                <div
+                  class="step"
+                  data-target="#test-l-4"
+                >
+                  <button
+                    aria-controls="test-l-4"
+                    class="step-trigger"
+                    id="courseFormtrigger4"
+                    role="tab"
+                    type="button"
+                  >
+                    <span class="bs-stepper-circle">4</span>
+                    <span class="bs-stepper-label">Notes</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Stepper content -->
+              <div class="bs-stepper-content mt-5">
+                <form onSubmit="return false">
+                  <!-- Content one -->
+                  <div
+                    aria-labelledby="courseFormtrigger1"
+                    class="bs-stepper-pane fade"
+                    id="test-l-1"
+                    role="tabpanel"
+                  >
+                    <!-- Card -->
+                    <div class="card mb-3">
+                      <div class="card-header border-bottom px-4 py-3">
+                        <h4 class="mb-0">BASIC INFORMATION</h4>
+                      </div>
+                      <!-- Card body -->
+                      <div class="card-header border-bottom px-4 py-3">
+                        <!-- input -->
+                        <div class="col-md-12 mb-3">
+                          <label
+                            class="form-label"
+                            for="companyName"
+                          >Company Name</label>
+                          <input
+                            class="form-control"
+                            id="companyName"
+                            placeholder="Enter company name"
+                            required
+                            type="text"
+                          >
+                        </div>
+                        <!-- input -->
+                        <div class="col-md-12 mb-3">
+                          <label
+                            class="form-label"
+                            for="clientName"
+                          >Client Name</label>
+                          <input
+                            class="form-control"
+                            id="companyName"
+                            placeholder="Enter client name"
+                            required
+                            type="text"
+                          >
+                        </div>
+                        <!-- input -->
+                        <div class="col-md-12 mb-3">
+                          <label
+                            class="form-label"
+                            for="email"
+                          >Email</label>
+                          <input
+                            class="form-control"
+                            id="email"
+                            placeholder="Enter email address"
+                            required
+                            type="email"
+                          >
+
+                        </div>
+                        <!-- input -->
+                        <div class="col-md-12 mb-3">
+                          <label
+                            class="form-label"
+                            for="phone"
+                          >Phone</label>
+                          <input
+                            class="form-control"
+                            id="phone"
+                            placeholder="Enter phone number"
+                            required
+                            type="number"
+                          >
+                        </div>
+
+                        <!-- input -->
+                        <div class="col-md-12 mb-3">
+                          <label
+                            class="form-label"
+                            for="country"
+                          >Company Type</label>
+                          <select
+                            aria-label="Default select example"
+                            class="form-select"
+                            id="country"
+                            required
+                          >
+                            <option selected>Select Company Type</option>
+                            <option value="1">Government</option>
+                            <option value="2">Private</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Button -->
+                    <button
+                      class="btn btn-primary"
+                      onclick="courseForm.next()"
+                    >
+                      Next
+                    </button>
+
+                  </div>
+
+                  <!-- Content two -->
+                  <div
+                    aria-labelledby="courseFormtrigger2"
+                    class="bs-stepper-pane fade"
+                    id="test-l-2"
+                    role="tabpanel"
+                  >
+                    <!-- Card -->
+                    <div class="card mb-3 border-0">
+                      <div class="card-header border-bottom px-4 py-3">
+                        <h4 class="mb-0">COMPANY MEDIA
+                          <small class="text-muted">(Optional)
+                          </small>
+                        </h4>
+                      </div>
+                      <!-- Card body -->
+                      <div class="card-body">
+                        <div
+                          class="custom-file-container mb-4"
+                          data-upload-id="courseImage"
+                        ></div>
+                      </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="d-flex justify-content-between">
+                      <button
+                        class="btn btn-secondary"
+                        onclick="courseForm.previous()"
+                      >
+                        Previous
+                      </button>
+                      <button
+                        class="btn btn-primary"
+                        onclick="courseForm.next()"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Content three -->
+                  <div
+                    aria-labelledby="courseFormtrigger3"
+                    class="bs-stepper-pane fade"
+                    id="test-l-3"
+                    role="tabpanel"
+                  >
+                    <!-- Card -->
+                    <div class="card mb-3 border-0">
+                      <!-- Card body -->
+                      <div class="card-body">
+                        <!-- row -->
+                        <div class="row gx-3">
+                          <!-- input -->
+                          <div class="col-md-12 mb-3">
+                            <label
+                              class="form-label"
+                              for="address"
+                            >Address</label>
+                            <input
+                              class="form-control"
+                              id="address"
+                              placeholder="Enter address"
+                              required
+                              type="text"
+                            >
+                          </div>
+                          <!-- input -->
+                          <div class="col-md-12 mb-3">
+                            <label
+                              class="form-label"
+                              for="building"
+                            >Building</label>
+                            <input
+                              class="form-control"
+                              id="aparment"
+                              placeholder="Enter building name"
+                              required
+                              type="text"
+                            >
+                          </div>
+                          <!-- input -->
+                          <div class="col-md-6 mb-3">
+                            <label
+                              class="form-label"
+                              for="city"
+                            >City</label>
+                            <input
+                              class="form-control"
+                              id="city"
+                              placeholder="Enter City"
+                              required
+                              type="text"
+                            >
+                          </div>
+                          <!-- input -->
+                          <div class="col-md-6 mb-3">
+                            <label
+                              class="form-label"
+                              for="state"
+                            >Province</label>
+                            <select
+                              aria-label="Default select example"
+                              class="form-select"
+                              id="province"
+                              required
+                            >
+                              <option selected>Select Province</option>
+                              <option value="1">Davao de Oro</option>
+                              <option value="2">Davao del Norte</option>
+                              <option value="3">Davao del Sur</option>
+                              <option value="4">Davao Occidental</option>
+                              <option value="5">Davao Oriental</option>
+                            </select>
+                          </div>
+                          <!-- input -->
+                          <div class="col-md-12 mb-3">
+                            <label
+                              class="form-label"
+                              for="country"
+                            >Country</label>
+                            <select
+                              aria-label="Default select example"
+                              class="form-select"
+                              id="country"
+                              required
+                            >
+                              <option selected>Select Country</option>
+                              <option value="1">Philippines</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="d-flex justify-content-between">
+                      <button
+                        class="btn btn-secondary"
+                        onclick="courseForm.previous()"
+                      >
+                        Previous
+                      </button>
+                      <button
+                        class="btn btn-primary"
+                        onclick="courseForm.next()"
+                      >
+                        Next
+                      </button>
+                    </div>
+
+                  </div>
+              </div>
+              <!-- Content four -->
+              <div
+                aria-labelledby="courseFormtrigger4"
+                class="bs-stepper-pane fade"
+                id="test-l-4"
+                role="tabpanel"
+              >
+                <!-- Card -->
+                <div class="row gx-3">
+                  <div class="col-md-12">
+                    <label
+                      class="form-label"
+                      for="customerNotes"
+                    >NOTES
+                      <small class="text-muted">(Optional)</small></label>
+                    <textarea
+                      class="form-control"
+                      id="customerNotes"
+                      placeholder="Write notes"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                </div>
+                <!-- Button -->
+                <button
+                  class="btn btn-secondary mt-3"
+                  onclick="courseForm.previous()"
+                >
+                  Previous
+                </button>
+                <button
+                  class="btn btn-info mt-3"
+                  type="submit"
+                >
+                  Save
+                </button>
+              </div>
+              </form>
+            </div>
+
+          </div>
         </div>
-      </section>
-    </main>
-  </div>
+      </div>
+      </form>
+      </div>
+    </section>
+  </main>
   @livewireScripts
 
   {{-- THEME SCRIPTS --}}
   <!-- Scripts -->
+  <script src="../../assets/libs/file-upload-with-preview/dist/file-upload-with-preview.iife.js"></script>
+  <script src="../../assets/libs/@yaireo/tagify/dist/tagify.min.js"></script>
   <!-- Libs JS -->
   <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -1394,11 +723,17 @@
   <!-- Theme JS -->
   <script src="../../assets/js/theme.min.js"></script>
 
-  <script src="../../assets/libs/quill/dist/quill.min.js"></script>
 
   <script src="../../assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 
+  <script src="../../assets/libs/quill/dist/quill.min.js"></script>
+  <script src="../../assets/libs/dragula/dist/dragula.min.js"></script>
+  <script src="../../assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
+  <script src="../../assets/js/vendors/beStepper.js"></script>
+  <script src="../../assets/js/vendors/customDragula.js"></script>
   <script src="../../assets/js/vendors/editor.js"></script>
+  <script src="../../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+  <script src="../../assets/js/vendors/popup.js"></script>
   {{-- END THEME SCRIPTS --}}
 </body>
 
