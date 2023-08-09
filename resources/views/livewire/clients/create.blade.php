@@ -1,147 +1,272 @@
-<div class="row ">
-    <div class="col-lg-12 col-md-12 col-12">
-        <!-- Page header -->
-        <div class="border-bottom pb-3 mb-3 ">
-            <div class="mb-2 mb-lg-0">
-                <h1 class="mb-0 h2 fw-bold"> Add Customer </h1>
-                <!-- Breadcrumb -->
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="admin-dashboard.html">Dashboard</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#">Ecommerce </a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            Add Customer
-                        </li>
-                    </ol>
-                </nav>
-            </div>
+@section('page-title', 'Create Client')
+<div
+  class="bs-stepper"
+  id="courseForm"
+>
+  <div class="row">
+    <div class="offset-lg-1 col-lg-10 col-md-12 col-12">
+      <!-- Stepper Button -->
+      <div
+        class="bs-stepper-header shadow-sm"
+        role="tablist"
+      >
+        <div
+          class="step"
+          data-target="#test-l-1"
+        >
+          <button
+            aria-controls="test-l-1"
+            class="step-trigger"
+            id="courseFormtrigger1"
+            role="tab"
+            type="button"
+          >
+            <span class="bs-stepper-circle">1</span>
+            <span class="bs-stepper-label">Basic Information</span>
+          </button>
         </div>
+        <div class="bs-stepper-line"></div>
+        <div
+          class="step"
+          data-target="#test-l-3"
+        >
+          <button
+            aria-controls="test-l-3"
+            class="step-trigger"
+            id="courseFormtrigger3"
+            role="tab"
+            type="button"
+          >
+            <span class="bs-stepper-circle">2</span>
+            <span class="bs-stepper-label">Address</span>
+          </button>
+        </div>
+        <div class="bs-stepper-line"></div>
+        <div
+          class="step"
+          data-target="#test-l-4"
+        >
+          <button
+            aria-controls="test-l-4"
+            class="step-trigger"
+            id="courseFormtrigger4"
+            role="tab"
+            type="button"
+          >
+            <span class="bs-stepper-circle">3</span>
+            <span class="bs-stepper-label">Review & Save</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Stepper content -->
+      <div class="bs-stepper-content mt-5">
+        <!-- Content one -->
+        <div
+          aria-labelledby="courseFormtrigger1"
+          class="bs-stepper-pane fade"
+          id="test-l-1"
+          role="tabpanel"
+          wire:ignore.self
+        >
+          <!-- Card -->
+          <div class="card mb-3">
+            <div class="card-header border-bottom px-4 py-3">
+              <h4 class="mb-0">BASIC INFORMATION</h4>
+            </div>
+            <!-- Card body -->
+            <div class="card-header border-bottom px-4 py-3">
+              <!-- input -->
+              <div class="col-md-12 mb-3">
+                <label
+                  class="form-label"
+                  for="companyName"
+                >Company Name</label>
+                <x-input
+                  id="client.company_name"
+                  name="client.company_name"
+                  placeholder="Enter company name"
+                  required
+                  type="text"
+                  wire:model.debounce.500ms="client.company_name"
+                />
+              </div>
+              <!-- input -->
+              <div class="col-md-12 mb-3">
+                <label
+                  class="form-label"
+                  for="clientName"
+                >Representative Name</label>
+                <x-input
+                  id="client.representative.name"
+                  name="client.representative.name"
+                  placeholder="Enter representative name"
+                  required
+                  type="text"
+                  wire:model.debounce.500ms="client.representative.name"
+                />
+              </div>
+              <!-- input -->
+              <div class="col-md-12 mb-3">
+                <label
+                  class="form-label"
+                  for="email"
+                >Email</label>
+                <x-input
+                  id="client.representative.email"
+                  name="client.representative.email"
+                  placeholder="Enter representative email"
+                  required
+                  type="text"
+                  wire:model.debounce.500ms="client.representative.email"
+                />
+
+              </div>
+              <!-- input -->
+              <div class="col-md-12 mb-3">
+                <label
+                  class="form-label"
+                  for="phone"
+                >Mobile Number</label>
+                <x-input
+                  id="client.representative.mobile_number"
+                  name="client.representative.mobile_number"
+                  placeholder="Enter representative mobile number"
+                  required
+                  type="number"
+                  wire:model.debounce.500ms="client.representative.mobile_number"
+                />
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Button -->
+          <button
+            class="btn btn-primary"
+            onclick="courseForm.next()"
+          >
+            Next
+          </button>
+
+        </div>
+
+        <!-- Content two -->
+        <div
+          aria-labelledby="courseFormtrigger3"
+          class="bs-stepper-pane fade"
+          id="test-l-3"
+          role="tabpanel"
+          wire:ignore.self
+        >
+          <!-- Card -->
+          <div class="card mb-3 border-0">
+            <!-- Card body -->
+            <div class="card-body">
+              <!-- row -->
+              <div class="row gx-3">
+                <!-- input -->
+                <div class="col-md-12 mb-3">
+                  <label
+                    class="form-label"
+                    for="street"
+                  >Street</label>
+                  <x-input
+                    id="client.street"
+                    name="client.street"
+                    placeholder="Street"
+                    required
+                    type="text"
+                    wire:model.debounce.500ms="client.street"
+                  />
+                </div>
+                <!-- input -->
+                <div class="col-md-6 mb-3">
+                  <label
+                    class="form-label"
+                    for="building"
+                  >City</label>
+                  <x-input
+                    id="client.city"
+                    name="client.city"
+                    placeholder="City"
+                    required
+                    type="text"
+                    wire:model.debounce.500ms="client.city"
+                  />
+                </div>
+                <!-- input -->
+                <div class="col-md-6 mb-3">
+                  <label
+                    class="form-label"
+                    for="city"
+                  >Province</label>
+                  <x-input
+                    id="client.province"
+                    name="client.province"
+                    placeholder="Province"
+                    required
+                    type="text"
+                    wire:model.debounce.500ms="client.province"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Button -->
+          <div class="d-flex justify-content-between">
+            <button
+              class="btn btn-secondary"
+              onclick="courseForm.previous()"
+            >
+              Previous
+            </button>
+            <button
+              class="btn btn-primary"
+              onclick="courseForm.next()"
+            >
+              Next
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <!-- Content Three -->
+      <div
+        aria-labelledby="courseFormtrigger4"
+        class="bs-stepper-pane fade"
+        id="test-l-4"
+        role="tabpanel"
+        wire:ignore.self
+      >
+        <!-- Card -->
+        <div class="card mb-3 border-0">
+          <div class="card-body">
+            <h4 class="card-title">Basic Information</h4>
+            @dump($this->client)
+            <p></p>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Address</h4>
+            <p></p>
+          </div>
+        </div>
+        <!-- Button -->
+        <button
+          class="btn btn-secondary mt-3"
+          onclick="courseForm.previous()"
+        >
+          Previous
+        </button>
+        <button
+          class="btn btn-info mt-3"
+          type="submit"
+        >
+          Save
+        </button>
+      </div>
+      </form>
     </div>
-</div>
-<div class="row ">
-    <div class="offset-xl-3 col-xl-6 col-12">
-        <!-- card -->
-        <form>
-            <div class="card mb-4">
-                <!-- card body -->
-                <div class="card-body">
-                    <h4 class="mb-4">Customer Overview</h4>
 
-                    <!-- row -->
-                    <div class="row gx-3">
-                        <!-- input -->
-                        <div class="mb-3 col-md-6">
-                            <label class="form-label" for="firstName">First Name</label>
-                            <input type="text" class="form-control" placeholder="Enter first name"
-                                id="firstName" required>
-                        </div>
-                        <!-- input -->
-                        <div class="mb-3 col-md-6">
-                            <label class="form-label" for="lastName">Last Name</label>
-                            <input type="text" class="form-control" placeholder="Last Name"
-                                id="lastName" required>
-
-                        </div>
-                        <!-- input -->
-                        <div class="mb-3 col-md-12">
-                            <label class="form-label" for="email">Email</label>
-                            <input type="email" class="form-control" placeholder="Enter email address"
-                                id="email" required>
-
-                        </div>
-                        <!-- input -->
-                        <div class="mb-3 col-md-12">
-                            <label class="form-label" for="phone">Phone</label>
-                            <input type="number" class="form-control" placeholder="Enter phone number"
-                                id="phone" required>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="card mb-4">
-                <!-- card body -->
-                <div class="card-body">
-                    <!-- heading -->
-                    <div class="mb-4">
-                        <h4 class="mb-1">Address</h4>
-                        <p>The primary address of this customer.</p>
-                    </div>
-
-                    <!-- row -->
-                    <div class="row gx-3">
-                        <!-- input -->
-                        <div class="mb-3 col-md-12">
-                            <label class="form-label" for="address">Address</label>
-                            <input type="text" class="form-control" placeholder="Enter address"
-                                id="address" required>
-                        </div>
-                        <!-- input -->
-                        <div class="mb-3 col-md-12">
-                            <label class="form-label" for="aparment">Apartment, suite etc.</label>
-                            <input type="text" class="form-control" placeholder="Apartment street"
-                                id="aparment" required>
-                        </div>
-                        <!-- input -->
-                        <div class="mb-3 col-md-4">
-                            <label class="form-label" for="city">Town / City</label>
-                            <input type="text" class="form-control" placeholder="Enter City" id="city"
-                                required>
-                        </div>
-                        <!-- input -->
-                        <div class="mb-3 col-md-4">
-                            <label class="form-label" for="state">State</label>
-                            <input type="text" class="form-control" placeholder="Enter state" id="state"
-                                required>
-                        </div>
-                        <!-- input -->
-                        <div class="mb-3 col-md-4">
-                            <label class="form-label" for="zip">Zip / Postal Code</label>
-                            <input type="text" class="form-control" placeholder="Enter Zip / Code"
-                                id="zip" required>
-                        </div>
-                        <!-- input -->
-                        <div class="mb-3 col-md-12">
-                            <label class="form-label" for="country">Country</label>
-                            <select class="form-select" aria-label="Default select example" id="country"
-                                required>
-                                <option selected>Select Country</option>
-                                <option value="1">India</option>
-                                <option value="2">UK</option>
-                                <option value="3">US</option>
-                            </select>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- card -->
-            <div class="card mb-4">
-                <!-- card body -->
-                <div class="card-body">
-
-
-                    <!-- row -->
-                    <div class="row gx-3">
-                        <div class="col-md-12">
-                            <label for="customerNotes" class="form-label">Notes <small
-                                    class="text-muted">(Optional)</small></label>
-                            <textarea class="form-control" id="customerNotes" rows="3"
-                                placeholder="Write a Notes"></textarea>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="d-flex justify-content-end">
-                <!-- buttons -->
-                <a href="#" class="btn btn-outline-primary me-2">Cancel</a>
-                <button class="btn btn-primary" type="submit">Save Customer</button>
-            </div>
-        </form>
-    </div>
+  </div>
 </div>

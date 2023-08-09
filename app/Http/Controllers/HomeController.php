@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect(route('admin.clients.index'));
+        return redirect(route('clients.create'));
     }
 }
