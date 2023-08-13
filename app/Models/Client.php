@@ -13,4 +13,15 @@ class Client extends Model
     {
         return $this->belongsTo(User::class, 'representative_id');
     }
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+
+        $query->where(function ($query) use ($term) {
+            $query->where('company_name', 'like', $term)
+                ->orWhereRelation('representative', 'name', 'like', $term)
+                ->orWhereRelation('representative', 'email', 'like', $term);
+        });
+    }
 }

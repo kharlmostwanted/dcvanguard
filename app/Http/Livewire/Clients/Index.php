@@ -4,10 +4,15 @@ namespace App\Http\Livewire\Clients;
 
 use Livewire\Component;
 use App\Models\Client;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public $orderBy;
+    public $search;
 
     public function render()
     {
@@ -16,7 +21,11 @@ class Index extends Component
 
     public function getClientsProperty()
     {
-        return Client::orderBy($this->orderBy, 'ASC')
+        return Client::orderBy($this->orderBy ?? 'company_name', 'ASC')
+            ->when(!empty($this->search), function ($query) {
+                $query->search($this->search);
+            })
+            ->latest()
             ->paginate(10);
     }
 
