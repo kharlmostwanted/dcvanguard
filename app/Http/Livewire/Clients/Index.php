@@ -7,6 +7,8 @@ use App\Models\Client;
 
 class Index extends Component
 {
+    public $orderBy;
+
     public function render()
     {
         return view('livewire.clients.index');
@@ -14,11 +16,21 @@ class Index extends Component
 
     public function getClientsProperty()
     {
-        return Client::orderBy('company_name', 'ASC')->paginate(10);
+        return Client::orderBy($this->orderBy, 'ASC')
+            ->paginate(10);
     }
 
     public function getTotalClientsProperty()
     {
         return Client::count();
+    }
+
+
+    public function getOrderByableColumnsProperty()
+    {
+        return [
+            'company_name' => 'Company Name',
+            'representative' => 'Representative',
+        ];
     }
 }

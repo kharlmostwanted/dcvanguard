@@ -9,11 +9,22 @@
         <div class="d-inline-flex col-md-6 col-lg-4 col-xl-3">
           <!-- Search input -->
           <input
-            class="form-control"
+            class="form-control me-2"
             id="search-input"
             placeholder="Search Clients"
             type="search"
           >
+          <!-- Sort -->
+          <select
+            aria-label="Default select example"
+            class="form-select"
+            data-width="100%"
+          >
+            <option selected>Sort By</option>
+            @foreach ($this->orderByableColumns as $column => $alias)
+              <option value="{{ $column }}">{{ $alias }}</option>
+            @endforeach
+          </select>
         </div>
       </div>
     </div>
