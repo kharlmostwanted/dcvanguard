@@ -112,7 +112,7 @@
                         >Edit</a>
                         <a
                           class="dropdown-item"
-                          href="#"
+                          href="{{ route('billings.create', $client) }}"
                         >Add Billing</a>
                       </div>
                     </div>
