@@ -3,117 +3,76 @@
   <div class="row">
     <div class="col-xl-8 col-lg-7 col-12">
       <!-- card -->
-      <div class="card">
-        <!-- card header -->
-        <div class="card-header border-bottom-0">
-          <div class="d-flex justify-content-between align-items-center">
-            <div>
-              <!-- heading -->
-              <h4 class="mb-1">Billing ID: GK00017</h4>
-              <span>Billing Date: October 03,2022 t 6:31 pm <span class="badge bg-success-soft ms-2">Paid</span></span>
-            </div>
-            <div>
-              <!-- button -->
-              <a
-                class="btn btn-primary btn-sm"
-                href="#"
-              >Invoice</a>
-            </div>
-          </div>
+      <div class="card mb-4">
+        <!-- Card Header -->
+        <div class="card-header">
+          <h3 class="mb-0">Billing Information</h3>
         </div>
-        <div class="table-responsive">
-          <!-- Table -->
-          <table class="text-nowrap mb-0 table">
-            <!-- Table Head -->
-            <thead class="table-light">
-              <tr>
-                <th>Products</th>
-                <th>Items</th>
-                <th>Amounts</th>
-              </tr>
-            </thead>
-            <!-- tbody -->
-            <tbody>
-              <tr>
-                <td>
-                  Item Here
-                </td>
-                <td>1</td>
-                <td>$120.00</td>
-              </tr>
-              <tr>
-                <td class="border-bottom-0 pb-0"></td>
-                <td
-                  class="fw-medium text-dark border-bottom-0 pb-0"
-                  colspan="1"
+        <!-- Card Body -->
+        <div class="card-body">
+          <!-- Form -->
+          <form class="row">
+            <div class="col-12 col-md-6 mb-3">
+              <label
+                class="form-label"
+                for="item"
+              >Item</label>
+              <x-input
+                id="item"
+                name="item"
+                placeholder="Details"
+                required
+                type="text"
+                wire:model="item"
+              />
+            </div>
+            <div class="col-12 col-md-3 mb-3">
+              <label
+                class="form-label"
+                for="lname"
+              >Amount</label>
+              <x-input
+                class="form-control"
+                id="amount"
+                name="amount"
+                placeholder="Amount"
+                required
+                type="number"
+                wire:model="amount"
+              />
+            </div>
+            <div class="col-12 col-md-3 mb-3">
+              <label
+                class="form-label"
+                for="lname"
+              >Due</label>
+              <input
+                class="form-control flatpickr{{ $errors->has('due_at') ? ' is-invalid' : '' }}"
+                id="due_at"
+                name="due_at"
+                placeholder="Enter due date"
+                required
+                type="text"
+                wire:model="due_at"
+              >
+              @error('due_at')
+                <div
+                  class="invalid-feedback"
+                  id="{{ 'due_at' }}Feedback"
                 >
-                  <!-- text -->
-                  Sub Total :
-                </td>
-                <td class="fw-medium text-dark border-bottom-0 pb-0 text-end">
-                  <!-- text -->
-                  $340.00
-                </td>
-              </tr>
-              <tr>
-                <td class="border-bottom-0 pb-0"></td>
-                <td
-                  class="fw-medium text-dark border-bottom-0 pb-0"
-                  colspan="1"
-                >
-                  <!-- text -->
-                  Discount (GKDIS15%) :
-                </td>
-                <td class="fw-medium text-dark border-bottom-0 pb-0 text-end">
-                  <!-- text -->
-                  -$51.00
-                </td>
-              </tr>
-              <tr>
-                <td class="border-bottom-0 pb-0"></td>
-                <td
-                  class="fw-medium text-dark border-bottom-0 pb-0"
-                  colspan="1"
-                >
-                  <!-- text -->
-                  Shipping Charge :
-                </td>
-                <td class="fw-medium text-dark border-bottom-0 pb-0 text-end">
-                  <!-- text -->
-                  $15.00
-                </td>
-              </tr>
-              <tr>
-                <td class="border-bottom-0"></td>
-                <td
-                  class="fw-semibold text-dark"
-                  colspan="1"
-                >
-                  <!-- text -->
-                  Tax Vat 19% (included) :
-                </td>
-                <td class="fw-semibold text-dark text-end">
-                  <!-- text -->
-                  $64.00
-                </td>
-              </tr>
-              <tr>
-                <td></td>
-                <td
-                  class="fw-semibold text-dark"
-                  colspan="1"
-                >
-                  <!-- text -->
-                  Paid by Customer
-                </td>
-                <td class="fw-semibold text-dark text-end">
-                  <!-- text -->
-                  $368.00
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+          </form>
         </div>
+      </div>
+
+      <div class="d-flex justify-content-end align-items-center">
+        <button
+          class="btn btn-primary"
+          wire:click="save"
+        >Save</button>
       </div>
     </div>
     <div class="col-xl-4 col-lg-5 col-12">
@@ -147,13 +106,13 @@
           <div class="d-flex justify-content-between align-items-center mb-3">
             <!-- text -->
             <h4 class="mb-0">Contact</h4>
-            <a href="#">Edit</a>
+            <a href="{{ route('clients.edit', $client) }}">Edit</a>
           </div>
           <div>
             <!-- text -->
             <div class="d-flex align-items-center mb-2"><i class="fe fe-mail text-muted fs-4"></i><a
                 class="ms-2"
-                href="#"
+                href="mailto:{{ $client->representative->email }}"
               >{{ $client->representative->email }}</a></div>
             <div class="d-flex align-items-center"><i class="fe fe-phone text-muted fs-4"></i><span
                 class="ms-2">{{ $client->representative->mobile_number }}</span></div>
@@ -163,14 +122,16 @@
         <div class="card-body border-top">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="mb-0">Billing Address</h4>
-            <a href="#">Edit</a>
+            <a href="{{ route('clients.edit', $client) }}">Edit</a>
           </div>
           <div>
             <!-- address -->
-            <p class="mb-0">{{ $client->street }}<br>
-              <br>
+            <p class="mb-0">
+              <strong>{{ $client->company_name }}</strong> <br><br>
+              {{ $client->street }}<br>
               {{ $client->city }}<br>
-              {{ $client->province }}</p>
+              {{ $client->province }}
+            </p>
           </div>
         </div>
         <!-- card body -->
@@ -216,3 +177,8 @@
     </div>
   </div>
 </div>
+@push('scripts')
+  <script src="{{ asset('/assets/libs/inputmask/dist/jquery.inputmask.min.js') }}"></script>
+  <script src="{{ asset('/assets/libs/flatpickr/dist/flatpickr.min.js') }}"></script>
+  <script src="{{ asset('/assets/js/vendors/flatpickr.js') }}"></script>
+@endpush

@@ -10,6 +10,9 @@ class Create extends Component
 {
     public Billing $billing;
     public Client $client;
+    public $item;
+    public $amount;
+    public $due_at;
 
     public function mount()
     {
@@ -20,5 +23,18 @@ class Create extends Component
     {
         return view('livewire.billings.create');
     }
-    
+
+    public function rules()
+    {
+        return [
+            'item' => 'required|string',
+            'amount' => 'required|numeric|string|min:.01',
+            'due_at' => 'required|date',
+        ];
+    }
+
+    public function save()
+    {
+        $this->validate();
+    }
 }
