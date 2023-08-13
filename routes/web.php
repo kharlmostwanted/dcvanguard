@@ -35,5 +35,6 @@ Route::prefix('admin')
     });
 
 Route::prefix('clients')->name('clients.')->group(function () {
+    Route::get('/', Index::class)->name('index');
     Route::get('/create', Create::class)->name('create');
 });

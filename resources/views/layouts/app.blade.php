@@ -38,7 +38,7 @@
     rel="stylesheet"
   >
   <link
-    href="{{ asset('/assets/libs/bootstrap-icons/font/bootstrap-icons.css') }}"
+    href="../../assets/libs/bootstrap-icons/font/bootstrap-icons.css"
     rel="stylesheet"
   />
   <link
@@ -67,33 +67,64 @@
   <livewire:partials.navs.app />
   <!-- Page header-->
   <main>
-    <section class="py-lg-6 bg-primary py-4">
+    <!-- Page header -->
+    <section class="bg-primary py-lg-6 py-4">
       <div class="container">
-        <div class="row">
-          <div class="offset-lg-1 col-lg-10 col-md-12 col-12">
-            <div class="d-lg-flex align-items-center justify-content-between">
-              <!-- Content -->
-              <div class="mb-lg-0 mb-4">
-                <h1 class="mb-1 text-white">@yield('page-title')</h1>
-              </div>
+        <div class="row align-items-center">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+            <div>
+              <h1 class="display-4 mb-0 text-white">@yield('page-title')</h1>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Page Content -->
-    <section class="pb-12">
-      <div class="container">
-        {{ $slot }}
-      </div>
+    <!-- Content -->
+    <section class="py-6">
+      {{ $slot }}
     </section>
   </main>
+
+  {{-- footer --}}
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center g-0 border-top py-2">
+        <!-- Desc -->
+        <div class="col-md-6 col-12 text-md-start text-center">
+          <span>© <span id="copyright">
+              <script>
+                document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
+              </script>
+            </span>Geeks. All Rights Reserved.</span>
+        </div>
+        <!-- Links -->
+        <div class="col-12 col-md-6">
+          <nav class="nav nav-footer justify-content-center justify-content-md-end">
+            <a
+              class="nav-link active ps-0"
+              href="#"
+            >Privacy</a>
+            <a
+              class="nav-link"
+              href="#"
+            >Terms </a>
+            <a
+              class="nav-link"
+              href="#"
+            >Feedback</a>
+            <a
+              class="nav-link"
+              href="#"
+            >Support</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
   @livewireScripts
 
   {{-- THEME SCRIPTS --}}
   <!-- Scripts -->
-  <script src="../../assets/libs/file-upload-with-preview/dist/file-upload-with-preview.iife.js"></script>
-  <script src="../../assets/libs/@yaireo/tagify/dist/tagify.min.js"></script>
   <!-- Libs JS -->
   <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -101,18 +132,8 @@
 
   <!-- Theme JS -->
   <script src="../../assets/js/theme.min.js"></script>
-
-  <script src="../../assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-
-  <script src="../../assets/libs/quill/dist/quill.min.js"></script>
-  <script src="../../assets/libs/dragula/dist/dragula.min.js"></script>
-  <script src="../../assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
-  <script src="../../assets/js/vendors/beStepper.js"></script>
-  <script src="../../assets/js/vendors/customDragula.js"></script>
-  <script src="../../assets/js/vendors/editor.js"></script>
-  <script src="../../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-  <script src="../../assets/js/vendors/popup.js"></script>
-  {{-- END THEME SCRIPTS --}}
+  
+  @stack('scripts')
 </body>
 
 </html>

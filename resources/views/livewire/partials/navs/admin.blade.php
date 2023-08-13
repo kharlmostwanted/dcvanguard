@@ -43,7 +43,7 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="{{route('admin.clients.index')}}"
+                href="{{route('clients.index')}}"
               >
                 All Clients
               </a>
@@ -51,7 +51,7 @@
             <li class="nav-item">
               <a
                 class="nav-link active"
-                href="{{ route('admin.clients.create') }}"
+                href="{{ route('clients.create') }}"
               >
                 Create
               </a>

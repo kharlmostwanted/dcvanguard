@@ -1,244 +1,1526 @@
 <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid px-0">
-      <a
-        class="navbar-brand"
-        href="index.html"
-      ><img
-          alt=""
-          class=""
-          src="logoheader.svg"
-        ></a>
-      <!-- Mobile view nav wrap -->
+  <div class="container-fluid px-0">
+    <a
+      class="navbar-brand"
+      href="../index.html"
+    ><img
+        alt=""
+        class=""
+        src="../assets/images/brand/logo/logo.svg"
+      ></a>
+    <!-- Mobile view nav wrap -->
 
-      <div class="d-flex align-items-center order-lg-3 ms-auto">
+    <div class="d-flex align-items-center order-lg-3 ms-auto">
 
-        <div>
-          <a
-            class="form-check form-switch theme-switch btn btn-light btn-icon rounded-circle"
-            href="#"
+      <div>
+        <a
+          class="form-check form-switch theme-switch btn btn-light btn-icon rounded-circle"
+          href="#"
+        >
+          <input
+            class="form-check-input"
+            id="flexSwitchCheckDefault"
+            role="switch"
+            type="checkbox"
           >
-            <input
-              class="form-check-input"
-              id="flexSwitchCheckDefault"
-              role="switch"
-              type="checkbox"
-            >
-            <label
-              class="form-check-label"
-              for="flexSwitchCheckDefault"
-            >
-            </label>
+          <label
+            class="form-check-label"
+            for="flexSwitchCheckDefault"
+          ></label>
+
+        </a>
+      </div>
+
+      <ul class="navbar-nav navbar-right-wrap mx-2 flex-row">
+        <li class="dropdown d-inline-block stopevent position-static">
+          <a
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary"
+            data-bs-toggle="dropdown"
+            href="#"
+            id="dropdownNotificationSecond"
+            role="button"
+          >
+            <i class="fe fe-bell"> </i>
           </a>
-        </div>
-
-        <ul class="navbar-nav navbar-right-wrap mx-2 flex-row">
-          <li class="dropdown d-inline-block stopevent position-static">
-            <a
-              aria-expanded="false"
-              aria-haspopup="true"
-              class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary"
-              data-bs-toggle="dropdown"
-              href="#"
-              id="dropdownNotificationSecond"
-              role="button"
-            >
-              <i class="fe fe-bell"> </i>
-            </a>
-            <div
-              aria-labelledby="dropdownNotificationSecond"
-              class="dropdown-menu dropdown-menu-end dropdown-menu-lg position-absolute mx-3 my-5"
-            >
-              <div>
-                <div class="border-bottom d-flex justify-content-between align-items-center px-3 pb-3">
-                  <span class="h5 mb-0">Notifications</span>
-                  <a
-                    class="text-muted"
-                    href="# "
-                  ><span class="align-middle"><i class="fe fe-settings me-1"></i></span></a>
-                </div>
-                <ul
-                  class="list-group list-group-flush"
-                  data-simplebar
-                  style="height: 300px;"
-                >
-                  <li class="list-group-item bg-light">
-                    <div class="row">
-                      <div class="col">
-                        <a
-                          class="text-body"
-                          href="#"
-                        >
-                          <div class="d-flex">
-                            <img
-                              alt=""
-                              class="avatar-md rounded-circle"
-                              src="../../assets/images/avatar/avatar-1.jpg"
-                            >
-                            <div class="ms-3">
-                              <h5 class="fw-bold mb-1">Kristin Watson:</h5>
-                              <p class="text-body mb-3">
-                                Krisitn Watsan like your comment on course
-                                Javascript Introduction!
-                              </p>
-                              <span class="fs-6 text-muted">
-                                <span><span class="fe fe-thumbs-up text-success me-1"></span>2
-                                  hours ago,</span>
-                                <span class="ms-1">2:19 PM</span>
-                              </span>
-                            </div>
+          <div
+            aria-labelledby="dropdownNotificationSecond"
+            class="dropdown-menu dropdown-menu-end dropdown-menu-lg position-absolute mx-3 my-5"
+          >
+            <div>
+              <div class="border-bottom d-flex justify-content-between align-items-center px-3 pb-3">
+                <span class="h5 mb-0">Notifications</span>
+                <a
+                  class="text-muted"
+                  href="# "
+                ><span class="align-middle"><i class="fe fe-settings me-1"></i></span></a>
+              </div>
+              <ul
+                class="list-group list-group-flush"
+                data-simplebar
+                style="height: 300px;"
+              >
+                <li class="list-group-item bg-light">
+                  <div class="row">
+                    <div class="col">
+                      <a
+                        class="text-body"
+                        href="#"
+                      >
+                        <div class="d-flex">
+                          <img
+                            alt=""
+                            class="avatar-md rounded-circle"
+                            src="../assets/images/avatar/avatar-1.jpg"
+                          >
+                          <div class="ms-3">
+                            <h5 class="fw-bold mb-1">Kristin Watson:</h5>
+                            <p class="text-body mb-3">
+                              Krisitn Watsan like your comment on course
+                              Javascript Introduction!
+                            </p>
+                            <span class="fs-6 text-muted">
+                              <span><span class="fe fe-thumbs-up text-success me-1"></span>2
+                                hours ago,</span>
+                              <span class="ms-1">2:19 PM</span>
+                            </span>
                           </div>
-                        </a>
-                      </div>
-                      <div class="col-auto me-2 text-center">
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-auto me-2 text-center">
 
+                      <a
+                        class="badge-dot bg-info"
+                        data-bs-placement="top"
+                        data-bs-toggle="tooltip"
+                        href="#"
+                        title="Mark as read"
+                      >
+                      </a>
+                      <div>
                         <a
-                          class="badge-dot bg-info"
+                          class="bg-transparent"
                           data-bs-placement="top"
                           data-bs-toggle="tooltip"
                           href="#"
-                          title="Mark as read"
+                          title="Remove"
                         >
+                          <i class="fe fe-x text-muted"></i>
                         </a>
-                        <div>
-                          <a
-                            class="bg-transparent"
-                            data-bs-placement="top"
-                            data-bs-toggle="tooltip"
-                            href="#"
-                            title="Remove"
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <a
+                        class="text-body"
+                        href="#"
+                      >
+                        <div class="d-flex">
+                          <img
+                            alt=""
+                            class="avatar-md rounded-circle"
+                            src="../assets/images/avatar/avatar-2.jpg"
                           >
-                            <i class="fe fe-x text-muted"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="row">
-                      <div class="col">
-                        <a
-                          class="text-body"
-                          href="#"
-                        >
-                          <div class="d-flex">
-                            <img
-                              alt=""
-                              class="avatar-md rounded-circle"
-                              src="../../assets/images/avatar/avatar-2.jpg"
-                            >
-                            <div class="ms-3">
-                              <h5 class="fw-bold mb-1">Brooklyn Simmons</h5>
-                              <p class="text-body mb-3">
-                                Just launched a new Courses React for Beginner.
-                              </p>
-                              <span class="fs-6 text-muted">
-                                <span><span class="fe fe-thumbs-up text-success me-1"></span>Oct
-                                  9,</span>
-                                <span class="ms-1">1:20 PM</span>
-                              </span>
-                            </div>
+                          <div class="ms-3">
+                            <h5 class="fw-bold mb-1">Brooklyn Simmons</h5>
+                            <p class="text-body mb-3">
+                              Just launched a new Courses React for Beginner.
+                            </p>
+                            <span class="fs-6 text-muted">
+                              <span><span class="fe fe-thumbs-up text-success me-1"></span>Oct
+                                9,</span>
+                              <span class="ms-1">1:20 PM</span>
+                            </span>
                           </div>
-                        </a>
-                      </div>
+                        </div>
+                      </a>
                     </div>
+                    <div class="col-auto me-2 text-center">
+                      <a
+                        class="badge-dot bg-secondary"
+                        data-bs-placement="top"
+                        data-bs-toggle="tooltip"
+                        href="#"
+                        title="Mark as unread"
+                      >
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <a
+                        class="text-body"
+                        href="#"
+                      >
+                        <div class="d-flex">
+                          <img
+                            alt=""
+                            class="avatar-md rounded-circle"
+                            src="../assets/images/avatar/avatar-3.jpg"
+                          >
+                          <div class="ms-3">
+                            <h5 class="fw-bold mb-1">Jenny Wilson</h5>
+                            <p class="text-body mb-3">
+                              Krisitn Watsan like your comment on course
+                              Javascript Introduction!
+                            </p>
+                            <span class="fs-6 text-muted">
+                              <span><span class="fe fe-thumbs-up text-info me-1"></span>Oct
+                                9,</span>
+                              <span class="ms-1">1:56 PM</span>
+                            </span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-auto me-2 text-center">
+                      <a
+                        class="badge-dot bg-secondary"
+                        data-bs-placement="top"
+                        data-bs-toggle="tooltip"
+                        href="#"
+                        title="Mark as unread"
+                      >
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <a
+                        class="text-body"
+                        href="#"
+                      >
+                        <div class="d-flex">
+                          <img
+                            alt=""
+                            class="avatar-md rounded-circle"
+                            src="../assets/images/avatar/avatar-4.jpg"
+                          >
+                          <div class="ms-3">
+                            <h5 class="fw-bold mb-1">Sina Ray</h5>
+                            <p class="text-body mb-3">
+                              You earn new certificate for complete the Javascript
+                              Beginner course.
+                            </p>
+                            <span class="fs-6 text-muted">
+                              <span><span class="fe fe-award text-warning me-1"></span>Oct
+                                9,</span>
+                              <span class="ms-1">1:56 PM</span>
+                            </span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-auto me-2 text-center">
+                      <a
+                        class="badge-dot bg-secondary"
+                        data-bs-placement="top"
+                        data-bs-toggle="tooltip"
+                        href="#"
+                        title="Mark as unread"
+                      >
+                      </a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div class="border-top px-3 pb-0 pt-3">
+                <a
+                  class="text-link fw-semibold"
+                  href="../pages/notification-history.html"
+                >See
+                  all Notifications</a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="dropdown d-inline-block position-static ms-2">
+          <a
+            aria-expanded="false"
+            class="rounded-circle"
+            data-bs-display="static"
+            data-bs-toggle="dropdown"
+            href="#"
+          >
+            <div class="avatar avatar-md avatar-indicators avatar-online">
+              <img
+                alt="avatar"
+                class="rounded-circle"
+                src="../assets/images/avatar/avatar-1.jpg"
+              >
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end position-absolute mx-3 my-5">
+            <div class="dropdown-item">
+              <div class="d-flex">
+                <div class="avatar avatar-md avatar-indicators avatar-online">
+                  <img
+                    alt="avatar"
+                    class="rounded-circle"
+                    src="../assets/images/avatar/avatar-1.jpg"
+                  >
+                </div>
+                <div class="lh-1 ms-3">
+                  <h5 class="mb-1">Annette Black</h5>
+                  <p class="text-muted mb-0">annette@geeksui.com</p>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <ul class="list-unstyled">
+              <li class="dropdown-submenu dropstart-lg">
+                <a
+                  class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                  href="#"
+                >
+                  <i class="fe fe-circle me-2"></i>Status
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                    >
+                      <span class="badge-dot bg-success me-2"></span>Online
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                    >
+                      <span class="badge-dot bg-secondary me-2"></span>Offline
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                    >
+                      <span class="badge-dot bg-warning me-2"></span>Away
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                    >
+                      <span class="badge-dot bg-danger me-2"></span>Busy
+                    </a>
                   </li>
                 </ul>
-                <div class="border-top px-3 pb-0 pt-3">
-                  <a
-                    class="text-link fw-semibold"
-                    href="../../pages/notification-history.html"
-                  >See
-                    all Notifications</a>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li class="dropdown d-inline-block position-static ms-2">
-            <a
-              aria-expanded="false"
-              class="rounded-circle"
-              data-bs-display="static"
-              data-bs-toggle="dropdown"
-              href="#"
-            >
-              <div class="avatar avatar-md avatar-indicators avatar-online">
-                <img
-                  alt="avatar"
-                  class="rounded-circle"
-                  src="guard.svg"
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="../pages/profile-edit.html"
                 >
-              </div>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end position-absolute mx-3 my-5">
-              <div class="dropdown-item">
-                <div class="d-flex">
-                  <div class="avatar avatar-md avatar-indicators avatar-online">
-                    <img
-                      alt="avatar"
-                      class="rounded-circle"
-                      src="guard.svg"
-                    >
-                  </div>
-                  <div class="lh-1 ms-3">
-                    <h5 class="mb-1">Admin</h5>
-                    <p class="text-muted mb-0">vanguard_inc2008@yahoo.com</p>
-                  </div>
-                </div>
-              </div>
-              <div class="dropdown-divider"></div>
-              <ul class="list-unstyled">
-
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="profile-edit.html"
-                  >
-                    <i class="fe fe-user me-2"></i>Profile
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                  >
-                    <i class="fe fe-settings me-2"></i>Settings
-                  </a>
-                </li>
-              </ul>
-              <div class="dropdown-divider"></div>
-              <ul class="list-unstyled">
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="login.html"
-                  >
-                    <i class="fe fe-power me-2"></i>Sign Out
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-
-      </div>
-      <div>
-        <!-- Button -->
-        <button
-          aria-controls="navbar-default"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          class="navbar-toggler collapsed"
-          data-bs-target="#navbar-default"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <span class="icon-bar top-bar mt-0"></span>
-          <span class="icon-bar middle-bar"></span>
-          <span class="icon-bar bottom-bar"></span>
-        </button>
-      </div>
+                  <i class="fe fe-user me-2"></i>Profile
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="../pages/student-subscriptions.html"
+                >
+                  <i class="fe fe-star me-2"></i>Subscription
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="#"
+                >
+                  <i class="fe fe-settings me-2"></i>Settings
+                </a>
+              </li>
+            </ul>
+            <div class="dropdown-divider"></div>
+            <ul class="list-unstyled">
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="../index.html"
+                >
+                  <i class="fe fe-power me-2"></i>Sign Out
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
 
     </div>
-  </nav>
+    <div>
+      <!-- Button -->
+      <button
+        aria-controls="navbar-default"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        class="navbar-toggler collapsed"
+        data-bs-target="#navbar-default"
+        data-bs-toggle="collapse"
+        type="button"
+      >
+        <span class="icon-bar top-bar mt-0"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+    </div>
+    <!-- Collapse -->
+    <div
+      class="navbar-collapse collapse"
+      id="navbar-default"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="nav-link dropdown-toggle"
+            data-bs-display="static"
+            data-bs-toggle="dropdown"
+            href="#"
+            id="navbarBrowse"
+          >
+            Browse
+          </a>
+          <ul
+            aria-labelledby="navbarBrowse"
+            class="dropdown-menu dropdown-menu-arrow"
+          >
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Web Development
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Bootstrap</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    React
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    GraphQl</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Gatsby</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Grunt</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Svelte</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Meteor</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    HTML5</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Angular</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Design
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Graphic Design</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Illustrator
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    UX / UI Design</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Figma Design</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Adobe XD</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Sketch</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Icon Design</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Photoshop</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/course-category.html"
+              >
+                Mobile App
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/course-category.html"
+              >
+                IT Software
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/course-category.html"
+              >
+                Marketing
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/course-category.html"
+              >
+                Music
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/course-category.html"
+              >
+                Life Style
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/course-category.html"
+              >
+                Business
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/course-category.html"
+              >
+                Photography
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            id="navbarLanding"
+          >
+            Landings
+          </a>
+          <ul
+            aria-labelledby="navbarLanding"
+            class="dropdown-menu"
+          >
+            <li>
+              <h4 class="dropdown-header">Landings</h4>
+            </li>
+
+            <li>
+              <a
+                class="dropdown-item d-flex justify-content-between"
+                href="../pages/landings/landing-education.html"
+              >
+                Education <span class="badge bg-primary ms-1">New</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item d-flex justify-content-between"
+                href="../pages/landings/home-academy.html"
+              >
+                Home Academy
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/landings/landing-courses.html"
+              >
+                Courses
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/landings/course-lead.html"
+              >
+                Lead Course
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/landings/request-access.html"
+              >
+                Request Access
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/landings/landing-sass.html"
+              >
+                SaaS
+              </a>
+            </li>
+
+            <li>
+              <a
+                class="dropdown-item d-flex justify-content-between"
+                href="../pages/landings/landing-job.html"
+              >
+                Job Listing
+              </a>
+            </li>
+
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            id="navbarPages"
+          >
+            Pages
+          </a>
+          <ul
+            aria-labelledby="navbarPages"
+            class="dropdown-menu dropdown-menu-arrow"
+          >
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Courses
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-single.html"
+                  >
+                    Course Single
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-single-v2.html"
+                  >
+                    Course Single v2
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-resume.html"
+                  >
+                    Course Resume
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-category.html"
+                  >
+                    Course Category
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-checkout.html"
+                  >
+                    Course Checkout
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-filter-list.html"
+                  >
+                    Course List/Grid
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/add-course.html"
+                  >
+                    Add New Course
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Paths
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-path.html"
+                  >
+                    Browse Path
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/course-path-single.html"
+                  >
+                    Path Single
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Blog
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/blog.html"
+                  >
+                    Listing</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/blog-single.html"
+                  >
+                    Article
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/blog-category.html"
+                  >
+                    Category</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/blog-sidebar.html"
+                  >
+                    Sidebar</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Career
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/career.html"
+                  >
+                    Overview</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/career-list.html"
+                  >
+                    Listing
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/career-single.html"
+                  >
+                    Opening</a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Portfolio
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/portfolio.html"
+                  >
+                    List</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/portfolio-single.html"
+                  >
+                    Single
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Job
+              </a>
+              <ul class="dropdown-menu">
+
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/landings/landing-job.html"
+                  >
+                    Home</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/jobs/job-listing.html"
+                  >
+                    List
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/jobs/job-grid.html"
+                  >
+                    Grid
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/jobs/job-single.html"
+                  >
+                    Single
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/jobs/company-list.html"
+                  >
+                    Company List
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/jobs/company-about.html"
+                  >
+                    Company Single
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Specialty
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/coming-soon.html"
+                  >
+                    Coming Soon
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/404-error.html"
+                  >
+                    Error 404
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/maintenance-mode.html"
+                  >
+                    Maintenance Mode
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/terms-condition-page.html"
+                  >
+                    Terms & Conditions
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <hr class="mx-3">
+            </li>
+
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/about.html"
+              >
+                About
+              </a>
+            </li>
+
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Help Center
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/help-center.html"
+                  >
+                    Help Center
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/help-center-faq.html"
+                  >
+                    FAQ's
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/help-center-guide.html"
+                  >
+                    Guide
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/help-center-guide-single.html"
+                  >
+                    Guide Single
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/help-center-support.html"
+                  >
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/pricing.html"
+              >
+                Pricing
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/compare-plan.html"
+              >
+                Compare Plan
+              </a>
+            </li>
+
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/contact.html"
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            id="navbarAccount"
+          >
+            Accounts
+          </a>
+          <ul
+            aria-labelledby="navbarAccount"
+            class="dropdown-menu dropdown-menu-arrow"
+          >
+            <li>
+              <h4 class="dropdown-header">Accounts</h4>
+            </li>
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Instructor
+              </a>
+              <ul class="dropdown-menu">
+                <li class="text-wrap">
+                  <h5 class="dropdown-header text-dark">Instructor</h5>
+                  <p class="dropdown-text mb-0">
+                    Instructor dashboard for manage courses and earning.
+                  </p>
+                </li>
+                <li>
+                  <hr class="mx-3">
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/dashboard-instructor.html"
+                  >
+                    Dashboard</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/instructor-profile.html"
+                  >
+                    Profile</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/instructor-courses.html"
+                  >
+                    My Courses
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/instructor-order.html"
+                  >
+                    Orders</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/instructor-reviews.html"
+                  >
+                    Reviews</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/instructor-students.html"
+                  >
+                    Students</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/instructor-payouts.html"
+                  >
+                    Payouts</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/instructor-earning.html"
+                  >
+                    Earning</a>
+                </li>
+                <li class="dropdown-submenu dropend">
+                  <a
+                    class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                    href="#"
+                  >
+                    Quiz
+                    <span class="badge bg-primary ms-1"> New </span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="../pages/instructor-quiz.html"
+                      >
+                        Quiz</a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="../pages/instructor-quiz-details.html"
+                      >
+                        Single</a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="../pages/instructor-quiz-result.html"
+                      >
+                        Result</a>
+                    </li>
+                  </ul>
+                </li>
+
+              </ul>
+            </li>
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Students
+              </a>
+              <ul class="dropdown-menu">
+                <li class="text-wrap">
+                  <h5 class="dropdown-header text-dark">Students</h5>
+                  <p class="dropdown-text mb-0">
+                    Students dashboard to manage your courses and subscriptions.
+                  </p>
+                </li>
+                <li>
+                  <hr class="mx-3">
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/dashboard-student.html"
+                  >
+                    Dashboard</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/student-subscriptions.html"
+                  >
+                    Subscriptions
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/payment-method.html"
+                  >
+                    Payments</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/billing-info.html"
+                  >
+                    Billing Info</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/invoice.html"
+                  >
+                    Invoice</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/invoice-details.html"
+                  >
+                    Invoice Details</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/dashboard-student.html"
+                  >
+                    Bookmarked</a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../pages/dashboard-student.html"
+                  >
+                    My Path</a>
+                </li>
+                <li class="dropdown-submenu dropend">
+                  <a
+                    class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                    href="#"
+                  >
+                    Quiz
+                    <span class="badge bg-primary ms-1"> New </span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="../pages/student-quiz.html"
+                      >
+                        Quiz</a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="../pages/student-quiz-attempt.html"
+                      >
+                        Attempt</a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="../pages/student-quiz-start.html"
+                      >
+                        Start</a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="../pages/student-quiz-result.html"
+                      >
+                        Result</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu dropend">
+              <a
+                class="dropdown-item dropdown-list-group-item dropdown-toggle"
+                href="#"
+              >
+                Admin
+              </a>
+              <ul class="dropdown-menu">
+                <li class="text-wrap">
+                  <h5 class="dropdown-header text-dark">Master Admin</h5>
+                  <p class="dropdown-text mb-0">
+                    Master admin dashboard to manage courses, user, site setting
+                    , and work with amazing apps.
+                  </p>
+                </li>
+                <li>
+                  <hr class="mx-3">
+                </li>
+                <li class="d-grid px-3">
+                  <a
+                    class="btn btn-sm btn-primary"
+                    href="../pages/dashboard/admin-dashboard.html"
+                  >Go to Dashboard</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <hr class="mx-3">
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/sign-in.html"
+              >
+                Sign In
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/sign-up.html"
+              >
+                Sign Up
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/forget-password.html"
+              >
+                Forgot Password
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/profile-edit.html"
+              >
+                Edit Profile
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/security.html"
+              >
+                Security
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/social-profile.html"
+              >
+                Social Profiles
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/notifications.html"
+              >
+                Notifications
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/profile-privacy.html"
+              >
+                Privacy Settings
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/delete-profile.html"
+              >
+                Delete Profile
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="../pages/linked-accounts.html"
+              >
+                Linked Accounts
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="nav-link"
+            data-bs-toggle="dropdown"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+          >
+            <i class="fe fe-more-horizontal"></i>
+          </a>
+          <div
+            aria-labelledby="navbarDropdown"
+            class="dropdown-menu dropdown-menu-md"
+          >
+            <div class="list-group">
+              <a
+                class="list-group-item list-group-item-action border-0"
+                href="../docs/index.html"
+              >
+                <div class="d-flex align-items-center">
+                  <i class="fe fe-file-text fs-3 text-primary"></i>
+                  <div class="ms-3">
+                    <h5 class="mb-0">Documentations</h5>
+                    <p class="fs-6 mb-0">
+                      Browse the all documentation
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <a
+                class="list-group-item list-group-item-action border-0"
+                href="../docs/bootstrap-5-snippets.html"
+              >
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-files fs-3 text-primary"></i>
+                  <div class="ms-3">
+                    <h5 class="mb-0">
+                      Snippet
+                    </h5>
+                    <p class="fs-6 mb-0">Bunch of Snippet</p>
+                  </div>
+                </div>
+              </a>
+              <a
+                class="list-group-item list-group-item-action border-0"
+                href="../docs/changelog.html"
+              >
+                <div class="d-flex align-items-center">
+                  <i class="fe fe-layers fs-3 text-primary"></i>
+                  <div class="ms-3">
+                    <h5 class="mb-0">
+                      Changelog <span
+                        class="text-primary ms-1"
+                        id="changelog"
+                      ></span>
+                    </h5>
+                    <p class="fs-6 mb-0">See what's new</p>
+                  </div>
+                </div>
+              </a>
+              <a
+                class="list-group-item list-group-item-action border-0"
+                href="https://geeksui.codescandy.com/geeks-rtl/"
+                target="_blank"
+              >
+                <div class="d-flex align-items-center">
+                  <i class="fe fe-toggle-right fs-3 text-primary"></i>
+                  <div class="ms-3">
+                    <h5 class="mb-0">RTL demo</h5>
+                    <p class="fs-6 mb-0">
+                      RTL Pages
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <form class="mt-lg-0 ms-lg-3 d-flex align-items-center mt-3">
+        <span class="position-absolute search-icon ps-3">
+          <i class="fe fe-search"></i>
+        </span>
+        <input
+          class="form-control ps-6"
+          placeholder="Search Courses"
+          type="search"
+        >
+      </form>
+
+    </div>
+
+  </div>
+</nav>
