@@ -21,7 +21,7 @@ class Index extends Component
 
     public function getClientsProperty()
     {
-        return Client::orderBy($this->orderBy ?? 'company_name', 'ASC')
+        return Client::with('representative')->orderBy($this->orderBy ?? 'company_name', 'ASC')
             ->when(!empty($this->search), function ($query) {
                 $query->search($this->search);
             })
@@ -39,7 +39,7 @@ class Index extends Component
     {
         return [
             'company_name' => 'Company Name',
-            'representative' => 'Representative',
+            'Id' => 'Id',
         ];
     }
 }

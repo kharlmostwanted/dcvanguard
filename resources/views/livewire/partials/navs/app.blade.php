@@ -6,7 +6,7 @@
     ><img
         alt=""
         class=""
-        src="../assets/images/brand/logo/logo.svg"
+        src="{{ asset('/assets/images/brand/logo/logo.svg') }}"
       ></a>
     <!-- Mobile view nav wrap -->
 
@@ -72,7 +72,7 @@
                           <img
                             alt=""
                             class="avatar-md rounded-circle"
-                            src="../assets/images/avatar/avatar-1.jpg"
+                            src="{{ asset('/assets/images/avatar/avatar-1.jpg') }}"
                           >
                           <div class="ms-3">
                             <h5 class="fw-bold mb-1">Kristin Watson:</h5>
@@ -124,7 +124,7 @@
                           <img
                             alt=""
                             class="avatar-md rounded-circle"
-                            src="../assets/images/avatar/avatar-2.jpg"
+                            src="{{ asset('/assets/images/avatar/avatar-2.jpg') }}"
                           >
                           <div class="ms-3">
                             <h5 class="fw-bold mb-1">Brooklyn Simmons</h5>
@@ -163,7 +163,7 @@
                           <img
                             alt=""
                             class="avatar-md rounded-circle"
-                            src="../assets/images/avatar/avatar-3.jpg"
+                            src="{{ asset('/assets/images/avatar/avatar-3.jpg') }}"
                           >
                           <div class="ms-3">
                             <h5 class="fw-bold mb-1">Jenny Wilson</h5>
@@ -203,7 +203,7 @@
                           <img
                             alt=""
                             class="avatar-md rounded-circle"
-                            src="../assets/images/avatar/avatar-4.jpg"
+                            src="{{ asset('/assets/images/avatar/avatar-4.jpg') }}"
                           >
                           <div class="ms-3">
                             <h5 class="fw-bold mb-1">Sina Ray</h5>
@@ -236,7 +236,7 @@
               <div class="border-top px-3 pb-0 pt-3">
                 <a
                   class="text-link fw-semibold"
-                  href="../pages/notification-history.html"
+                  href="{{ asset('/pages/notification-history.html') }}"
                 >See
                   all Notifications</a>
               </div>
@@ -256,7 +256,7 @@
               <img
                 alt="avatar"
                 class="rounded-circle"
-                src="../assets/images/avatar/avatar-1.jpg"
+                src="{{ asset('/assets/images/avatar/avatar-1.jpg') }}"
               >
             </div>
           </a>
@@ -267,7 +267,7 @@
                   <img
                     alt="avatar"
                     class="rounded-circle"
-                    src="../assets/images/avatar/avatar-1.jpg"
+                    src="{{ asset('/assets/images/avatar/avatar-1.jpg') }}"
                   >
                 </div>
                 <div class="lh-1 ms-3">
@@ -323,7 +323,7 @@
               <li>
                 <a
                   class="dropdown-item"
-                  href="../pages/profile-edit.html"
+                  href="{{ asset('/pages/profile-edit.html') }}"
                 >
                   <i class="fe fe-user me-2"></i>Profile
                 </a>
@@ -331,7 +331,7 @@
               <li>
                 <a
                   class="dropdown-item"
-                  href="../pages/student-subscriptions.html"
+                  href="{{ asset('/pages/student-subscriptions.html') }}"
                 >
                   <i class="fe fe-star me-2"></i>Subscription
                 </a>
@@ -350,7 +350,7 @@
               <li>
                 <a
                   class="dropdown-item"
-                  href="../index.html"
+                  href="{{ asset('/index.html') }}"
                 >
                   <i class="fe fe-power me-2"></i>Sign Out
                 </a>

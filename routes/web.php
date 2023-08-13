@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Clients\Create;
+use App\Http\Livewire\Clients\Edit;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,5 @@ Route::prefix('admin')
 Route::prefix('clients')->name('clients.')->group(function () {
     Route::get('/', Index::class)->name('index');
     Route::get('/create', Create::class)->name('create');
+    Route::get('/{client}/edit', Edit::class)->name('edit');
 });

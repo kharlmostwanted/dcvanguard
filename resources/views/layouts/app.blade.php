@@ -18,7 +18,7 @@
 
   {{-- THEME CSS --}}
   <link
-    href="../../assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css"
+    href="{{ asset('/assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css') }}"
     rel="stylesheet"
   >
   <script>
@@ -27,33 +27,33 @@
   </script>
   <!-- Favicon icon-->
   <link
-    href="../../assets/images/favicon/favicon.ico"
+    href="{{ asset('/assets/images/favicon/favicon.ico') }}"
     rel="shortcut icon"
     type="image/x-icon"
   >
 
   <!-- Libs CSS -->
   <link
-    href="../../assets/fonts/feather/feather.css"
+    href="{{ asset('/assets/fonts/feather/feather.css') }}"
     rel="stylesheet"
   >
   <link
-    href="../../assets/libs/bootstrap-icons/font/bootstrap-icons.css"
+    href="{{ asset('/assets/libs/bootstrap-icons/font/bootstrap-icons.css') }}"
     rel="stylesheet"
   />
   <link
-    href="../../assets/libs/@mdi/font/css/materialdesignicons.min.css"
+    href="{{ asset('/assets/libs/@mdi/font/css/materialdesignicons.min.css') }}"
     rel="stylesheet"
   />
 
   <link
-    href="../../assets/libs/simplebar/dist/simplebar.min.css"
+    href="{{ asset('/assets/libs/simplebar/dist/simplebar.min.css') }}"
     rel="stylesheet"
   >
 
   <!-- Theme CSS -->
   <link
-    href="../../assets/css/theme.min.css"
+    href="{{ asset('/assets/css/theme.min.css') }}"
     rel="stylesheet"
   >
   {{-- END THEME CSS --}}
@@ -126,13 +126,13 @@
   {{-- THEME SCRIPTS --}}
   <!-- Scripts -->
   <!-- Libs JS -->
-  <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="{{asset('/assets/libs/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{asset('/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('/assets/libs/simplebar/dist/simplebar.min.js')}}"></script>
 
   <!-- Theme JS -->
-  <script src="../../assets/js/theme.min.js"></script>
-  
+  <script src="{{asset('/assets/js/theme.min.js')}}"></script>
+
   @stack('scripts')
 </body>
 

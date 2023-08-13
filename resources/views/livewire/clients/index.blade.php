@@ -20,6 +20,7 @@
             aria-label="Default select example"
             class="form-select"
             data-width="100%"
+            wire:model.debounce.500ms="orderBy"
           >
             <option selected>Sort By</option>
             @foreach ($this->orderByableColumns as $column => $alias)
@@ -96,18 +97,18 @@
                         class="text-muted text-primary-hover"
                         data-bs-toggle="dropdown"
                         href="#"
-                        id="dropdownClient{{ $client->id}}"
+                        id="dropdownClient{{ $client->id }}"
                         role="button"
                       >
                         <i class="fe fe-more-vertical"></i>
                       </a>
                       <div
-                        aria-labelledby="dropdownClient{{ $client->id}}"
+                        aria-labelledby="dropdownClient{{ $client->id }}"
                         class="dropdown-menu"
                       >
                         <a
                           class="dropdown-item"
-                          href="#"
+                          href="{{ route('clients.edit', $client) }}"
                         >Edit</a>
                         <a
                           class="dropdown-item"

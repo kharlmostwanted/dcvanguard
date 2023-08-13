@@ -1,4 +1,4 @@
-@section('page-title', 'Create Client')
+@section('page-title', 'Edit Client: ' . $client->company_name)
 <div class="container">
   <div
     class="bs-stepper"
