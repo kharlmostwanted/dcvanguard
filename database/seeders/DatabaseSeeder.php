@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
     {
         //run AdminUserSeeder
         $this->call(AdminUserSeeder::class);
+        $this->call(ItemsTableSeeder::class);
     }
 }

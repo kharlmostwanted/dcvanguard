@@ -27,7 +27,7 @@
   </script>
   <!-- Favicon icon-->
   <link
-    href="{{ asset('/assets/images/favicon/favicon.ico') }}"
+    href="{{ asset('/assets/images/favicon/favicon.svg') }}"
     rel="shortcut icon"
     type="image/x-icon"
   >
@@ -83,6 +83,7 @@
     <section class="py-6">
       {{ $slot }}
     </section>
+    @stack('modals')
   </main>
 
   {{-- footer --}}
@@ -95,7 +96,7 @@
               <script>
                 document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
               </script>
-            </span>Geeks. All Rights Reserved.</span>
+            </span>Dcvanguard</span>
         </div>
         <!-- Links -->
         <div class="col-12 col-md-6">
@@ -126,12 +127,12 @@
   {{-- THEME SCRIPTS --}}
   <!-- Scripts -->
   <!-- Libs JS -->
-  <script src="{{asset('/assets/libs/jquery/dist/jquery.min.js')}}"></script>
-  <script src="{{asset('/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{asset('/assets/libs/simplebar/dist/simplebar.min.js')}}"></script>
+  <script src="{{ asset('/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ asset('/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('/assets/libs/simplebar/dist/simplebar.min.js') }}"></script>
 
   <!-- Theme JS -->
-  <script src="{{asset('/assets/js/theme.min.js')}}"></script>
+  <script src="{{ asset('/assets/js/theme.min.js') }}"></script>
 
   @stack('scripts')
 </body>

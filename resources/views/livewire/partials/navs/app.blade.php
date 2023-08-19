@@ -6,7 +6,7 @@
     ><img
         alt=""
         class=""
-        src="{{ asset('/assets/images/brand/logo/logo.svg') }}"
+        src="{{ asset('/assets/images/brand/logo/logo-header.svg') }}"
       ></a>
     <!-- Mobile view nav wrap -->
 
@@ -350,10 +350,19 @@
               <li>
                 <a
                   class="dropdown-item"
-                  href="{{ asset('/index.html') }}"
+                  href="{{ route('logout') }}"
+                  onclick="event.preventDefault();document.getElementById('logout-form').submit();"
                 >
-                  <i class="fe fe-power me-2"></i>Sign Out
+                  <i class="fe fe-power me-2"></i> Sign Out
                 </a>
+                <form
+                  action="{{ route('logout') }}"
+                  class="d-none"
+                  id="logout-form"
+                  method="post"
+                >
+                  @csrf
+                </form>
               </li>
             </ul>
           </div>

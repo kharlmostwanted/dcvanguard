@@ -27,7 +27,7 @@
 
   <!-- Favicon icon-->
   <link
-    href="logo3.svg"
+    href="{{ asset('assets/images/favicon/favicon.ico') }}"
     rel="shortcut icon"
     type="image/x-icon"
   >
@@ -74,7 +74,7 @@
                 <img
                   alt="logo"
                   class="mb-4 me-2"
-                  src="logo3.svg"
+                  src="{{ asset('assets/images/brand/logo/logo.svg') }}"
                 ></img>
                 <h3 class="mb-3 ms-2">The Dcvanguard Security and Investigation Agency Inc. </h3>
               </div>
