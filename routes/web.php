@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Billings\Create as BillingsCreate;
+use App\Http\Livewire\Billings\Show;
 use App\Http\Livewire\Clients\Create;
 use App\Http\Livewire\Clients\Edit;
 
@@ -46,4 +47,5 @@ Route::prefix('clients')->name('clients.')->group(function () {
 
 Route::prefix('billings')->name('billings.')->group(function () {
     Route::get('/create/{client}', BillingsCreate::class)->name('create');
+    Route::get('/{billing}', Show::class)->name('show');
 });

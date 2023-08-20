@@ -7,6 +7,7 @@ use App\Models\Billing;
 use App\Models\Client;
 use Carbon\Carbon;
 use App\Models\Item;
+use Illuminate\Support\Str;
 
 class Create extends Component
 {
@@ -54,20 +55,25 @@ class Create extends Component
     {
         $this->validate();
         $this->billing->client_id = $this->client->id;
-        $this->billing->number = str()->random(6);
+        $this->billing->number = str(str()->random(6))->upper();
         $this->billing->due_at = Carbon::parse($this->billing->end_date)->addDays(7);
         $this->billing->save();
 
         $items = collect($this->items)
             ->map(function (array $item, int $key) {
-                $item['id'] = Item::firstOrCreate(['title' => $item['description']])->id;
-                $item['amount'] = $item['amount'];
+                return [
+                    Item::firstOrCreate(['title' => $item['description']])->id => [
+                        'price' => $item['amount'],
+                        'quantity' => 1,
+                    ]
+                ];
+            })->mapWithKeys(function ($item) {
                 return $item;
             });
 
-        dd($items->pluck('id'));
+        $this->billing->items()->sync($items->all());
 
-        return redirect()->route('clients.index');
+        return redirect()->route('billings.show', $this->billing);
     }
 
     public function addRow()
