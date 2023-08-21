@@ -34,6 +34,21 @@ class Billing extends Model
 
     public function getIsPaidAttribute()
     {
-        return $this->payments()->sum('amount') == $this->items->sum('pivot.price');
+        return $this->payments()->sum('amount') == $this->items->sum('pivot.price') && $this->payments()->sum('amount') > 0;
+    }
+
+    public function getTotalAmountAttribute()
+    {
+        return $this->items->sum('pivot.price');
+    }
+
+    public function scopePaid($query)
+    {
+        return $query->whereHas('payments');
+    }
+
+    public function scopeUnpaid($query)
+    {
+        return $query->whereDoesntHave('payments');
     }
 }
