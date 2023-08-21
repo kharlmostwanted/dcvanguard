@@ -24,7 +24,13 @@ class Index extends Component
         return Billing::withCasts([
             'start_date' => 'date',
             'end_date' => 'date',
-        ])->paginate(10);
+        ])->when(!empty($this->start_date), function ($query) {
+            //add filters
+
+
+
+        })
+            ->paginate(10);
     }
 
     public function getTotalBillingsProperty()
