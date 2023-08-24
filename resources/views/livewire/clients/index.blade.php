@@ -30,44 +30,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-3 col-lg-3 col-md-4 col-12 mb-lg-0 mb-4">
-      <!-- Card -->
-      <div class="card">
-        <!-- Card header -->
-        <div class="card-header">
-          <h4 class="mb-0">Filter</h4>
-        </div>
-        <!-- Card body -->
-        <div class="card-body">
-          <span class="dropdown-header mb-2 px-0"> Category</span>
-          <!-- Checkbox -->
-          <div class="form-check mb-1">
-            <input
-              class="form-check-input"
-              id="sketchCheck"
-              type="checkbox"
-            >
-            <label
-              class="form-check-label"
-              for="sketchCheck"
-            >Paid</label>
-          </div>
-          <!-- Checkbox -->
-          <div class="form-check mb-1">
-            <input
-              class="form-check-input"
-              id="HTML5Check"
-              type="checkbox"
-            >
-            <label
-              class="form-check-label"
-              for="HTML5Check"
-            >Unpaid</label>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-9 col-lg-9 col-md-8 col-12">
+    <div class="col-12">
       <div class="card">
         <!-- card header  -->
         <div class="card-header">

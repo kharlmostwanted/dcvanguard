@@ -23,7 +23,7 @@
             data-width="100%"
             wire:model.debounce.500ms="orderBy"
           >
-            <option selected>Sort By</option>
+            <option selected value="">Sort By</option>
             @foreach ($this->orderByableColumns as $column => $alias)
               <option value="{{ $column }}">{{ $alias }}</option>
             @endforeach
@@ -45,24 +45,26 @@
           <div class="form-check mb-1">
             <input
               class="form-check-input"
-              id="sketchCheck"
+              id="paid"
+              wire:model="paid"
               type="checkbox"
             >
             <label
               class="form-check-label"
-              for="sketchCheck"
+              for="paid"
             >Paid</label>
           </div>
           <!-- Checkbox -->
           <div class="form-check mb-1">
             <input
               class="form-check-input"
-              id="HTML5Check"
+              id="unpaid"
+              wire:model="unpaid"
               type="checkbox"
             >
             <label
               class="form-check-label"
-              for="HTML5Check"
+              for="unpaid"
             >Unpaid</label>
           </div>
         </div>
@@ -81,11 +83,11 @@
               <tr>
                 <th>Actions</th>
                 <th>#</th>
-                <th>Company Name</th>
-                <th>Amount</th>
-                <th>Num of Guards</th>
-                <th>Date</th>
                 <th>Status</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Guards</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>
@@ -119,7 +121,17 @@
                     {{ $billing->id }}
                   </td>
                   <td>
-                    {{ $billing->client->company_name }}
+                    @if ($billing->is_paid)
+                      <span class="badge bg-success">Paid</span>
+                    @else
+                      <span class="badge bg-danger">Unpaid</span>
+                    @endif
+                  </td>
+                  <td>
+                    <div class="d-flex flex-column">
+                      <strong>{{ $billing->client->company_name }}</strong>
+                      <small>{{ $billing->client->representative->name }}</small>
+                    </div>
                   </td>
                   <td class="text-end">
                     {{ number_format($billing->totalAmount, 2) }}
@@ -129,13 +141,6 @@
                   </td>
                   <td>
                     {{ $billing->start_date->format('M d, Y') }} - {{ $billing->end_date->format('M d, Y') }}
-                  </td>
-                  <td>
-                    @if ($billing->is_paid)
-                      <span class="badge bg-success">Paid</span>
-                    @else
-                      <span class="badge bg-danger">Unpaid</span>
-                    @endif
                   </td>
                 </tr>
               @endforeach

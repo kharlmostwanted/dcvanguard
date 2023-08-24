@@ -13,6 +13,8 @@ class Index extends Component
 
     public $orderBy;
     public $search;
+    public $paid;
+    public $unpaid;
 
     public function render()
     {
@@ -21,16 +23,18 @@ class Index extends Component
 
     public function getBillingsProperty()
     {
-        return Billing::withCasts([
+        return Billing::with('client.representative')->withCasts([
             'start_date' => 'date',
             'end_date' => 'date',
-        ])->when(!empty($this->start_date), function ($query) {
-            //add filters
-
-
-
-        })
-            ->paginate(10);
+        ])->when(!empty($this->search), function ($query) {
+            $query->search($this->search);
+        })->when(!empty($this->paid), function ($query) {
+            $query->paid();
+        })->when(!empty($this->unpaid), function ($query) {
+            $query->unpaid();
+        })->when(!empty($this->orderBy), function ($query) {
+            $query->orderBy($this->orderBy);
+        })->paginate(10);
     }
 
     public function getTotalBillingsProperty()
@@ -41,8 +45,9 @@ class Index extends Component
     public function getOrderByableColumnsProperty()
     {
         return [
-            'start_date' => 'Billing Date',
-            'Id' => 'Id',
+            'end_date' => 'Billing Date',
+            'Id' => 'id',
         ];
     }
+
 }

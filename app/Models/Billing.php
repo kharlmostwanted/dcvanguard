@@ -51,4 +51,12 @@ class Billing extends Model
     {
         return $query->whereDoesntHave('payments');
     }
+
+    public function scopeSearch($query)
+    {
+        return $query->whereRelation('client', 'company_name', 'like', '%' . request('search') . '%')
+            ->orWhereHas('client', function ($query) {
+                $query->whereRelation('representative', 'name', 'like', '%' . request('search') . '%');
+            });
+    }
 }
