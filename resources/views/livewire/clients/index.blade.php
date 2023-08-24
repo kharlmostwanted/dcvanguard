@@ -84,7 +84,15 @@
                     {{ $client->id }}
                   </td>
                   <td>
-                    {{ $client->company_name }}
+                    <a
+                      class="text-dark flex-fill"
+                      href="{{ route('clients.show', $client) }}"
+                    >
+                      <div class="d-flex flex-column">
+                        <span class="text-primary fw-bold">{{ $client->company_name }}</span>
+                        <small>{{ $client->representative->name }}</small>
+                      </div>
+                    </a>
                   </td>
                   <td>
                     {{ $client->representative->email }}

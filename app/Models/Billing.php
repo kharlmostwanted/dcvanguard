@@ -52,11 +52,11 @@ class Billing extends Model
         return $query->whereDoesntHave('payments');
     }
 
-    public function scopeSearch($query)
+    public function scopeSearch($query, $term)
     {
-        return $query->whereRelation('client', 'company_name', 'like', '%' . request('search') . '%')
-            ->orWhereHas('client', function ($query) {
-                $query->whereRelation('representative', 'name', 'like', '%' . request('search') . '%');
+        return $query->whereRelation('client', 'company_name', 'like', '%' . $term . '%')
+            ->orWhereHas('client', function ($query) use ($term) {
+                $query->whereRelation('representative', 'name', 'like', '%' . $term . '%');
             });
     }
 }

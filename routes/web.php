@@ -9,6 +9,7 @@ use App\Http\Livewire\Billings\Index as BillingsIndex;
 use App\Http\Livewire\Billings\Show;
 use App\Http\Livewire\Clients\Create;
 use App\Http\Livewire\Clients\Edit;
+use App\Http\Livewire\Clients\Show as ClientsShow;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,7 @@ Route::prefix('clients')->name('clients.')->group(function () {
     Route::get('/', Index::class)->name('index');
     Route::get('/create', Create::class)->name('create');
     Route::get('/{client}/edit', Edit::class)->name('edit');
+    Route::get('/{client}', ClientsShow::class)->name('show');
 });
 
 Route::prefix('billings')->name('billings.')->group(function () {
@@ -51,4 +53,3 @@ Route::prefix('billings')->name('billings.')->group(function () {
     Route::get('/{billing}', Show::class)->name('show');
     Route::get('/', BillingsIndex::class)->name('index');
 });
-

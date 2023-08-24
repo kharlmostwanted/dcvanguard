@@ -21,6 +21,11 @@ class Index extends Component
         return view('livewire.billings.index');
     }
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function getBillingsProperty()
     {
         return Billing::with('client.representative')->withCasts([
