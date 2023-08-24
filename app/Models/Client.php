@@ -24,4 +24,9 @@ class Client extends Model
                 ->orWhereRelation('representative', 'email', 'like', $term);
         });
     }
+
+    public function billings()
+    {
+        return $this->hasMany(Billing::class);
+    }
 }

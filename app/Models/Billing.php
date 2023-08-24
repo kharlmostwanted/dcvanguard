@@ -42,6 +42,11 @@ class Billing extends Model
         return $this->items->sum('pivot.price');
     }
 
+    public function getTotalPriceAttribute()
+    {
+        return $this->items->sum('pivot.price');
+    }
+
     public function scopePaid($query)
     {
         return $query->whereHas('payments');
