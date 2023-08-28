@@ -276,9 +276,9 @@
                 </div>
               </div>
             </div>
-            <div class="dropdown-divider"></div>
+            {{-- <div class="dropdown-divider"></div>
             <ul class="list-unstyled">
-              {{-- <li class="dropdown-submenu dropstart-lg">
+              <li class="dropdown-submenu dropstart-lg">
                 <a
                   class="dropdown-item dropdown-list-group-item dropdown-toggle"
                   href="#"
@@ -335,7 +335,7 @@
                 >
                   <i class="fe fe-star me-2"></i>Subscription
                 </a>
-              </li> --}}
+              </li>
               <li>
                 <a
                   class="dropdown-item"
@@ -344,7 +344,7 @@
                   <i class="fe fe-settings me-2"></i>Settings
                 </a>
               </li>
-            </ul>
+            </ul> --}}
             <div class="dropdown-divider"></div>
             <ul class="list-unstyled">
               <li>

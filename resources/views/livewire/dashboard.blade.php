@@ -6,21 +6,23 @@
         class="form-control flatpickr"
         id="date_from"
         name="date_from"
-        type="text"
         placeholder="select start date"
+        type="text"
+        wire:model="date_from"
       >
     </div>
     <div class="col">
       <input
         class="form-control flatpickr"
-        id="date_from"
-        name="date_from"
-        type="text"
+        id="date_to"
+        name="date_to"
         placeholder="select end date"
+        type="text"
+        wire:model="date_to"
       >
     </div>
   </div>
-  <div class="row">
+  <div class="row g-3">
     <div class="col-xl-3 col-lg-6 col-md-12 col-12">
       <!-- card -->
       <div class="card">
@@ -35,10 +37,11 @@
             </div>
           </div>
           <h2 class="fw-bold mb-1">
-            $10,800
+            {{ number_format($this->billings()->paid()->sum('total_price'),2) }}
           </h2>
-          <span class="text-success fw-semibold"><i class="fe fe-trending-up me-1"></i>+20.9$</span>
-          <span class="fw-medium ms-1">Number of Billings</span>
+          <span class="text-success fw-semibold">
+            <i class="fe fe-trending-up me-1"></i>{{ $this->billings()->paid()->count() }}</span>
+          <span class="fw-medium ms-1">Billings</span>
         </div>
       </div>
     </div>
@@ -56,10 +59,10 @@
             </div>
           </div>
           <h2 class="fw-bold mb-1">
-            2,456
+            {{ number_format($this->billings()->unpaid()->sum('total_price'),2) }}
           </h2>
-          <span class="text-danger fw-semibold">120+</span>
-          <span class="fw-medium ms-1">Number of Billings</span>
+          <span class="text-danger fw-semibold">{{ $this->billings()->unpaid()->count() }}</span>
+          <span class="fw-medium ms-1">Billings</span>
         </div>
       </div>
     </div>
@@ -77,9 +80,10 @@
             </div>
           </div>
           <h2 class="fw-bold mb-1">
-            1,22,456
+            {{ $this->clients()->count() }}
           </h2>
-          <span class="text-success fw-semibold"><i class="fe fe-trending-up me-1"></i>+1200</span>
+          <span class="text-success fw-semibold"><i
+              class="fe fe-trending-up me-1"></i>{{ $this->clients()->inGoodStanding()->count() }}</span>
           <span class="fw-medium ms-1">In good standing</span>
         </div>
       </div>
@@ -98,10 +102,11 @@
             </div>
           </div>
           <h2 class="fw-bold mb-1">
-            22,786
+            {{ $this->billings()->count() }}
           </h2>
-          <span class="text-success fw-semibold"><i class="fe fe-trending-up me-1"></i>+200</span>
-          <span class="fw-medium ms-1">Paid</span>
+          <span class="text-success fw-semibold"><i
+              class="fe fe-trending-up me-1"></i>{{ number_format($this->billings()->sum('total_price'), 2) }}</span>
+          <span class="fw-medium ms-1">Total Price</span>
         </div>
       </div>
     </div>
