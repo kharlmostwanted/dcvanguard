@@ -32,7 +32,7 @@
       </div>
 
       <ul class="navbar-nav navbar-right-wrap mx-2 flex-row">
-        <li class="dropdown d-inline-block stopevent position-static">
+        {{-- <li class="dropdown d-inline-block stopevent position-static">
           <a
             aria-expanded="false"
             aria-haspopup="true"
@@ -72,7 +72,7 @@
                           <img
                             alt=""
                             class="avatar-md rounded-circle"
-                            src="{{ asset('/assets/images/avatar/avatar-1.jpg') }}"
+                            src="{{ Avatar::create(auth()->user()->name)->toBase64() }}"
                           >
                           <div class="ms-3">
                             <h5 class="fw-bold mb-1">Kristin Watson:</h5>
@@ -242,7 +242,7 @@
               </div>
             </div>
           </div>
-        </li>
+        </li> --}}
 
         <li class="dropdown d-inline-block position-static ms-2">
           <a
@@ -256,7 +256,7 @@
               <img
                 alt="avatar"
                 class="rounded-circle"
-                src="{{ asset('/assets/images/avatar/avatar-1.jpg') }}"
+                src="{{ Avatar::create(auth()->user()->name)->toBase64() }}"
               >
             </div>
           </a>
@@ -267,18 +267,18 @@
                   <img
                     alt="avatar"
                     class="rounded-circle"
-                    src="{{ asset('/assets/images/avatar/avatar-1.jpg') }}"
+                    src="{{ Avatar::create(auth()->user()->name)->toBase64() }}"
                   >
                 </div>
                 <div class="lh-1 ms-3">
-                  <h5 class="mb-1">Annette Black</h5>
-                  <p class="text-muted mb-0">annette@geeksui.com</p>
+                  <h5 class="mb-1">{{ auth()->user()->name }}</h5>
+                  <p class="text-muted mb-0">{{ auth()->user()->email }}</p>
                 </div>
               </div>
             </div>
             <div class="dropdown-divider"></div>
             <ul class="list-unstyled">
-              <li class="dropdown-submenu dropstart-lg">
+              {{-- <li class="dropdown-submenu dropstart-lg">
                 <a
                   class="dropdown-item dropdown-list-group-item dropdown-toggle"
                   href="#"
@@ -335,7 +335,7 @@
                 >
                   <i class="fe fe-star me-2"></i>Subscription
                 </a>
-              </li>
+              </li> --}}
               <li>
                 <a
                   class="dropdown-item"

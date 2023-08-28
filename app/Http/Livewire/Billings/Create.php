@@ -57,6 +57,7 @@ class Create extends Component
         $this->billing->client_id = $this->client->id;
         $this->billing->number = str(str()->random(6))->upper();
         $this->billing->due_at = Carbon::parse($this->billing->end_date)->addDays(7);
+        $this->billing->total_price = $this->totalPrice;
         $this->billing->save();
 
         $items = collect($this->items)
@@ -72,6 +73,7 @@ class Create extends Component
             });
 
         $this->billing->items()->sync($items->all());
+
 
         return redirect()->route('billings.show', $this->billing);
     }
@@ -89,6 +91,11 @@ class Create extends Component
     }
 
     public function getTotalAmountProperty()
+    {
+        return $this->cleanItems->sum('amount');
+    }
+
+    public function getTotalPriceProperty()
     {
         return $this->cleanItems->sum('amount');
     }

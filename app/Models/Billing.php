@@ -11,10 +11,8 @@ class Billing extends Model
     use HasFactory;
     use SoftDeletes;
 
-    public $casts = [
-        // 'start_date' => 'date',
-        // 'end_date' => 'date',
-        // 'due_at' => 'date',
+    public $fillable = [
+        'total_price',
     ];
 
     public function payments()
@@ -38,11 +36,6 @@ class Billing extends Model
     }
 
     public function getTotalAmountAttribute()
-    {
-        return $this->items->sum('pivot.price');
-    }
-
-    public function getTotalPriceAttribute()
     {
         return $this->items->sum('pivot.price');
     }

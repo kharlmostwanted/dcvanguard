@@ -13,6 +13,8 @@ class Index extends Component
 
     public $orderBy;
     public $search;
+    public $inGoodStanding = false;
+    public $inBadStanding = false;
 
     public function render()
     {
@@ -21,9 +23,14 @@ class Index extends Component
 
     public function getClientsProperty()
     {
-        return Client::with('representative')->orderBy($this->orderBy ?? 'company_name', 'ASC')
+        return Client::with('representative')->withBalance()
+            ->orderBy($this->orderBy ?? 'company_name', 'ASC')
             ->when(!empty($this->search), function ($query) {
                 $query->search($this->search);
+            })->when($this->inGoodStanding && !$this->inBadStanding, function ($query) {
+                $query->inGoodStanding();
+            })->when($this->inBadStanding && !$this->inGoodStanding, function ($query) {
+                $query->inBadStanding();
             })
             ->latest()
             ->paginate(10);

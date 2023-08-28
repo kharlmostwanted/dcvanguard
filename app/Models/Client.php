@@ -29,4 +29,29 @@ class Client extends Model
     {
         return $this->hasMany(Billing::class);
     }
+
+    public function scopeInGoodStanding($query, $asOf = null)
+    {
+        $query->whereDoesntHave('billings', function ($query) use ($asOf) {
+            $query->unpaid()
+                ->where('end_date', '>=', $asOf ?? now());
+        });
+    }
+
+    public function scopeInBadStanding($query, $asOf = null)
+    {
+        $query->whereHas('billings', function ($query) use ($asOf) {
+            $query->unpaid()
+                ->where('end_date', '>=', $asOf ?? now());
+        });
+    }
+
+    public function scopeWithBalance($query)
+    {
+        $query->addSelect([
+            'balance' => Billing::selectRaw('sum(total_price)')
+                ->unpaid()
+                ->whereColumn('client_id', 'clients.id'),
+        ]);
+    }
 }

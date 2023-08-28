@@ -67,7 +67,7 @@
             <thead class="table-light">
               <tr>
                 <th>Billing Number</th>
-                <th>Amount</th>
+                <th>Total Price</th>
                 <th>Date</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -78,7 +78,7 @@
               @foreach ($client->billings()->orderBy('end_date')->withCasts(['start_date' => 'date', 'end_date' => 'date'])->get() as $billing)
                 <tr>
                   <td><a href="{{ route('billings.show', $billing) }}">{{ $billing->number }}</a></td>
-                  <td class="text-end">{{ number_format($billing->totalPrice, 2) }}</td>
+                  <td class="text-end">{{ number_format($billing->total_price, 2) }}</td>
                   <td>{{ $billing->start_date->format('M d, Y') }} to {{ $billing->end_date->format('M d, Y') }}</td>
                   <td>
                     @if ($billing->isPaid)
@@ -87,7 +87,7 @@
                       <span class="badge bg-danger-soft">Unpaid</span>
                     @endif
                   </td>
-                  <td><a href="#">View Details</a></td>
+                  <td><a href="{{ route('billings.show', $billing) }}">View Details</a></td>
                 </tr>
               @endforeach
             </tbody>
@@ -102,20 +102,19 @@
         <div class="card-body border-bottom">
           <div class="d-flex justify-content-between align-items-center mb-4">
             <h4 class="mb-0">Contact</h4>
-            <a href="#">Edit</a>
+            <a href="{{ route('clients.edit', $this->client) }}">Edit</a>
           </div>
           <!-- text email -->
           <div>
             <div class="d-flex align-items-center mb-2">
               <i class="fe fe-mail text-muted fs-4"></i><a
                 class="ms-2"
-                href="#"
-              >haroldonzalez@gmail.com</a>
+                href="email:{{ $client->representative->email }}"
+              >{{ $client->representative->email }}</a>
             </div>
             <!-- text phone -->
             <div class="d-flex align-items-center">
-              <i class="fe fe-phone text-muted fs-4"></i><span class="ms-2">+(000) 123465
-                987</span>
+              <i class="fe fe-phone text-muted fs-4"></i><span class="ms-2">{{ $client->representative->mobile_number }}</span>
             </div>
           </div>
         </div>
@@ -123,16 +122,16 @@
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center mb-4">
             <!-- text -->
-            <h4 class="mb-0">Default Address</h4>
-            <a href="#">Change</a>
+            <h4 class="mb-0">Address</h4>
+            {{-- <a href="#">Change</a> --}}
           </div>
           <div>
             <!-- address -->
-            <p class="mb-0">
-              3812 Orchard Street <br>
-              Bloomington,<br>
-              Minnesota 55431,<br>
-              United States
+            <p class="mb-0 ms-4">
+              <i class="fe fe-map-pin"></i>
+              {{ $client->street }} <br>
+              {{ $client->city }} <br>
+              {{ $client->province }} <br>
             </p>
           </div>
         </div>

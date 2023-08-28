@@ -10,6 +10,7 @@ use App\Http\Livewire\Billings\Show;
 use App\Http\Livewire\Clients\Create;
 use App\Http\Livewire\Clients\Edit;
 use App\Http\Livewire\Clients\Show as ClientsShow;
+use App\Http\Livewire\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,7 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', function () {
-    return redirect()->route('clients.index');
-})->name('home');
+Route::get('/home', Dashboard::class)->name('home');
 
 Route::prefix('admin')
     ->name('admin.')

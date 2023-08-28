@@ -1,5 +1,5 @@
 @section('page-title', 'Clients')
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
       <div class="row d-md-flex justify-content-between align-items-center">
@@ -30,7 +30,46 @@
         </div>
       </div>
     </div>
-    <div class="col-12">
+    <div class="col-xl-3 col-lg-3 col-md-4 col-12 mb-lg-0 mb-4">
+      <!-- Card -->
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header">
+          <h4 class="mb-0">Filter</h4>
+        </div>
+        <!-- Card body -->
+        <div class="card-body">
+          <span class="dropdown-header mb-2 px-0"> Category</span>
+          <!-- Checkbox -->
+          <div class="form-check mb-1">
+            <input
+              class="form-check-input"
+              id="inGoodStanding"
+              type="checkbox"
+              wire:model="inGoodStanding"
+            >
+            <label
+              class="form-check-label"
+              for="inGoodStanding"
+            >In good standing</label>
+          </div>
+          <!-- Checkbox -->
+          <div class="form-check mb-1">
+            <input
+              class="form-check-input"
+              id="inBadStanding"
+              type="checkbox"
+              wire:model="inBadStanding"
+            >
+            <label
+              class="form-check-label"
+              for="inBadStanding"
+            >In Bad Standing</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-8 col-12">
       <div class="card">
         <!-- card header  -->
         <div class="card-header">
@@ -44,9 +83,7 @@
                 <th>Actions</th>
                 <th>#</th>
                 <th>Company Name</th>
-                <th>Email</th>
-                <th>Mobile</th>
-                <th>Representative</th>
+                <th class="text-end">Balance(as of today)</th>
               </tr>
             </thead>
             <tbody>
@@ -90,18 +127,14 @@
                     >
                       <div class="d-flex flex-column">
                         <span class="text-primary fw-bold">{{ $client->company_name }}</span>
-                        <small>{{ $client->representative->name }}</small>
+                        <small><i class="fe fe-user me-2"></i>{{ $client->representative->name }}</small>
+                        <small><i class="fe fe-mail me-2"></i>{{ $client->representative->email }}</small>
+                        <small><i class="fe fe-phone me-2"></i>{{ $client->representative->mobile_number }}</small>
                       </div>
                     </a>
                   </td>
-                  <td>
-                    {{ $client->representative->email }}
-                  </td>
-                  <td>
-                    {{ $client->representative->mobile_number }}
-                  </td>
-                  <td>
-                    {{ $client->representative->name }}
+                  <td class="text-end">
+                    {{ number_format($client->balance, 2) }}
                   </td>
                 </tr>
               @endforeach
