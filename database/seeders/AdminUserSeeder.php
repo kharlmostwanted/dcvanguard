@@ -18,7 +18,8 @@ class AdminUserSeeder extends Seeder
         ], [
             'name' => 'Admin',
             'password' => bcrypt('secret'),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'mobile_number' => random_int(1000000000, 9999999999),
         ]);
     }
 }
