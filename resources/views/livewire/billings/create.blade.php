@@ -148,7 +148,7 @@
           <!-- heading -->
           <div class="d-flex justify-content-between align-items-center mb-4">
             <h4 class="mb-0">Client</h4>
-            <a href="#">View Profile</a>
+            <a href="{{ route('clients.show', $this->client) }}">View Profile</a>
           </div>
           <div class="d-flex align-items-center">
             <!-- img -->

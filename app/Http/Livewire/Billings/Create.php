@@ -14,7 +14,7 @@ class Create extends Component
     public Billing $billing;
     public Client $client;
     public $items = [];
-    public $itemCount = 1;
+    public $itemCount = 4;
     public $amount;
     public $due_at;
     public $date_from;
@@ -23,6 +23,44 @@ class Create extends Component
     public function mount()
     {
         $this->billing = new Billing();
+        // add default items
+        $lastBilling = $this->client->billings()->latest()
+            ->withCasts([
+                'start_date' => 'date',
+                'end_date' => 'date',
+            ])->first();
+        if (empty($lastBilling)) {
+            //add default items
+            $this->items = [
+                [
+                    'description' => 'due to guards and government',
+                    'amount' => '',
+                ],
+                [
+                    'description' => 'agency fee',
+                    'amount' => '',
+                ],
+                [
+                    'description' => '12% VAT',
+                    'amount' => '',
+                ],
+                [
+                    'description' => 'Less: withholding tax(Agency Fee x 2%)',
+                    'amount' => '',
+                ],
+            ];
+        } else {
+            $probableStartDate = $lastBilling->end_date->addDays(1);
+            $this->billing->start_date = $probableStartDate->format('Y-m-d');
+            $this->billing->end_date = $probableStartDate->day < 16 ?  $probableStartDate->addDays(14)->format('Y-m-d') : $probableStartDate->endOfMonth()->format('Y-m-d');
+            $this->billing->number_of_guards = $lastBilling->number_of_guards;
+            $this->items = $lastBilling->items->map(function ($item) {
+                return [
+                    'description' => $item->title,
+                    'amount' => $item->pivot->price,
+                ];
+            })->toArray();
+        }
     }
 
     public function updated($propertyName)
@@ -32,7 +70,7 @@ class Create extends Component
 
     public function startDateUpdated()
     {
-        $this->billing->end_date = Carbon::parse($this->billing->start_date)->endOfMonth()->format('Y-m-d');
+        $this->billing->end_date = Carbon::parse($this->billing->start_date)->addDays(14)->format('Y-m-d');
     }
 
     public function render()
@@ -47,7 +85,7 @@ class Create extends Component
             'billing.start_date' => 'required|date',
             'billing.end_date' => 'required|date|after:billing.start_date',
             'items.*.description' => 'required|string',
-            'items.*.amount' => 'required|numeric|min:1',
+            'items.*.amount' => 'required|numeric',
         ];
     }
 

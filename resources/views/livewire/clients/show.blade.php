@@ -40,15 +40,15 @@
                 <h5 class="h3 fw-bold mb-0">
                   {{ $client->billings()->paid()->latest()->first()?->created_at->diffForHumans() ?? 'None' }}</h5>
                 <span
-                  class="text-end">{{ number_format($client->billings()->paid()->latest()->first()?->totalPrice,2) }}</span>
+                  class="text-end">{{ number_format($client->billings()->paid()->latest()->first()?->total_price,2) }}</span>
               </div>
             </div>
             <!-- text -->
             <div class="mb-3">
               <span class="fw-semibold">Total Unpaid Bills</span>
               <div class="mt-2">
-                <h5 class="h3 fw-bold mb-0">{{ $client->billings()->unpaid()->get()->sum('totalPrice') }}</h5>
-                <span>Total {{ number_format($client->billings()->unpaid()->get()->sum('totalPrice'),2) }}
+                <h5 class="h3 fw-bold mb-0">{{ $client->billings()->unpaid()->get()->sum('total_price') }}</h5>
+                <span>Total {{ number_format($client->billings()->unpaid()->get()->sum('total_price'),2) }}
                   billings</span>
               </div>
             </div>
@@ -56,8 +56,8 @@
             <div>
               <span class="fw-semibold">Total Paid Bills</span>
               <div class="mt-2">
-                <h5 class="h3 fw-bold mb-0">{{ $client->billings()->paid()->get()->sum('totalPrice') }}</h5>
-                <span>Total {{ number_format($client->billings()->paid()->get()->sum('totalPrice'),2) }}
+                <h5 class="h3 fw-bold mb-0">{{ $client->billings()->paid()->get()->sum('total_price') }}</h5>
+                <span>Total {{ number_format($client->billings()->paid()->get()->sum('total_price'),2) }}
                   billings</span>
               </div>
             </div>
