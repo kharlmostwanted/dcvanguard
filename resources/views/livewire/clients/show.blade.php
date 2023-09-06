@@ -47,18 +47,20 @@
             <div class="mb-3">
               <span class="fw-semibold">Total Unpaid Bills</span>
               <div class="mt-2">
-                <h5 class="h3 fw-bold mb-0">{{ $client->billings()->unpaid()->get()->sum('total_price') }}</h5>
-                <span>Total {{ number_format($client->billings()->unpaid()->get()->sum('total_price'),2) }}
-                  billings</span>
+                <h5 class="h3 fw-bold mb-0">
+                  {{ number_format($client->billings()->unpaid()->get()->sum('total_price'),2) }}</h5>
+                <span>{{ $client->billings()->unpaid()->get()->count() }}
+                  {{ str('billing')->plural($client->billings()->unpaid()->count()) }}</span></span>
               </div>
             </div>
             <!-- text -->
             <div>
               <span class="fw-semibold">Total Paid Bills</span>
               <div class="mt-2">
-                <h5 class="h3 fw-bold mb-0">{{ $client->billings()->paid()->get()->sum('total_price') }}</h5>
-                <span>Total {{ number_format($client->billings()->paid()->get()->sum('total_price'),2) }}
-                  billings</span>
+                <h5 class="h3 fw-bold mb-0">
+                  {{ number_format($client->billings()->paid()->get()->sum('total_price'),2) }}</h5>
+                <span>{{ $client->billings()->paid()->count() }}
+                  {{ str('billing')->plural($client->billings()->paid()->count()) }}</span>
               </div>
             </div>
           </div>
