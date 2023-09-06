@@ -95,7 +95,43 @@
                       <span class="badge bg-danger-soft">Unpaid</span>
                     @endif
                   </td>
-                  <td><a href="{{ route('billings.show', $billing) }}">View Details</a></td>
+                  <td>
+                    <div class="dropdown">
+                      <a
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        class="text-muted text-primary-hover"
+                        data-bs-toggle="dropdown"
+                        href="#"
+                        id="dropdownClient{{ $billing->id }}"
+                        role="button"
+                      >
+                        <i class="fe fe-more-vertical"></i>
+                      </a>
+                      <div
+                        aria-labelledby="dropdownClient{{ $billing->id }}"
+                        class="dropdown-menu"
+                      >
+                        <a
+                          class="dropdown-item"
+                          href="{{ route('billings.show', $billing) }}"
+                        >View</a>
+                        @if (!$billing->isPaid)
+                          <a
+                            class="dropdown-item"
+                            href="#"
+                            wire:click.prevent="markPaid({{ $billing->id }})"
+                          >Mark Paid</a>
+                        @else
+                          <a
+                            class="dropdown-item"
+                            href="#"
+                            wire:click.prevent="markUnpaid({{ $billing->id }})"
+                          >Mark Unpaid</a>
+                        @endif
+                      </div>
+                    </div>
+                  </td>
                 </tr>
               @endforeach
             </tbody>
