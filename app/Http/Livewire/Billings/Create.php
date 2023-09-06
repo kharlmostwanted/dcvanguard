@@ -93,7 +93,10 @@ class Create extends Component
     {
         $this->validate();
         $this->billing->client_id = $this->client->id;
-        $this->billing->number = str(str()->random(6))->upper();
+        $this->billing->number = Carbon::parse($this->billing->start_date)->format('Ym') . $this->client->billings()->whereBetween('start_date', [
+            Carbon::parse($this->billing->start_date)->startOfMonth()->format('Y-m-d'),
+            Carbon::parse($this->billing->start_date)->endOfMonth()->format('Y-m-d'),
+        ])->count() + 1;
         $this->billing->due_at = Carbon::parse($this->billing->end_date)->addDays(7);
         $this->billing->total_price = $this->totalPrice;
         $this->billing->save();
