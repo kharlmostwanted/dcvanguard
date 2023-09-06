@@ -5,7 +5,7 @@
       <!-- card -->
       <div class="card mb-4">
         <!-- card body -->
-        <div class="card-body">
+        <div class="card-body d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center">
             <!-- img -->
             <img
@@ -22,6 +22,12 @@
                 <span class="ms-3"><i class="fe fe-map-pin text-muted me-2"></i>{{ $client->province }}</span>
               </div>
             </div>
+          </div>
+          <div>
+            <a
+              class="btn btn-primary"
+              href="{{ route('billings.create', $this->client) }}"
+            >Add Bill</a>
           </div>
         </div>
         <!-- card body -->
@@ -42,7 +48,8 @@
               <span class="fw-semibold">Total Unpaid Bills</span>
               <div class="mt-2">
                 <h5 class="h3 fw-bold mb-0">{{ $client->billings()->unpaid()->get()->sum('totalPrice') }}</h5>
-                <span>Total {{ number_format($client->billings()->unpaid()->get()->sum('totalPrice'),2) }} billings</span>
+                <span>Total {{ number_format($client->billings()->unpaid()->get()->sum('totalPrice'),2) }}
+                  billings</span>
               </div>
             </div>
             <!-- text -->
@@ -50,7 +57,8 @@
               <span class="fw-semibold">Total Paid Bills</span>
               <div class="mt-2">
                 <h5 class="h3 fw-bold mb-0">{{ $client->billings()->paid()->get()->sum('totalPrice') }}</h5>
-                <span>Total {{ number_format($client->billings()->paid()->get()->sum('totalPrice'), 2) }} billings</span>
+                <span>Total {{ number_format($client->billings()->paid()->get()->sum('totalPrice'),2) }}
+                  billings</span>
               </div>
             </div>
           </div>
@@ -114,7 +122,8 @@
             </div>
             <!-- text phone -->
             <div class="d-flex align-items-center">
-              <i class="fe fe-phone text-muted fs-4"></i><span class="ms-2">{{ $client->representative->mobile_number }}</span>
+              <i class="fe fe-phone text-muted fs-4"></i><span
+                class="ms-2">{{ $client->representative->mobile_number }}</span>
             </div>
           </div>
         </div>

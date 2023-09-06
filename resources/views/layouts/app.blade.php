@@ -134,6 +134,11 @@
   <!-- Theme JS -->
   <script src="{{ asset('/assets/js/theme.min.js') }}"></script>
 
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
+  <x-livewire-alert::flash />
+
   @stack('scripts')
 </body>
 

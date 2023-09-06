@@ -5,10 +5,12 @@ namespace App\Http\Livewire\Clients;
 use Livewire\Component;
 use App\Models\Client;
 use Livewire\WithPagination;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
     use WithPagination;
+    use LivewireAlert;
     protected $paginationTheme = 'bootstrap';
 
     public $orderBy;
@@ -48,5 +50,14 @@ class Index extends Component
             'company_name' => 'Company Name',
             'Id' => 'Id',
         ];
+    }
+
+    public function deleteClient($clientId)
+    {
+        $client = Client::find($clientId);
+        $client->delete();
+        $this->alert('success', 'Client Deleted!', [
+            'position' => 'center'
+        ]);
     }
 }

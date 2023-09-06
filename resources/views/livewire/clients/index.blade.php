@@ -83,6 +83,7 @@
                 <th>Actions</th>
                 <th>#</th>
                 <th>Company Name</th>
+                <th>Address</th>
                 <th class="text-end">Balance(as of today)</th>
               </tr>
             </thead>
@@ -114,6 +115,11 @@
                           class="dropdown-item"
                           href="{{ route('billings.create', $client) }}"
                         >Add Billing</a>
+                        <a
+                          class="dropdown-item"
+                          href="#"
+                          wire:click.prevent="deleteClient({{ $client->id }})"
+                        >Delete</a>
                       </div>
                     </div>
                   </td>
@@ -132,6 +138,11 @@
                         <small><i class="fe fe-phone me-2"></i>{{ $client->representative->mobile_number }}</small>
                       </div>
                     </a>
+                  </td>
+                  <td>
+                    <p>{{ $client->street }}</p>
+                    <p>{{ $client->city }}</p>
+                    <p>{{ $client->province }}</p>
                   </td>
                   <td class="text-end">
                     {{ number_format($client->balance, 2) }}
