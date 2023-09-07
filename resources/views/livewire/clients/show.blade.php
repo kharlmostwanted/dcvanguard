@@ -1,5 +1,5 @@
 @section('page-title', __('Client: #' . $client->id))
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-lg-8 col-12">
       <!-- card -->
@@ -76,27 +76,18 @@
           <table class="text-nowrap table-centered table-hover mb-0 table">
             <thead class="table-light">
               <tr>
+                <th>Actions</th>
                 <th>Billing Number</th>
                 <th>Total Price</th>
                 <th>Date</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th>Payment Details</th>
               </tr>
             </thead>
             <!-- tbody -->
             <tbody>
               @foreach ($client->billings()->orderBy('end_date')->withCasts(['start_date' => 'date', 'end_date' => 'date'])->get() as $billing)
                 <tr>
-                  <td><a href="{{ route('billings.show', $billing) }}">{{ $billing->number }}</a></td>
-                  <td class="text-end">{{ number_format($billing->total_price, 2) }}</td>
-                  <td>{{ $billing->start_date->format('m/d/Y') }} to {{ $billing->end_date->format('m/d/Y') }}</td>
-                  <td>
-                    @if ($billing->isPaid)
-                      <span class="badge bg-success-soft">Paid</span>
-                    @else
-                      <span class="badge bg-danger-soft">Unpaid</span>
-                    @endif
-                  </td>
                   <td>
                     <div class="dropdown">
                       <a
@@ -133,6 +124,52 @@
                         @endif
                       </div>
                     </div>
+                  </td>
+                  <td><a href="{{ route('billings.show', $billing) }}">{{ $billing->number }}</a></td>
+                  <td class="text-end">{{ number_format($billing->total_price, 2) }}</td>
+                  <td>{{ $billing->start_date->format('m/d/Y') }} to {{ $billing->end_date->format('m/d/Y') }}</td>
+                  <td>
+                    @if ($billing->isPaid)
+                      <span class="badge bg-success-soft">Paid</span>
+                    @else
+                      <span class="badge bg-danger-soft">Unpaid</span>
+                    @endif
+                  </td>
+                  <td>
+                    @if ($billing->isPaid)
+                      <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <span class="me-1">OR No:</span>
+                          <span>
+                            {{ $billing->payments->first()?->or_number }}
+                          </span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <span class="me-1">Received:</span>
+                          <span>
+                            {{ Carbon\Carbon::parse($billing->payments->first()?->received_at)->format('m/d/Y') }}
+                          </span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <span class="me-1">Check No:</span>
+                          <span>
+                            {{ $billing->payments->first()?->check_number }}
+                          </span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <span class="me-1">Bank:</span>
+                          <span>
+                            {{ $billing->payments->first()?->check_bank }}
+                          </span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <span class="me-1">Check Date:</span>
+                          <span>
+                            {{ !empty($billing->payments->first()->check_date) ? Carbon\Carbon::parse($billing->payments->first()->check_date)->format('m/d/Y') : '' }}
+                          </span>
+                        </div>
+                      </div>
+                    @endif
                   </td>
                 </tr>
               @endforeach

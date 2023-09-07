@@ -37,4 +37,9 @@ class Show extends Component
             'position' => 'center'
         ]);
     }
+
+    public function getBillingsProperty()
+    {
+        return $this->client->billings()->with('payments')->get();
+    }
 }
