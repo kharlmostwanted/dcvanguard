@@ -40,6 +40,7 @@ class Show extends Component
 
     public function getBillingsProperty()
     {
-        return $this->client->billings()->with('payments')->get();
+        return $this->client->billings()
+            ->with('payments')->get();
     }
 }
