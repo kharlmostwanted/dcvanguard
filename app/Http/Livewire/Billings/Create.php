@@ -98,7 +98,7 @@ class Create extends Component
         $this->billing->number = Carbon::createFromFormat('m/d/Y', $this->billing->start_date)->format('Ym') . $this->client->billings()->whereBetween('start_date', [
             Carbon::createFromFormat('m/d/Y', $this->billing->start_date)->startOfMonth()->format('Y-m-d'),
             Carbon::createFromFormat('m/d/Y', $this->billing->start_date)->endOfMonth()->format('Y-m-d'),
-        ])->count() + 1;
+        ])->count() + 1 . '-' . $this->client->id;
         $this->billing->due_at = Carbon::createFromFormat('m/d/Y', $this->billing->end_date);
         $this->billing->total_price = $this->totalPrice;
 

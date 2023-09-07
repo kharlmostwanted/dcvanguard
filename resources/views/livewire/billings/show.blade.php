@@ -8,7 +8,10 @@
     >
       <div class="alert-body">
         <strong>Success!</strong> {{ session('success') }}.
-        <a class="link" href="{{ route('clients.index') }}">Go to clients list</a>
+        <a
+          class="link"
+          href="{{ route('clients.index') }}"
+        >Go to clients list</a>
       </div>
       <button
         aria-label="Close"
@@ -151,16 +154,95 @@
             <div class="mb-3">
               <h4 class="mb-0">Payment Details</h4>
             </div>
-            <!-- text -->
-            <div class="d-flex align-items-center justify-content-between mb-2">
-              <span>Payment Date:</span>
-              <span class="text-dark">{{ $this->billing->payments()->first()->created_at->format('M d, Y') }}</span>
-            </div>
-            <!-- text -->
+            <!-- Or Number -->
             <div class="d-flex align-items-center justify-content-between">
-              <span>Total Amount:
-              </span>
-              <span class="text-dark fw-bold">{{ number_format($this->totalAmount, 2) }}</span>
+              <span>OR No.:</span>
+              <div>
+                <x-input
+                  id="payment.or_number"
+                  name="payment.or_number"
+                  type="text"
+                  wire:model.debounce.500ms="payment.or_number"
+                />
+              </div>
+            </div>
+            <!-- Payment Date -->
+            <div class="d-flex align-items-center justify-content-between mt-2">
+              <span>Payment Received:</span>
+              <div>
+                <input
+                  autocomplete="off"
+                  class="form-control flatpickr{{ $errors->has('payment.received_at') ? ' is-invalid' : '' }} d-block"
+                  id="payment.received_at"
+                  name="payment.received_at"
+                  placeholder="enter date"
+                  required
+                  type="text"
+                  wire:model.debounce.500ms="payment.received_at"
+                >
+                @error('payment.received_at')
+                  <div
+                    class="invalid-feedback"
+                    id="{{ 'payment.received_at' }}Feedback"
+                  >
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
+            </div>
+            <!-- Check Number -->
+            <div class="d-flex align-items-center justify-content-between mt-2">
+              <span>Check No.:</span>
+              <div>
+                <x-input
+                  id="payment.check_number"
+                  name="payment.check_number"
+                  type="text"
+                  wire:model.debounce.500ms="payment.check_number"
+                />
+              </div>
+            </div>
+            <!-- Bank -->
+            <div class="d-flex align-items-center justify-content-between mt-2">
+              <span>Check Bank:</span>
+              <div>
+                <x-input
+                  id="payment.check_bank"
+                  name="payment.check_bank"
+                  type="text"
+                  wire:model.debounce.500ms="payment.check_bank"
+                />
+              </div>
+            </div>
+            <!-- Check Date -->
+            <div class="d-flex align-items-center justify-content-between mt-2">
+              <span>Check Date:</span>
+              <div>
+                <input
+                  autocomplete="off"
+                  class="form-control flatpickr{{ $errors->has('payment.check_date') ? ' is-invalid' : '' }} d-block"
+                  id="payment.check_date"
+                  name="payment.check_date"
+                  placeholder="enter date"
+                  required
+                  type="text"
+                  wire:model.debounce.500ms="payment.check_date"
+                >
+                @error('payment.check_date')
+                  <div
+                    class="invalid-feedback"
+                    id="{{ 'payment.check_date' }}Feedback"
+                  >
+                    {{ $message }}
+                  </div>
+                @enderror
+              </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-end mt-2">
+              <button
+                class="btn btn-outline-primary"
+                wire:click.prevent="savePayment"
+              >Save</button>
             </div>
           </div>
         </div>
@@ -172,4 +254,9 @@
   <script src="{{ asset('/assets/libs/inputmask/dist/jquery.inputmask.min.js') }}"></script>
   <script src="{{ asset('/assets/libs/flatpickr/dist/flatpickr.min.js') }}"></script>
   <script src="{{ asset('/assets/js/vendors/flatpickr.js') }}"></script>
+  <script defer>
+    flatpickr(".flatpickr", {
+      dateFormat: "m/d/Y",
+    });
+  </script>
 @endpush
