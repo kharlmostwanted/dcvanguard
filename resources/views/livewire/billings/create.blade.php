@@ -252,8 +252,8 @@
             {{ str('guard')->plural(empty($this->billing->number_of_guards) ? 0 : $this->billing->number_of_guards) }}
             on
             duty for
-            {{ str(Carbon\Carbon::parse($this->billing->start_date)?->format('M d, Y'))->upper() }} to
-            {{ str(Carbon\Carbon::parse($this->billing->end_date)?->format('M d, Y'))->upper() }}
+            {{ str(Carbon\Carbon::parse($this->billing->start_date)?->format('m/d/Y')) }} to
+            {{ str(Carbon\Carbon::parse($this->billing->end_date)?->format('m/d/Y')) }}
           </p>
           <div class="table-responsive">
             <table class="table-sm table">
@@ -307,11 +307,9 @@
   <script src="{{ asset('/assets/libs/inputmask/dist/jquery.inputmask.min.js') }}"></script>
   <script src="{{ asset('/assets/libs/flatpickr/dist/flatpickr.min.js') }}"></script>
   <script src="{{ asset('/assets/js/vendors/flatpickr.js') }}"></script>
-  {{-- <script defer>
+  <script defer>
     flatpickr(".flatpickr", {
-      dateFormat: "Y-m-d",
-      altFormat: "m-d-Y",
-      altInput: true,
+      dateFormat: "m/d/Y",
     });
-  </script> --}}
+  </script>
 @endpush

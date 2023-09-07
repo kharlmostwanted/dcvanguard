@@ -51,8 +51,8 @@ class Create extends Component
             ];
         } else {
             $probableStartDate = $lastBilling->end_date->addDays(1);
-            $this->billing->start_date = $probableStartDate->format('Y-m-d');
-            $this->billing->end_date = $probableStartDate->day < 16 ?  $probableStartDate->addDays(14)->format('Y-m-d') : $probableStartDate->endOfMonth()->format('Y-m-d');
+            $this->billing->start_date = $probableStartDate->format('m/d/Y');
+            $this->billing->end_date = $probableStartDate->day < 16 ?  $probableStartDate->addDays(14)->format('m/d/Y') : $probableStartDate->endOfMonth()->format('m/d/Y');
             $this->billing->number_of_guards = $lastBilling->number_of_guards;
             $this->items = $lastBilling->items->map(function ($item) {
                 return [
@@ -72,7 +72,7 @@ class Create extends Component
 
     public function startDateUpdated()
     {
-        $this->billing->end_date = Carbon::parse($this->billing->start_date)->addDays(14)->format('Y-m-d');
+        $this->billing->end_date = Carbon::createFromFormat('m/d/Y', $this->billing->start_date)->addDays(14)->format('m/d/Y');
     }
 
     public function render()
@@ -84,8 +84,8 @@ class Create extends Component
     {
         return [
             'billing.number_of_guards' => 'required|numeric|min:1',
-            'billing.start_date' => 'required|date',
-            'billing.end_date' => 'required|date|after:billing.start_date',
+            'billing.start_date' => 'required|date_format:m/d/Y',
+            'billing.end_date' => 'required|date_format:m/d/Y|after:billing.start_date',
             'items.*.description' => 'required|string',
             'items.*.amount' => 'required|numeric',
         ];
@@ -95,12 +95,17 @@ class Create extends Component
     {
         $this->validate();
         $this->billing->client_id = $this->client->id;
-        $this->billing->number = Carbon::parse($this->billing->start_date)->format('Ym') . $this->client->billings()->whereBetween('start_date', [
-            Carbon::parse($this->billing->start_date)->startOfMonth()->format('Y-m-d'),
-            Carbon::parse($this->billing->start_date)->endOfMonth()->format('Y-m-d'),
+        $this->billing->number = Carbon::createFromFormat('m/d/Y', $this->billing->start_date)->format('Ym') . $this->client->billings()->whereBetween('start_date', [
+            Carbon::createFromFormat('m/d/Y', $this->billing->start_date)->startOfMonth()->format('Y-m-d'),
+            Carbon::createFromFormat('m/d/Y', $this->billing->start_date)->endOfMonth()->format('Y-m-d'),
         ])->count() + 1;
-        $this->billing->due_at = Carbon::parse($this->billing->end_date)->addDays(7);
+        $this->billing->due_at = Carbon::createFromFormat('m/d/Y', $this->billing->end_date);
         $this->billing->total_price = $this->totalPrice;
+
+        //format the start and end date to be mysql friendly
+        $this->billing->start_date = Carbon::createFromFormat('m/d/Y', $this->billing->start_date);
+        $this->billing->end_date = Carbon::createFromFormat('m/d/Y', $this->billing->end_date);
+
         $this->billing->save();
 
         $items = collect($this->items)

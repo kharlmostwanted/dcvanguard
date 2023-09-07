@@ -89,7 +89,7 @@
                 <tr>
                   <td><a href="{{ route('billings.show', $billing) }}">{{ $billing->number }}</a></td>
                   <td class="text-end">{{ number_format($billing->total_price, 2) }}</td>
-                  <td>{{ $billing->start_date->format('M d, Y') }} to {{ $billing->end_date->format('M d, Y') }}</td>
+                  <td>{{ $billing->start_date->format('m/d/Y') }} to {{ $billing->end_date->format('m/d/Y') }}</td>
                   <td>
                     @if ($billing->isPaid)
                       <span class="badge bg-success-soft">Paid</span>

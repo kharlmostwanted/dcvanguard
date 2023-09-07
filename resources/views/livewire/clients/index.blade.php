@@ -140,9 +140,11 @@
                     </a>
                   </td>
                   <td>
-                    <p>{{ $client->street }}</p>
-                    <p>{{ $client->city }}</p>
-                    <p>{{ $client->province }}</p>
+                    <div class="d-flex flex-column">
+                      <span class="fw-bold">{{ $client->street }}</span>
+                      <small>{{ $client->city }}</small>
+                      <small>{{ $client->province }}</small>
+                    </div>
                   </td>
                   <td class="text-end">
                     {{ number_format($client->balance, 2) }}
