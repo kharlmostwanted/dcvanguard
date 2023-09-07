@@ -61,6 +61,8 @@ class Create extends Component
                 ];
             })->toArray();
         }
+
+        $this->itemCount = count($this->items);
     }
 
     public function updated($propertyName)
