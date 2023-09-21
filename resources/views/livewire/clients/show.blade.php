@@ -109,6 +109,10 @@
                           class="dropdown-item"
                           href="{{ route('billings.show', $billing) }}"
                         >View</a>
+                        <a
+                          class="dropdown-item"
+                          href="{{ route('billings.show', $billing) }}"
+                        >Add Payment</a>
                         @if (!$billing->isPaid)
                           <a
                             class="dropdown-item"
@@ -179,47 +183,8 @@
       </div>
     </div>
     <div class="col-lg-4">
-      <!-- card -->
-      <div class="card mt-lg-0 mt-4">
-        <!-- card body -->
-        <div class="card-body border-bottom">
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <h4 class="mb-0">Contact</h4>
-            <a href="{{ route('clients.edit', $this->client) }}">Edit</a>
-          </div>
-          <!-- text email -->
-          <div>
-            <div class="d-flex align-items-center mb-2">
-              <i class="fe fe-mail text-muted fs-4"></i><a
-                class="ms-2"
-                href="email:{{ $client->representative->email }}"
-              >{{ $client->representative->email }}</a>
-            </div>
-            <!-- text phone -->
-            <div class="d-flex align-items-center">
-              <i class="fe fe-phone text-muted fs-4"></i><span
-                class="ms-2">{{ $client->representative->mobile_number }}</span>
-            </div>
-          </div>
-        </div>
-        <!-- card body -->
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <!-- text -->
-            <h4 class="mb-0">Address</h4>
-            {{-- <a href="#">Change</a> --}}
-          </div>
-          <div>
-            <!-- address -->
-            <p class="mb-0 ms-4">
-              <i class="fe fe-map-pin"></i>
-              {{ $client->street }} <br>
-              {{ $client->city }} <br>
-              {{ $client->province }} <br>
-            </p>
-          </div>
-        </div>
-      </div>
+      <!-- client card -->
+      @livewire('components.client-card', ['client' => $client])
     </div>
   </div>
 </div>

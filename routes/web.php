@@ -11,6 +11,7 @@ use App\Http\Livewire\Clients\Create;
 use App\Http\Livewire\Clients\Edit;
 use App\Http\Livewire\Clients\Show as ClientsShow;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Payments\Create as PaymentsCreate;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,4 +52,8 @@ Route::prefix('billings')->name('billings.')->group(function () {
     Route::get('/create/{client}', BillingsCreate::class)->name('create');
     Route::get('/{billing}', Show::class)->name('show');
     Route::get('/', BillingsIndex::class)->name('index');
+});
+
+Route::prefix('payments')->name('payments.')->group(function () {
+    Route::get('/create/{billing}', PaymentsCreate::class)->name('create');
 });

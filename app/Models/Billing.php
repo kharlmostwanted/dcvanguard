@@ -32,7 +32,12 @@ class Billing extends Model
 
     public function getIsPaidAttribute()
     {
-        return $this->payments()->sum('amount') == $this->items->sum('pivot.price') && $this->payments()->sum('amount') > 0;
+        return $this->payments()->sum('amount') >= $this->total_price;
+    }
+
+    public function getPaymentPercentageAttribute()
+    {
+        return ($this->payments()->sum('amount') / $this->total_price) * 100;
     }
 
     public function getTotalAmountAttribute()

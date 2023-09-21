@@ -12,5 +12,10 @@ class Payment extends Model
     public $fillable=[
         'billing_id',
         'amount',
+        'or_number',
+        'received_at',
+        'check_number',
+        'check_bank',
+        'check_date',
     ];
 }
