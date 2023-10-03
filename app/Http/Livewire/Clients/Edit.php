@@ -6,9 +6,12 @@ use Livewire\Component;
 use App\Models\Client;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Edit extends Component
 {
+    use LivewireAlert;
+    
     public Client $client;
     public User $user;
 
@@ -70,7 +73,9 @@ class Edit extends Component
         $this->client->representative_id = $user->id;
         $this->client->save();
 
-        session()->flash('message', 'Client created successfully!');
+        $this->alert('success', 'Client updated successfully!', [
+            'position' =>  'center',
+        ]);
         // return redirect(route('clients.index'));
     }
 }

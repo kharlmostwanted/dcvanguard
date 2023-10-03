@@ -10,6 +10,7 @@ use App\Http\Livewire\Billings\Show;
 use App\Http\Livewire\Clients\Create;
 use App\Http\Livewire\Clients\Edit;
 use App\Http\Livewire\Clients\Show as ClientsShow;
+use App\Http\Livewire\Clients\ShowPrint;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Payments\Create as PaymentsCreate;
 
@@ -46,6 +47,7 @@ Route::prefix('clients')->name('clients.')->group(function () {
     Route::get('/create', Create::class)->name('create');
     Route::get('/{client}/edit', Edit::class)->name('edit');
     Route::get('/{client}', ClientsShow::class)->name('show');
+    Route::get('/{client}/show-print', ShowPrint::class)->name('show-print');
 });
 
 Route::prefix('billings')->name('billings.')->group(function () {

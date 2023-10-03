@@ -37,11 +37,11 @@
             </div>
           </div>
           <h2 class="fw-bold mb-1">
-            {{ number_format($this->billings()->paid()->sum('total_price'),2) }}
+            {{ number_format($this->payments()->sum('amount'), 2) }}
           </h2>
           <span class="text-success fw-semibold">
-            <i class="fe fe-trending-up me-1"></i>{{ $this->billings()->paid()->count() }}</span>
-          <span class="fw-medium ms-1">Billings</span>
+            <i class="fe fe-trending-up me-1"></i>{{ $this->payments()->count() }}</span>
+          <span class="fw-medium ms-1">Payments</span>
         </div>
       </div>
     </div>

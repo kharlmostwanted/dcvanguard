@@ -35,6 +35,30 @@ class Billing extends Model
         return $this->payments()->sum('amount') >= $this->total_price;
     }
 
+    public function getPaymentStatusAttribute()
+    {
+        $totalPayment = $this->payments()->sum('amount');
+        if ($totalPayment == $this->total_price) {
+            return 'Paid';
+        } else if ($totalPayment > 0 && $totalPayment > $this->total_price) {
+            return 'Overpaid';
+        } else if ($totalPayment > 0 && $totalPayment < $this->total_price) {
+            return 'Partial';
+        } else {
+            return 'Unpaid';
+        }
+    }
+
+    public function getTotalPaymentAttribute()
+    {
+        return $this->payments()->sum('amount');
+    }
+
+    public function getBalanceAttribute()
+    {
+        return $this->total_price - $this->total_payment;
+    }
+
     public function getPaymentPercentageAttribute()
     {
         return ($this->payments()->sum('amount') / $this->total_price) * 100;

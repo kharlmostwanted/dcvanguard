@@ -68,7 +68,7 @@
   <!-- Page header-->
   <main>
     <!-- Page header -->
-    <section class="bg-primary py-lg-6 py-4">
+    <section class="bg-primary py-lg-6 py-4 d-print-none">
       <div class="container-fluid">
         <div class="row align-items-center">
           <div class="col-xl-12 col-lg-12 col-md-12 col-12">

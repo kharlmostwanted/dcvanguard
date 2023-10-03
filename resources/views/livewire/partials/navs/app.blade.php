@@ -10,7 +10,7 @@
       ></a>
     <!-- Mobile view nav wrap -->
 
-    <div class="d-flex align-items-center order-lg-3 ms-auto">
+    <div class="d-flex align-items-center order-lg-3 ms-auto d-print-none">
 
       <div>
         <a
@@ -370,7 +370,7 @@
       </ul>
 
     </div>
-    <div>
+    <div class="d-print-none">
       <!-- Button -->
       <button
         aria-controls="navbar-default"
@@ -388,7 +388,7 @@
     </div>
     <!-- Collapse -->
     <div
-      class="navbar-collapse collapse"
+      class="navbar-collapse collapse d-print-none"
       id="navbar-default"
     >
       <ul class="navbar-nav">

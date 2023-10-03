@@ -9,7 +9,7 @@ class Payment extends Model
 {
     use HasFactory;
 
-    public $fillable=[
+    public $fillable = [
         'billing_id',
         'amount',
         'or_number',
@@ -18,4 +18,9 @@ class Payment extends Model
         'check_bank',
         'check_date',
     ];
+
+    public function billing()
+    {
+        return $this->belongsTo(Billing::class);
+    }
 }

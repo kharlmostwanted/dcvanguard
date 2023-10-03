@@ -1,4 +1,3 @@
-@section('page-title', __('Client: #' . $client->id))
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-8 col-12">
@@ -23,23 +22,12 @@
               </div>
             </div>
           </div>
-          <div>
-            <a
-              class="btn btn-primary"
-              href="{{ route('billings.create', $this->client) }}"
-            >Add Bill</a>
-            <a
-              class="btn btn-primary"
-              href="{{ route('clients.show-print', $this->client) }}"
-              target="_blank"
-            >Print</a>
-          </div>
         </div>
         <!-- card body -->
         <div class="card-body border-top">
-          <div class="hstack justify-content-between d-md-flex d-inline gap-2">
+          <div class="row row-cols-3">
             <!-- text -->
-            <div class="mb-3">
+            <div class="col">
               <span class="fw-semibold">Last Paid Bill</span>
               <div class="mt-2">
                 <h5 class="h3 fw-bold mb-0">
@@ -49,7 +37,7 @@
               </div>
             </div>
             <!-- text -->
-            <div class="mb-3">
+            <div class="col">
               <span class="fw-semibold">Total Unpaid Bills</span>
               <div class="mt-2">
                 <h5 class="h3 fw-bold mb-0">
@@ -59,7 +47,7 @@
               </div>
             </div>
             <!-- text -->
-            <div>
+            <div class="col">
               <span class="fw-semibold">Total Paid Bills</span>
               <div class="mt-2">
                 <h5 class="h3 fw-bold mb-0">
@@ -77,11 +65,10 @@
           <h4 class="mb-0">Bills</h4>
         </div>
         <!-- Table -->
-        <div class="table-responsive">
+        <div class="">
           <table class="text-nowrap table-centered table-hover mb-0 table">
             <thead class="table-light">
               <tr>
-                <th>Actions</th>
                 <th>Billing Number</th>
                 <th>Date</th>
                 <th>Total Price</th>
@@ -94,47 +81,6 @@
             <tbody>
               @foreach ($client->billings()->orderBy('end_date')->withCasts(['start_date' => 'date', 'end_date' => 'date'])->get() as $billing)
                 <tr>
-                  <td>
-                    <div class="dropdown">
-                      <a
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                        class="text-muted text-primary-hover"
-                        data-bs-toggle="dropdown"
-                        href="#"
-                        id="dropdownClient{{ $billing->id }}"
-                        role="button"
-                      >
-                        <i class="fe fe-more-vertical"></i>
-                      </a>
-                      <div
-                        aria-labelledby="dropdownClient{{ $billing->id }}"
-                        class="dropdown-menu"
-                      >
-                        <a
-                          class="dropdown-item"
-                          href="{{ route('billings.show', $billing) }}"
-                        >View</a>
-                        <a
-                          class="dropdown-item"
-                          href="{{ route('billings.show', $billing) }}"
-                        >Add Payment</a>
-                        @if (!$billing->isPaid)
-                          <a
-                            class="dropdown-item"
-                            href="#"
-                            wire:click.prevent="markPaid({{ $billing->id }})"
-                          >Mark Paid</a>
-                        @else
-                          <a
-                            class="dropdown-item"
-                            href="#"
-                            wire:click.prevent="markUnpaid({{ $billing->id }})"
-                          >Mark Unpaid</a>
-                        @endif
-                      </div>
-                    </div>
-                  </td>
                   <td><a href="{{ route('billings.show', $billing) }}">{{ $billing->number }}</a></td>
                   <td>{{ $billing->start_date->format('m/d/Y') }} to {{ $billing->end_date->format('m/d/Y') }}</td>
                   <td class="text-end">{{ number_format($billing->total_price, 2) }}</td>
@@ -164,9 +110,17 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4 d-print-none">
       <!-- client card -->
       @livewire('components.client-card', ['client' => $client])
     </div>
   </div>
 </div>
+@push('scripts')
+  <script>
+    // Trigger print immediately when the component renders
+    window.onload = function() {
+      window.print();
+    };
+  </script>
+@endpush

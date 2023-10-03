@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Carbon;
 use App\Models\Billing;
 use App\Models\Client;
+use App\Models\Payment;
 
 class Dashboard extends Component
 {
@@ -42,5 +43,14 @@ class Dashboard extends Component
             Carbon::parse($this->date_from)->startOfDay(),
             Carbon::parse($this->date_to)->endOfDay()
         ]);
+    }
+
+    public function payments()
+    {
+        return Payment::whereHas('billing')
+            ->whereBetween('created_at', [
+                Carbon::parse($this->date_from)->startOfDay(),
+                Carbon::parse($this->date_to)->endOfDay()
+            ]);
     }
 }
