@@ -42,20 +42,26 @@ Route::prefix('admin')
         });
     });
 
-Route::prefix('clients')->name('clients.')->group(function () {
-    Route::get('/', Index::class)->name('index');
-    Route::get('/create', Create::class)->name('create');
-    Route::get('/{client}/edit', Edit::class)->name('edit');
-    Route::get('/{client}', ClientsShow::class)->name('show');
-    Route::get('/{client}/show-print', ShowPrint::class)->name('show-print');
-});
+Route::prefix('clients')->name('clients.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/', Index::class)->name('index');
+        Route::get('/create', Create::class)->name('create');
+        Route::get('/{client}/edit', Edit::class)->name('edit');
+        Route::get('/{client}', ClientsShow::class)->name('show');
+        Route::get('/{client}/show-print', ShowPrint::class)->name('show-print');
+    });
 
-Route::prefix('billings')->name('billings.')->group(function () {
-    Route::get('/create/{client}', BillingsCreate::class)->name('create');
-    Route::get('/{billing}', Show::class)->name('show');
-    Route::get('/', BillingsIndex::class)->name('index');
-});
+Route::prefix('billings')->name('billings.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/create/{client}', BillingsCreate::class)->name('create');
+        Route::get('/{billing}', Show::class)->name('show');
+        Route::get('/', BillingsIndex::class)->name('index');
+    });
 
-Route::prefix('payments')->name('payments.')->group(function () {
-    Route::get('/create/{billing}', PaymentsCreate::class)->name('create');
-});
+Route::prefix('payments')->name('payments.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/create/{billing}', PaymentsCreate::class)->name('create');
+    });
