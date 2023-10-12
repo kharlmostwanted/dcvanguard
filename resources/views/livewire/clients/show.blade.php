@@ -63,7 +63,7 @@
               <span class="fw-semibold">Total Paid Bills</span>
               <div class="mt-2">
                 <h5 class="h3 fw-bold mb-0">
-                  {{ number_format($client->billings()->paid()->get()->sum('total_price'),2) }}</h5>
+                  {{ number_format($client->payments()->whereHas('billing')->sum('amount'),2) }}</h5>
                 <span>{{ $client->billings()->paid()->count() }}
                   {{ str('billing')->plural($client->billings()->paid()->count()) }}</span>
               </div>
@@ -73,8 +73,24 @@
       </div>
       <div class="card">
         <!-- Card header -->
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between">
           <h4 class="mb-0">Bills</h4>
+          <div class="">
+            <div class="form-group">
+              <select
+                class="form-control"
+                id="billing_status"
+                name="billing_status"
+                wire:model.debounce.500ms="status"
+              >
+                <option value="">All</option>
+                <option value="fully-paid">Fully Paid</option>
+                <option value="partially-paid">Partially Paid</option>
+                <option value="unpaid">Unpaid</option>
+                <option value="overpaid">Overpaid</option>
+              </select>
+            </div>
+          </div>
         </div>
         <!-- Table -->
         <div class="table-responsive">
@@ -83,7 +99,8 @@
               <tr>
                 <th>Actions</th>
                 <th>Billing Number</th>
-                <th>Date</th>
+                <th>From</th>
+                <th>To</th>
                 <th>Total Price</th>
                 <th>Total Payment</th>
                 <th>Balance</th>
@@ -92,7 +109,7 @@
             </thead>
             <!-- tbody -->
             <tbody>
-              @foreach ($client->billings()->orderBy('end_date')->withCasts(['start_date' => 'date', 'end_date' => 'date'])->get() as $billing)
+              @foreach ($this->billings as $billing)
                 <tr>
                   <td>
                     <div class="dropdown">
@@ -136,7 +153,8 @@
                     </div>
                   </td>
                   <td><a href="{{ route('billings.show', $billing) }}">{{ $billing->number }}</a></td>
-                  <td>{{ $billing->start_date->format('m/d/Y') }} to {{ $billing->end_date->format('m/d/Y') }}</td>
+                  <td>{{ $billing->start_date->format('m/d/Y') }}</td>
+                  <td>{{ $billing->end_date->format('m/d/Y') }}</td>
                   <td class="text-end">{{ number_format($billing->total_price, 2) }}</td>
                   <td class="text-end">{{ number_format($billing->totalPayment, 2) }}</td>
                   <td class="text-end">
@@ -162,6 +180,10 @@
             </tbody>
           </table>
         </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        {{ $this->billings->links() }}
       </div>
     </div>
     <div class="col-lg-4">

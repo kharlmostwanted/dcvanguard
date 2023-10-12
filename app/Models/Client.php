@@ -32,6 +32,11 @@ class Client extends Model
         return $this->hasMany(Billing::class);
     }
 
+    public function payments()
+    {
+        return $this->hasManyThrough(Payment::class, Billing::class);
+    }
+
     public function scopeInGoodStanding($query, $asOf = null)
     {
         $query->whereDoesntHave('billings', function ($query) use ($asOf) {

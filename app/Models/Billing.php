@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Billing extends Model
 {
@@ -32,12 +33,12 @@ class Billing extends Model
 
     public function getIsPaidAttribute()
     {
-        return $this->payments()->sum('amount') >= $this->total_price;
+        return $this->payments->sum('amount') >= $this->total_price;
     }
 
     public function getPaymentStatusAttribute()
     {
-        $totalPayment = $this->payments()->sum('amount');
+        $totalPayment = $this->payments->sum('amount');
         if ($totalPayment == $this->total_price) {
             return 'Paid';
         } else if ($totalPayment > 0 && $totalPayment > $this->total_price) {
@@ -51,7 +52,7 @@ class Billing extends Model
 
     public function getTotalPaymentAttribute()
     {
-        return $this->payments()->sum('amount');
+        return $this->payments->sum('amount');
     }
 
     public function getBalanceAttribute()
@@ -71,7 +72,28 @@ class Billing extends Model
 
     public function scopePaid($query)
     {
-        return $query->whereHas('payments');
+        $query->whereHas('payments');
+    }
+
+    public function scopePartiallyPaid($query)
+    {
+        return $query->select('billings.*')
+            ->leftJoin('payments', 'billings.id', '=', 'payments.billing_id')
+            ->groupBy('billings.id')
+            ->havingRaw('SUM(payments.amount) > 0 AND SUM(payments.amount) < billings.total_price');
+    }
+
+    public function scopeFullyPaid($query)
+    {
+        return $query->whereRaw('(select sum(amount) from payments where payments.billing_id = billings.id) >= billings.total_price');
+    }
+
+    public function scopeOverPaid($query)
+    {
+        return $query->select('billings.*')
+            ->leftJoin('payments', 'billings.id', '=', 'payments.billing_id')
+            ->groupBy('billings.id')
+            ->havingRaw('SUM(payments.amount) > billings.total_price');
     }
 
     public function scopeUnpaid($query)
