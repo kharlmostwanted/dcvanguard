@@ -55,7 +55,7 @@ class Show extends Component
             ->billings()
             ->with('payments')
             ->withCasts(['start_date' => 'date', 'end_date' => 'date'])
-            ->orderBy('end_date')
+            ->orderBy('end_date', 'desc')
             ->when($this->status == 'fully-paid', function ($query) {
                 $query->fullyPaid();
             })->when($this->status == 'partially-paid', function ($query) {
