@@ -23,7 +23,10 @@
             data-width="100%"
             wire:model.debounce.500ms="orderBy"
           >
-            <option selected value="">Sort By</option>
+            <option
+              selected
+              value=""
+            >Sort By</option>
             @foreach ($this->orderByableColumns as $column => $alias)
               <option value="{{ $column }}">{{ $alias }}</option>
             @endforeach
@@ -46,8 +49,8 @@
             <input
               class="form-check-input"
               id="paid"
-              wire:model="paid"
               type="checkbox"
+              wire:model="paid"
             >
             <label
               class="form-check-label"
@@ -59,8 +62,8 @@
             <input
               class="form-check-input"
               id="unpaid"
-              wire:model="unpaid"
               type="checkbox"
+              wire:model="unpaid"
             >
             <label
               class="form-check-label"
@@ -131,6 +134,9 @@
                     <div class="d-flex flex-column">
                       <strong>{{ $billing->client->company_name }}</strong>
                       <small>{{ $billing->client->representative->name }}</small>
+                      @if ($billing->client->trashed())
+                        <span class="badge bg-danger">Deleted Client</span>
+                      @endif
                     </div>
                   </td>
                   <td class="text-end">
