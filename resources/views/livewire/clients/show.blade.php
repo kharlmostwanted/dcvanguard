@@ -18,7 +18,7 @@
               <h3 class="mb-1">{{ $client->company_name }}</h3>
               <div>
                 <span><i class="fe fe-calendar text-muted me-2"></i>Client since
-                  {{ $client->created_at->format('M d, Y') }}</span>
+                  {{ Carbon\Carbon::parse($client->since)?->format('M d, Y') }}</span>
                 <span class="ms-3"><i class="fe fe-map-pin text-muted me-2"></i>{{ $client->province }}</span>
               </div>
             </div>

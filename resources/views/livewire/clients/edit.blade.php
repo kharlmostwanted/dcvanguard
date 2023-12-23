@@ -88,6 +88,21 @@
                     <div class="col-md-12 mb-3">
                       <label
                         class="form-label"
+                        for="since"
+                      >Client Since</label>
+                      <input
+                        class="form-control flatpickr"
+                        id="client.since"
+                        name="client.since"
+                        placeholder="client since"
+                        type="text"
+                        wire:model="client.since"
+                      >
+                    </div>
+                    <!-- input -->
+                    <div class="col-md-12 mb-3">
+                      <label
+                        class="form-label"
                         for="clientName"
                       >Representative Name</label>
                       <x-input
@@ -210,6 +225,10 @@
                     <div class="col-9">{{ @$this->client['company_name'] }} </div>
                   </div>
                   <div class="row">
+                    <div class="col-3">Client Since:</div>
+                    <div class="col-9">{{ Carbon\Carbon::parse(@$this->client['since'])->format('M d, Y') }} </div>
+                  </div>
+                  <div class="row">
                     <div class="col-3">Representative Name:</div>
                     <div class="col-9">{{ @$this->user['name'] }} </div>
                   </div>
@@ -260,4 +279,6 @@
   <script src="{{ asset('/assets/js/vendors/editor.js') }}"></script>
   <script src="{{ asset('/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js') }}"></script>
   <script src="{{ asset('/assets/js/vendors/popup.js') }}"></script>
+  <script src="{{ asset('/assets/libs/flatpickr/dist/flatpickr.min.js') }}"></script>
+  <script src="{{ asset('/assets/js/vendors/flatpickr.js') }}"></script>
 @endpush

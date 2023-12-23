@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Illuminate\Support\Carbon;
 
 class Edit extends Component
 {
@@ -23,6 +24,7 @@ class Edit extends Component
     public function mount()
     {
         $this->user = $this->client->representative;
+        $this->client->since = Carbon::parse($this->client->since)->format('Y-m-d');
     }
 
     public function updated($propertyName)
@@ -34,6 +36,7 @@ class Edit extends Component
     {
         return [
             'client.company_name' => 'required|string',
+            'client.since' => 'required|date',
             'user.name' => 'required|string',
             'user.email' => 'required|email',
             'user.mobile_number' => 'required|numeric',
