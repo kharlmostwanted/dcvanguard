@@ -53,4 +53,9 @@ class Dashboard extends Component
                 Carbon::parse($this->date_to)->endOfDay()
             ]);
     }
+
+    public function getBillingsProperty()
+    {
+        return $this->billings()->get();
+    }
 }

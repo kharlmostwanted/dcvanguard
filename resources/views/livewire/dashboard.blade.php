@@ -59,9 +59,9 @@
             </div>
           </div>
           <h2 class="fw-bold mb-1">
-            {{ number_format($this->billings()->unpaid()->sum('total_price'),2) }}
+            {{ number_format($this->billings->sum('balance'), 2) }}
           </h2>
-          <span class="text-danger fw-semibold">{{ $this->billings()->unpaid()->count() }}</span>
+          <span class="text-danger fw-semibold">{{ $this->billings->where('balance', '>', 0)->count() }}</span>
           <span class="fw-medium ms-1">Billings</span>
         </div>
       </div>
