@@ -83,6 +83,14 @@ class Billing extends Model
             ->havingRaw('SUM(payments.amount) > 0 AND SUM(payments.amount) < billings.total_price');
     }
 
+    public function scopeHasBalance($query)
+    {
+        return $query->select('billings.*')
+            ->leftJoin('payments', 'billings.id', '=', 'payments.billing_id')
+            ->groupBy('billings.id')
+            ->havingRaw('SUM(payments.amount) < billings.total_price');
+    }
+
     public function scopeFullyPaid($query)
     {
         return $query->whereRaw('(select sum(amount) from payments where payments.billing_id = billings.id) >= billings.total_price');

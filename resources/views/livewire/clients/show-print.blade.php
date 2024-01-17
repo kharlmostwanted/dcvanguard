@@ -17,7 +17,7 @@
               <h3 class="mb-1">{{ $client->company_name }}</h3>
               <div>
                 <span><i class="fe fe-calendar text-muted me-2"></i>Client since
-                  {{ $client->created_at->format('M d, Y') }}</span>
+                  {{ $client->since?->format('M d, Y') }}</span>
                 <span class="ms-3"><i class="fe fe-map-pin text-muted me-2"></i>{{ $client->province }}</span>
               </div>
             </div>
@@ -37,13 +37,13 @@
               </div>
             </div>
             <!-- text -->
-            <div class="col">
+            <div class="mb-3">
               <span class="fw-semibold">Total Unpaid Bills</span>
               <div class="mt-2">
                 <h5 class="h3 fw-bold mb-0">
-                  {{ number_format($client->billings()->unpaid()->get()->sum('total_price'),2) }}</h5>
-                <span>{{ $client->billings()->unpaid()->get()->count() }}
-                  {{ str('billing')->plural($client->billings()->unpaid()->count()) }}</span></span>
+                  {{ number_format($this->billings->sum('balance'), 2) }}</h5>
+                <span>{{ $this->billings->where('balance', '>', 0)->count() }}
+                  {{ str('Billing')->plural($this->billings->where('balance', '>', 0)->count()) }}</span></span>
               </div>
             </div>
             <!-- text -->
@@ -79,17 +79,20 @@
             </thead>
             <!-- tbody -->
             <tbody>
-              @foreach ($client->billings()->orderBy('end_date')->withCasts(['start_date' => 'date', 'end_date' => 'date'])->get() as $billing)
+              @php
+                $runningBalance = $this->billings->sum('balance');
+              @endphp
+              @foreach ($client->billings()->orderBy('end_date', 'desc')->withCasts(['start_date' => 'date', 'end_date' => 'date'])->get() as $billing)
                 <tr>
                   <td><a href="{{ route('billings.show', $billing) }}">{{ $billing->number }}</a></td>
-                  <td>{{ $billing->start_date->format('m/d/Y') }} to {{ $billing->end_date->format('m/d/Y') }}</td>
+                  <td>{{ $billing->start_date->format('m/d/Y') }} - {{ $billing->end_date->format('m/d/Y') }}</td>
                   <td class="text-end">{{ number_format($billing->total_price, 2) }}</td>
                   <td class="text-end">{{ number_format($billing->totalPayment, 2) }}</td>
                   <td class="text-end">
-                    @if ($billing->balance == 0)
+                    @if ($runningBalance == 0)
                       -
                     @else
-                      {{ number_format($billing->balance, 2) }}
+                      {{ number_format($runningBalance, 2) }}
                     @endif
                   </td>
                   <td>
@@ -104,6 +107,9 @@
                     @endif
                   </td>
                 </tr>
+                @php
+                  $runningBalance -= $billing->balance;
+                @endphp
               @endforeach
             </tbody>
           </table>

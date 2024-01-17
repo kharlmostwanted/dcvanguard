@@ -53,9 +53,9 @@
               <span class="fw-semibold">Total Unpaid Bills</span>
               <div class="mt-2">
                 <h5 class="h3 fw-bold mb-0">
-                  {{ number_format($client->billings()->unpaid()->get()->sum('total_price'),2) }}</h5>
-                <span>{{ $client->billings()->unpaid()->get()->count() }}
-                  {{ str('billing')->plural($client->billings()->unpaid()->count()) }}</span></span>
+                  {{ number_format($this->billings->sum('balance'), 2) }}</h5>
+                <span>{{ $this->billings->where('balance', '>', 0)->count() }}
+                  {{ str('Billing')->plural($this->billings->where('balance', '>', 0)->count()) }}</span></span>
               </div>
             </div>
             <!-- text -->
@@ -65,7 +65,7 @@
                 <h5 class="h3 fw-bold mb-0">
                   {{ number_format($client->payments()->whereHas('billing')->sum('amount'),2) }}</h5>
                 <span>{{ $client->billings()->paid()->count() }}
-                  {{ str('billing')->plural($client->billings()->paid()->count()) }}</span>
+                  {{ str('Billing')->plural($client->billings()->paid()->count()) }}</span>
               </div>
             </div>
           </div>
@@ -109,6 +109,9 @@
             </thead>
             <!-- tbody -->
             <tbody>
+              @php
+                $runningBalance = $this->billings->sum('balance');
+              @endphp
               @foreach ($this->billings as $billing)
                 <tr>
                   <td>
@@ -158,10 +161,10 @@
                   <td class="text-end">{{ number_format($billing->total_price, 2) }}</td>
                   <td class="text-end">{{ number_format($billing->totalPayment, 2) }}</td>
                   <td class="text-end">
-                    @if ($billing->balance == 0)
+                    @if ($runningBalance == 0)
                       -
                     @else
-                      {{ number_format($billing->balance, 2) }}
+                      {{ number_format($runningBalance, 2) }}
                     @endif
                   </td>
                   <td>
@@ -176,6 +179,9 @@
                     @endif
                   </td>
                 </tr>
+                @php
+                  $runningBalance -= $billing->balance;
+                @endphp
               @endforeach
             </tbody>
           </table>

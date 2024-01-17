@@ -11,6 +11,13 @@ class ShowPrint extends Component
 {
     use LivewireAlert;
     public Client $client;
+
+    public function mount()
+    {
+        $this->client->withCasts([
+            'since' => 'date',
+        ]);
+    }
     public function render()
     {
         return view('livewire.clients.show-print');
