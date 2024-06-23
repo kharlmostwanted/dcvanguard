@@ -1,5 +1,50 @@
 @section('page-title', 'Billings')
 <div class="container-fluid">
+  <div class="row g-3 mb-4">
+    <div class="col-xl-3 col-lg-6 col-md-12 col-12">
+      <!-- card -->
+      <div class="card">
+        <!-- card body -->
+        <div class="card-body">
+          <div class="d-flex align-items-center justify-content-between lh-1 mb-3">
+            <div>
+              <span class="fs-6 text-uppercase fw-semibold">Total Collectible</span>
+            </div>
+            <div>
+              <span class="fe fe-book-open fs-3 text-primary"></span>
+            </div>
+          </div>
+          <h2 class="fw-bold mb-1">
+            {{ number_format($this->billings()->sum('total_price'), 2) }}
+          </h2>
+          {{-- <span class="text-danger fw-semibold">{{ $this->billings->where('balance', '>', 0)->count() }}</span>
+          <span class="fw-medium ms-1">Billings</span> --}}
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-12 col-12">
+      <!-- card -->
+      <div class="card">
+        <!-- card body -->
+        <div class="card-body">
+          <div class="d-flex align-items-center justify-content-between lh-1 mb-3">
+            <div>
+              <span class="fs-6 text-uppercase fw-semibold">Total Collection</span>
+            </div>
+            <div>
+              <span class="fe fe-shopping-bag fs-3 text-primary"></span>
+            </div>
+          </div>
+          <h2 class="fw-bold mb-1">
+            {{ number_format($this->payments()->sum('amount'), 2) }}
+          </h2>
+          {{-- <span class="text-success fw-semibold">
+            <i class="fe fe-trending-up me-1"></i>{{ $this->payments()->count() }}</span>
+          <span class="fw-medium ms-1">Payments</span> --}}
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
       <div class="row d-md-flex justify-content-between align-items-center">
@@ -71,6 +116,31 @@
             >Unpaid</label>
           </div>
         </div>
+        <div class="card-body border-top">
+          <span class="dropdown-header mb-2 px-0">Due Date:</span>
+          <div class="row row-cols-2 justify-content-end mb-5">
+            <div class="col">
+              <input
+                class="form-control flatpickr"
+                id="dueDateFrom"
+                name="dueDateFrom"
+                placeholder="select start date"
+                type="text"
+                wire:model="dueDateFrom"
+              >
+            </div>
+            <div class="col">
+              <input
+                class="form-control flatpickr"
+                id="dueDateTo"
+                name="dueDateTo"
+                placeholder="select end date"
+                type="text"
+                wire:model="dueDateTo"
+              >
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-xl-9 col-lg-9 col-md-8 col-12">
@@ -89,6 +159,7 @@
                 <th>Status</th>
                 <th>Name</th>
                 <th>Amount</th>
+                <th>Paid</th>
                 <th>Guards</th>
                 <th>Date</th>
               </tr>
@@ -140,7 +211,10 @@
                     </div>
                   </td>
                   <td class="text-end">
-                    {{ number_format($billing->totalAmount, 2) }}
+                    {{ number_format($billing->total_price, 2) }}
+                  </td>
+                  <td class="text-end">
+                    {{ number_format($billing->paid, 2) }}
                   </td>
                   <td class="text-end">
                     {{ $billing->number_of_guards }}
@@ -164,8 +238,8 @@
 @push('scripts')
   <script src="../assets/libs/@popperjs/core/dist/umd/popper.min.js"></script>
   <script src="../assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
-
   <script src="../assets/js/vendors/tooltip.js"></script>
-
   <script src="../assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+  <script src="{{ asset('/assets/libs/flatpickr/dist/flatpickr.min.js') }}"></script>
+  <script src="{{ asset('/assets/js/vendors/flatpickr.js') }}"></script>
 @endpush
