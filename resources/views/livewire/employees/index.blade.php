@@ -4,7 +4,7 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
       <div class="row d-md-flex justify-content-between align-items-center">
         <div class="col-md-6 col-lg-8 col-xl-9">
-          <h4 class="mb-md-0 mb-3">Displaying {{ $this->employees->count() }} out of {{ $this->employees()->count() }}
+          <h4 class="mb-md-0 mb-3">Displaying {{ ($this->employees->currentPage()*10) - 9 }} - {{ $this->employees->count() * $this->employees->currentPage() }} of {{ $this->employees->total() }}
             Employees
           </h4>
         </div>
