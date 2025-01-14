@@ -12,6 +12,7 @@ use App\Http\Livewire\Clients\Edit;
 use App\Http\Livewire\Clients\Show as ClientsShow;
 use App\Http\Livewire\Clients\ShowPrint;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Employees\Index as EmployeesIndex;
 use App\Http\Livewire\Payments\Create as PaymentsCreate;
 
 /*
@@ -64,4 +65,10 @@ Route::prefix('payments')->name('payments.')
     ->middleware('auth')
     ->group(function () {
         Route::get('/create/{billing}', PaymentsCreate::class)->name('create');
+    });
+
+Route::prefix('employees')->name('employees.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/', EmployeesIndex::class)->name('index');
     });

@@ -452,6 +452,32 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="nav-link dropdown-toggle"
+            data-bs-display="static"
+            data-bs-toggle="dropdown"
+            href="#"
+            id="navbarBillings"
+          >
+            Employees
+          </a>
+          <ul
+            aria-labelledby="navbarBillings"
+            class="dropdown-menu dropdown-menu-arrow"
+          >
+            <li>
+              <a
+                class="dropdown-item"
+                href="{{ route('employees.index') }}"
+              >
+                View All
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
 
     </div>
