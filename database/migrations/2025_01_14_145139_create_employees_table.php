@@ -14,14 +14,20 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('last_name')->nullable();
             $table->string('first_name');
             $table->string('middle_name')->nullable();
-            $table->string('last_name')->nullable();
             $table->string('name');
             $table->date('birth_date')->nullable();
-            $table->datetime('hired_at')->nullable();
-            $table->datetime('started_at')->nullable();
-            $table->datetime('resigned_at')->nullable();
+            $table->string('address')->nullable();
+            $table->string('contact_number')->nullable();
+            $table->string('sss_number')->nullable();
+            $table->string('philhealth_number')->nullable();
+            $table->string('pagibig_number')->nullable();
+            $table->string('tin_number')->nullable();
+            $table->string('license_number')->nullable();
+            $table->string('expired_at')->nullable();
+            $table->datetime('employed_at')->nullable();
             $table->string('status')->nullable();
         });
     }

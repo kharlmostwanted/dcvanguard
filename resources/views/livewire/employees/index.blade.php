@@ -4,7 +4,8 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
       <div class="row d-md-flex justify-content-between align-items-center">
         <div class="col-md-6 col-lg-8 col-xl-9">
-          <h4 class="mb-md-0 mb-3">Displaying {{ ($this->employees->currentPage()*10) - 9 }} - {{ $this->employees->count() * $this->employees->currentPage() }} of {{ $this->employees->total() }}
+          <h4 class="mb-md-0 mb-3">Displaying {{ $this->employees->currentPage() * 10 - 9 }} -
+            {{ $this->employees->count() * $this->employees->currentPage() }} of {{ $this->employees->total() }}
             Employees
           </h4>
         </div>
@@ -29,28 +30,60 @@
         </div>
         <!-- Card body -->
         <div class="card-body">
-          <span class="dropdown-header mb-2 px-0">Date Started:</span>
-          <div class="row row-cols-2 justify-content-end mb-5">
+          <span class="dropdown-header mb-2 px-0">Date Employed:</span>
+          <div class="row row-cols-2 justify-content-end">
             <div class="col">
               <input
                 class="form-control flatpickr"
-                id="dueDateFrom"
-                name="dueDateFrom"
+                id="employedFrom"
+                name="employedFrom"
                 placeholder="select start date"
                 type="text"
-                wire:model="dueDateFrom"
+                wire:model="employedFrom"
               >
             </div>
             <div class="col">
               <input
                 class="form-control flatpickr"
-                id="dueDateTo"
-                name="dueDateTo"
+                id="employedTo"
+                name="employedTo"
                 placeholder="select end date"
                 type="text"
-                wire:model="dueDateTo"
+                wire:model="employedTo"
               >
             </div>
+          </div>
+        </div>
+        <div class="card-body border-top">
+          <span class="dropdown-header mb-2 px-0">Status</span>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              id="expired"
+              type="checkbox"
+              wire:model.live="expired"
+            >
+            <label
+              class="form-check-label"
+              for="expired"
+            >
+              Expired
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              id="resigned"
+              type="checkbox"
+              value="resigned"
+              wire:model.live.debounce.500ms="resigned"
+            >
+            <label
+              class="form-check-label"
+              for="resigned"
+            >
+              Resigned
+            </label>
           </div>
         </div>
       </div>
@@ -66,29 +99,59 @@
           <table class="table-centered mb-0 table text-nowrap">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Roles</th>
-                <th>Date Hired</th>
-                <th>Date Started</th>
-                <th>Status</th>
-                <th>Date Resigned</th>
+                <th>STATUS</th>
+                <th>NAME</th>
+                <th>BIRTHDAY</th>
+                <th>ADDRESS</th>
+                <th>CONTACT NO.</th>
+                <th>SSS NO.</th>
+                <th>PHILHEALTH</th>
+                <th>PAG-IBIG NO.</th>
+                <th>TIN NUMBER</th>
+                <th>LICENSE</th>
+                <th>EXPIRY DATE</th>
+                <th>EMPLOYMENT DATE</th>
               </tr>
             </thead>
             <tbody>
               @forelse ($this->employees as $employee)
                 <tr>
-                  <td>{{ $employee->id }}</td>
-                  <td>{{ $employee->name }}</td>
-                  <td>{{ $employee->roles()->pluck('name')->implode(',') }}</td>
-                  <td>{{ $employee->hired_at->format('m-d-Y') }}</td>
-                  <td>{{ $employee->started_at->format('m-d-Y') }}</td>
                   <td>{{ $employee->status }}</td>
-                  <td>{{ $employee->resigned_at?->format('m-d-Y')?? '-' }}</td>
+                  <td>{{ $employee->name }}</td>
+                  <td>{{ $employee->birth_date?->format('M d, Y') }}</td>
+                  <td>{{ $employee->address }}</td>
+                  <td>{{ $employee->contact_number }}</td>
+                  <td>{{ $employee->sss_number }}</td>
+                  <td>{{ $employee->philhealth_number }}</td>
+                  <td>{{ $employee->pagibig_number }}</td>
+                  <td>{{ $employee->tin_number }}</td>
+                  <td>{{ $employee->license_number }}</td>
+                  <td class="text-center">
+                    {{ $employee->expired_at?->format('m/d/Y') }}
+                    <br />
+                    @if ($employee->expired_at?->isPast())
+                      <span class="badge bg-danger">Expired</span>
+                    @else
+                      {{ $employee->expired_at?->diffForHumans(now(), true, true) }}
+                    @endif
+                  </td>
+                  <td class="text-center">
+                    {{ $employee->employed_at?->format('m/d/Y') }}
+                    <br />
+                    @if (str($employee->status)->contains('resigned'))
+                      <span class="badge bg-warning">Resigned</span>
+                    @else
+                      {{ $employee->employed_at?->diffForHumans(now(), true, true) }}
+                    @endif
+
+                  </td>
                 </tr>
               @empty
                 <tr>
-                  <td colspan="7" class="text-center">No Employees Found</td>
+                  <td
+                    class="text-center"
+                    colspan="7"
+                  >No Employees Found</td>
                 </tr>
               @endforelse
             </tbody>
