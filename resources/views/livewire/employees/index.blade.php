@@ -128,7 +128,6 @@
                   <td>{{ $employee->license_number }}</td>
                   <td class="text-center">
                     {{ $employee->expired_at?->format('m/d/Y') }}
-                    <br />
                     @if ($employee->expired_at?->isPast())
                       <span class="badge bg-danger">Expired</span>
                     @else
@@ -137,13 +136,11 @@
                   </td>
                   <td class="text-center">
                     {{ $employee->employed_at?->format('m/d/Y') }}
-                    <br />
                     @if (str($employee->status)->contains('resigned'))
                       <span class="badge bg-warning">Resigned</span>
                     @else
                       {{ $employee->employed_at?->diffForHumans(now(), true, true) }}
                     @endif
-
                   </td>
                 </tr>
               @empty
