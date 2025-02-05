@@ -44,6 +44,13 @@ class Index extends Component
                     'name',
                     'birth_date',
                     'employed_at',
+                    'address',
+                    'contact_number',
+                    'sss_number',
+                    'philhealth_number',
+                    'pagibig_number',
+                    'tin_number',
+                    'license_number',
                     'status',
                 ], 'like', $this->search . '%');
             })->when(!empty($this->employedFrom), function ($query) {
