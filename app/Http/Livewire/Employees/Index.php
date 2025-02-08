@@ -45,6 +45,8 @@ class Index extends Component
                     'birth_date',
                     'employed_at',
                     'status',
+                    'id_number',
+                    'address',
                 ], 'like', $this->search . '%');
             })->when(!empty($this->employedFrom), function ($query) {
                 $query->where('employed_at', '>=', $this->employedFrom);
@@ -103,7 +105,7 @@ class Index extends Component
         $this->alert('success', 'Employee saved successfully.');
     }
 
-    public function editEmployee($id)
+public function editEmployee($id)
     {
         $this->employee = Employee::withCasts([
             'birth_date' => 'date:Y-m-d',

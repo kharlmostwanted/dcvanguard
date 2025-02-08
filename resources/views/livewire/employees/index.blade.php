@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
-        <div class="row d-md-flex justify-content-between align-items-center">
+        <div class="row d-md-flex justify-content-between align-items-center d-print-none">
           <div class="col-md-6 col-lg-8 col-xl-9">
             <h4 class="mb-md-0 mb-3">Displaying {{ $this->employees->currentPage() * 10 - 9 }} -
               {{ $this->employees->count() * $this->employees->currentPage() }} of {{ $this->employees->total() }}
@@ -22,7 +22,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-lg-3 col-md-4 col-12 mb-lg-0 mb-4">
+      <div class="col-xl-3 col-lg-3 col-md-4 col-12 mb-lg-0 mb-4 d-print-none">
         <!-- Card -->
         <div class="card">
           <!-- Card header -->
@@ -95,7 +95,7 @@
           <div class="card-header d-flex justify-content-between align-items-center">
             <h4 class="mb-1">Employee List</h4>
             <button
-              class="btn btn-primary"
+              class="btn btn-primary d-print-none"
               data-bs-target="#exampleModal-2"
               data-bs-toggle="modal"
               wire:click="createEmployee"
@@ -109,7 +109,8 @@
             <table class="table-centered mb-0 table text-nowrap">
               <thead>
                 <tr>
-                  <th>&nbsp;</th>
+                  <th class="d-print-none">&nbsp;</th>
+                  <th>ID</th>
                   <th>STATUS</th>
                   <th>NAME</th>
                   <th>BIRTHDAY</th>
@@ -127,7 +128,7 @@
               <tbody>
                 @forelse ($this->employees as $employee)
                   <tr>
-                    <td>
+                    <td class="d-print-none">
                       <button
                         class="btn btn-sm"
                         data-bs-target="#exampleModal-2"
@@ -137,8 +138,13 @@
                         <i class="fe fe-edit-2"></i>
                       </button>
                     </td>
+                    <td>{{ $employee->id_number }}</td>
                     <td>{{ $employee->status }}</td>
-                    <td>{{ $employee->name }}</td>
+                    <td>
+                      <a href="{{ route('employees.show', $employee) }}">
+                        {{ $employee->name }}
+                      </a>
+                    </td>
                     <td>{{ $employee->birth_date?->format('M d, Y') }}</td>
                     <td>{{ $employee->address }}</td>
                     <td>{{ $employee->contact_number }}</td>
@@ -146,7 +152,11 @@
                     <td>{{ $employee->philhealth_number }}</td>
                     <td>{{ $employee->pagibig_number }}</td>
                     <td>{{ $employee->tin_number }}</td>
-                    <td>{{ $employee->license_number }}</td>
+                    <td>
+                      <span @class(['badge', 'bg-danger' => $employee->expired_at?->isPast()])>
+                        {{ $employee->license_number }}
+                      </span>
+                    </td>
                     <td class="text-center">
                       {{ $employee->expired_at?->format('m/d/Y') }}
                       @if ($employee->expired_at?->isPast())
@@ -177,7 +187,7 @@
           </div>
 
         </div>
-        <div class="d-flex justify-content-end mt-4">
+        <div class="d-flex justify-content-end mt-4 d-print-none">
           {{ $this->employees->links() }}
         </div>
       </div>

@@ -13,6 +13,7 @@ use App\Http\Livewire\Clients\Show as ClientsShow;
 use App\Http\Livewire\Clients\ShowPrint;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Employees\Index as EmployeesIndex;
+use App\Http\Livewire\Employees\Show as EmployeesShow;
 use App\Http\Livewire\Payments\Create as PaymentsCreate;
 
 /*
@@ -71,4 +72,5 @@ Route::prefix('employees')->name('employees.')
     ->middleware('auth')
     ->group(function () {
         Route::get('/', EmployeesIndex::class)->name('index');
+        Route::get('/{employee}', EmployeesShow::class)->name('show');
     });

@@ -36,6 +36,7 @@ class EmployeesImport implements ToCollection, WithHeadingRow
                     'expired_at' => $this->getDateValue($row['expiry_date']),
                     'employed_at' => $this->getDateValue($row['date_of_employment']),
                     'status' => $row['a'],
+                    'id_number' => $row['id_number'],
                 ]);
             } catch (\Exception $e) {
                 if (!empty($row['first_name']) && $row['last_name'] != 'LAST NAME') {
