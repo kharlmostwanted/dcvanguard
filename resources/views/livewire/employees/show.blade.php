@@ -134,6 +134,42 @@
               </div>
             </div>
           </div>
+
+          @if ($employee->violations->count() > 0)
+            <div class="card d-print-none">
+              <div class="card-header">Violations</div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Violation</th>
+                      <th>Committed At</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($employee->violations as $violation)
+                      <tr>
+                        <td
+                          class="p-2"
+                          style="width: 32px"
+                        >
+                          <button
+                            class="btn btn-sm btn-outline-danger"
+                            wire:click="removeViolation({{ $violation->id }})"
+                          >
+                            <i class="fe fe-trash"></i>
+                          </button>
+                        </td>
+                        <td>{{ $violation->title }}</td>
+                        <td>{{ Carbon\Carbon::parse($violation->pivot->committed_at)->format('M d ,Y') }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          @endif
         </div>
       </div>
     </div>

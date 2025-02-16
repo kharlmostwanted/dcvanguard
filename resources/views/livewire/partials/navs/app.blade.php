@@ -10,7 +10,7 @@
       ></a>
     <!-- Mobile view nav wrap -->
 
-    <div class="d-flex align-items-center order-lg-3 ms-auto d-print-none">
+    <div class="d-flex align-items-center order-lg-3 d-print-none ms-auto">
 
       <div>
         <a
@@ -388,96 +388,100 @@
     </div>
     <!-- Collapse -->
     <div
-      class="navbar-collapse collapse d-print-none"
+      class="navbar-collapse d-print-none collapse"
       id="navbar-default"
     >
       <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="nav-link dropdown-toggle"
-            data-bs-display="static"
-            data-bs-toggle="dropdown"
-            href="#"
-            id="navbarBrowse"
-          >
-            Clients
-          </a>
-          <ul
-            aria-labelledby="navbarBrowse"
-            class="dropdown-menu dropdown-menu-arrow"
-          >
-            <li>
-              <a
-                class="dropdown-item"
-                href="{{ route('clients.index') }}"
-              >
-                View All
-              </a>
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                href="{{ route('clients.create') }}"
-              >
-                Create New
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="nav-link dropdown-toggle"
-            data-bs-display="static"
-            data-bs-toggle="dropdown"
-            href="#"
-            id="navbarBillings"
-          >
-            Billings
-          </a>
-          <ul
-            aria-labelledby="navbarBillings"
-            class="dropdown-menu dropdown-menu-arrow"
-          >
-            <li>
-              <a
-                class="dropdown-item"
-                href="{{ route('billings.index') }}"
-              >
-                View All
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="nav-link dropdown-toggle"
-            data-bs-display="static"
-            data-bs-toggle="dropdown"
-            href="#"
-            id="navbarBillings"
-          >
-            Employees
-          </a>
-          <ul
-            aria-labelledby="navbarBillings"
-            class="dropdown-menu dropdown-menu-arrow"
-          >
-            <li>
-              <a
-                class="dropdown-item"
-                href="{{ route('employees.index') }}"
-              >
-                View All
-              </a>
-            </li>
-          </ul>
-        </li>
+        @hasrole('admin')
+          <li class="nav-item dropdown">
+            <a
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="nav-link dropdown-toggle"
+              data-bs-display="static"
+              data-bs-toggle="dropdown"
+              href="#"
+              id="navbarBrowse"
+            >
+              Clients
+            </a>
+            <ul
+              aria-labelledby="navbarBrowse"
+              class="dropdown-menu dropdown-menu-arrow"
+            >
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{{ route('clients.index') }}"
+                >
+                  View All
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{{ route('clients.create') }}"
+                >
+                  Create New
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="nav-link dropdown-toggle"
+              data-bs-display="static"
+              data-bs-toggle="dropdown"
+              href="#"
+              id="navbarBillings"
+            >
+              Billings
+            </a>
+            <ul
+              aria-labelledby="navbarBillings"
+              class="dropdown-menu dropdown-menu-arrow"
+            >
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{{ route('billings.index') }}"
+                >
+                  View All
+                </a>
+              </li>
+            </ul>
+          </li>
+        @endhasrole
+        @hasanyrole(['admin', 'hr'])
+          <li class="nav-item dropdown">
+            <a
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="nav-link dropdown-toggle"
+              data-bs-display="static"
+              data-bs-toggle="dropdown"
+              href="#"
+              id="navbarBillings"
+            >
+              Employees
+            </a>
+            <ul
+              aria-labelledby="navbarBillings"
+              class="dropdown-menu dropdown-menu-arrow"
+            >
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="{{ route('employees.index') }}"
+                >
+                  View All
+                </a>
+              </li>
+            </ul>
+          </li>
+        @endhasanyrole
       </ul>
 
     </div>

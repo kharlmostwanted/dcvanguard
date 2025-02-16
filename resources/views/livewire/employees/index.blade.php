@@ -22,7 +22,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-lg-3 col-md-4 col-12 mb-lg-0 mb-4 d-print-none">
+      <div class="col-xl-3 col-lg-3 col-md-4 col-12 mb-lg-0 d-print-none mb-4">
         <!-- Card -->
         <div class="card">
           <!-- Card header -->
@@ -96,7 +96,7 @@
             <h4 class="mb-1">Employee List</h4>
             <button
               class="btn btn-primary d-print-none"
-              data-bs-target="#exampleModal-2"
+              data-bs-target="#addEmployeeModal"
               data-bs-toggle="modal"
               wire:click="createEmployee"
             >
@@ -113,6 +113,7 @@
                   <th>ID</th>
                   <th>STATUS</th>
                   <th>NAME</th>
+                  <th>Violations</th>
                   <th>BIRTHDAY</th>
                   <th>ADDRESS</th>
                   <th>CONTACT NO.</th>
@@ -129,14 +130,24 @@
                 @forelse ($this->employees as $employee)
                   <tr>
                     <td class="d-print-none">
-                      <button
-                        class="btn btn-sm"
-                        data-bs-target="#exampleModal-2"
-                        data-bs-toggle="modal"
-                        wire:click="editEmployee({{ $employee->id }})"
-                      >
-                        <i class="fe fe-edit-2"></i>
-                      </button>
+                      <div class="button-group">
+                        <button
+                          class="btn btn-sm btn-outline-primary"
+                          data-bs-target="#addEmployeeModal"
+                          data-bs-toggle="modal"
+                          wire:click="editEmployee({{ $employee->id }})"
+                        >
+                          <i class="fe fe-edit-2"></i>
+                        </button>
+                        <button
+                          class="btn btn-sm btn-outline-primary"
+                          data-bs-target="#addViolationModal"
+                          data-bs-toggle="modal"
+                          wire:click="addViolation({{ $employee->id }})"
+                        >
+                          <i class="fe fe-plus"></i>
+                        </button>
+                      </div>
                     </td>
                     <td>{{ $employee->id_number }}</td>
                     <td>{{ $employee->status }}</td>
@@ -145,6 +156,7 @@
                         {{ $employee->name }}
                       </a>
                     </td>
+                    <td class="text-center">{{ $employee->violations_count }}</td>
                     <td>{{ $employee->birth_date?->format('M d, Y') }}</td>
                     <td>{{ $employee->address }}</td>
                     <td>{{ $employee->contact_number }}</td>
@@ -187,17 +199,19 @@
           </div>
 
         </div>
-        <div class="d-flex justify-content-end mt-4 d-print-none">
+        <div class="d-flex justify-content-end d-print-none mt-4">
           {{ $this->employees->links() }}
         </div>
       </div>
     </div>
   </div>
+
+  {{-- add employee modal --}}
   <div
     aria-hidden="true"
-    aria-labelledby="exampleModalLabel"
+    aria-labelledby="adEmployeeModalLabel"
     class="modal fade"
-    id="exampleModal-2"
+    id="addEmployeeModal"
     role="dialog"
     tabindex="-1"
     wire:ignore.self
@@ -211,7 +225,7 @@
         <div class="modal-header">
           <h5
             class="modal-title"
-            id="exampleModalLabel"
+            id="adEmployeeModalLabel"
           >Employee Details</h5>
           <button
             aria-label="Close"
@@ -226,7 +240,33 @@
           class="modal-body"
           wire:loading.class="opacity-0"
         >
-          <div class="row d-flex justify-content-between row-cols-auto g-2">
+          <div class="row d-flex row-cols-auto g-2">
+            <div class="col">
+              <label
+                class="form-label"
+                for="employee.id_number"
+              >ID</label>
+              <x-inputs.text
+                id="employee.id_number"
+                label="ID Number"
+                placeholder="ID Number"
+                wire:model.defer="employee.id_number"
+              />
+            </div>
+            <div class="col">
+              <label
+                class="form-label"
+                for="employee.status"
+              >Status</label>
+              <x-inputs.text
+                id="employee.status"
+                label="status"
+                placeholder="Status"
+                wire:model.defer="employee.status"
+              />
+            </div>
+          </div>
+          <div class="row d-flex justify-content-between row-cols-auto g-2 mt-3">
             <div class="col">
               <label
                 class="form-label"
@@ -266,16 +306,7 @@
           </div>
           <div class="row row-cols-3 g-2 justify-content-between mt-3">
             <div class="col">
-              <label
-                class="form-label"
-                for="employee.birth_date"
-              >Date of Birth</label>
-              <x-inputs.date
-                id="employee.birth_date"
-                label="Birth Date"
-                placeholder="Birth Date"
-                wire:model.defer="employee.birth_date"
-              />
+
             </div>
             <div class="col">
               <label
@@ -406,6 +437,80 @@
       </div>
     </div>
   </div>
+
+  <div
+    aria-hidden="true"
+    aria-labelledby="addViolationModalLabel"
+    class="modal fade"
+    id="addViolationModal"
+    role="dialog"
+    tabindex="-1"
+    wire:ignore.self
+  >
+    <div
+      class="modal-dialog modal-dialog-centered"
+      role="document"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title"
+            id="addViolationModalLabel"
+          >Add Violation</h5>
+          <button
+            aria-label="Close"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            type="button"
+          >
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row row-cols-1 g-2">
+            <div class="col">
+              <label
+                class="form-label"
+                for="violation"
+              >Violation</label>
+              <x-inputs.text
+                autocomplete="off"
+                id="violation"
+                label="Violation"
+                placeholder="Violation"
+                wire:model.defer="violation"
+              />
+            </div>
+            <div class="col">
+              <label
+                class="form-label"
+                for="committed_at"
+              >Committed at:</label>
+              <x-inputs.date
+                id="committed_at"
+                label="Commited at"
+                placeholder="Commited at"
+                wire:model.defer="committed_at"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            type="button"
+          >Close</button>
+          <button
+            class="btn btn-primary"
+            type="button"
+            wire:click='storeViolation'
+          >Add Violation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 @push('scripts')
   <script src="../assets/libs/@popperjs/core/dist/umd/popper.min.js"></script>

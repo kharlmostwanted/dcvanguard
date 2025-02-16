@@ -7,6 +7,8 @@ use Illuminate\Support\Carbon;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Violation;
 
 class Index extends Component
 {
@@ -21,6 +23,8 @@ class Index extends Component
     public $employedTo;
     public $expired;
     public $resigned;
+    public $violation;
+    public $committed_at;
 
     public $employee;
 
@@ -32,6 +36,7 @@ class Index extends Component
     public function employees()
     {
         return Employee::query()
+            ->withCount('violations')
             ->withCasts([
                 'birth_date' => 'date',
                 'employed_at' => 'datetime',
@@ -112,12 +117,45 @@ class Index extends Component
         $this->alert('success', 'Employee saved successfully.');
     }
 
-public function editEmployee($id)
+    public function editEmployee($id)
     {
         $this->employee = Employee::withCasts([
             'birth_date' => 'date:Y-m-d',
             'employed_at' => 'date:Y-m-d',
             'expired_at' => 'date:Y-m-d',
         ])->find($id)->toArray();
+    }
+
+    public function addViolation($id)
+    {
+        $this->employee = Employee::withCasts([
+            'birth_date' => 'date:Y-m-d',
+            'employed_at' => 'date:Y-m-d',
+            'expired_at' => 'date:Y-m-d',
+        ])->find($id)->toArray();
+    }
+
+    public function storeViolation()
+    {
+        Validator::make([
+            'violation' => $this->violation,
+            'committed_at' => $this->committed_at
+        ], [
+            'violation' => 'required',
+            'committed_at' => 'required|date'
+        ])->validate();
+
+        $violation = Violation::firstOrCreate([
+            'title' => str($this->violation)->trim(),
+        ]);
+
+        $employee = Employee::findorFail($this->employee['id']);
+
+        $employee->violations()->attach($violation->id, [
+            'committed_at' => Carbon::parse($this->committed_at),
+            'creator_id' => auth()->id()
+        ]);
+
+        $this->alert('success', 'Violation added successfully.');
     }
 }

@@ -27,5 +27,12 @@ class Employee extends Model
         'expired_at',
         'employed_at',
         'status',
+        'id_number',
     ];
+
+    public function violations()
+    {
+        return $this->belongsToMany(Violation::class)
+            ->withPivot('committed_at', 'creator_id', 'updator_id');
+    }
 }
