@@ -334,7 +334,16 @@
           </div>
           <div class="row row-cols-3 g-2 justify-content-between mt-3">
             <div class="col">
-
+              <label
+                class="form-label"
+                for="employee.birth_date"
+              >Date of Birth</label>
+              <x-inputs.date
+                id="employee.birth_date"
+                label="Date of Birth"
+                placeholder="Date of Birth"
+                wire:model.defer="employee.birth_date"
+              />
             </div>
             <div class="col">
               <label
