@@ -109,7 +109,7 @@
             <table class="table-centered mb-0 table text-nowrap">
               <thead>
                 <tr>
-                  <th class="d-print-none">&nbsp;</th>
+                  <th class="d-print-none">ACTIONS</th>
                   <th>ID</th>
                   <th>STATUS</th>
                   <th>NAME</th>
@@ -129,24 +129,52 @@
               <tbody>
                 @forelse ($this->employees as $employee)
                   <tr>
-                    <td class="d-print-none">
-                      <div class="button-group">
-                        <button
-                          class="btn btn-sm btn-outline-primary"
-                          data-bs-target="#addEmployeeModal"
-                          data-bs-toggle="modal"
-                          wire:click="editEmployee({{ $employee->id }})"
+                    <td>
+                      <div class="dropdown">
+                        <a
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="text-body text-primary-hover"
+                          data-bs-toggle="dropdown"
+                          href="#"
+                          id="dropdownOne"
+                          role="button"
                         >
-                          <i class="fe fe-edit-2"></i>
-                        </button>
-                        <button
-                          class="btn btn-sm btn-outline-primary"
-                          data-bs-target="#addViolationModal"
-                          data-bs-toggle="modal"
-                          wire:click="addViolation({{ $employee->id }})"
+                          <i class="fe fe-more-vertical"></i>
+                          <span class="avatar avatar-sm">
+                            <img
+                              alt="avatar"
+                              src="{{ $employee->profile_picture_url ?? Avatar::create($employee->name)->toBase64() }}"
+                            />
+                          </span>
+                        </a>
+                        <div
+                          aria-labelledby="dropdownOne"
+                          class="dropdown-menu"
                         >
-                          <i class="fe fe-plus"></i>
-                        </button>
+                          <h6 class="dropdown-header">{{ $employee->name }}</h6>
+                          <a
+                            class="dropdown-item"
+                            data-bs-target="#addEmployeeModal"
+                            data-bs-toggle="modal"
+                            href="#"
+                            wire:click="editEmployee({{ $employee->id }})"
+                          >Edit</a>
+                          <a
+                            class="dropdown-item"
+                            data-bs-target="#addViolationModal"
+                            data-bs-toggle="modal"
+                            href="#"
+                            wire:click="addViolation({{ $employee->id }})"
+                          >Add Violation</a>
+                          <a
+                            class="dropdown-item"
+                            data-bs-target="#editProfilePictureModal"
+                            data-bs-toggle="modal"
+                            href="#"
+                            wire:click="editProfilePicture({{ $employee->id }})"
+                          >Edit Profile Picture</a>
+                        </div>
                       </div>
                     </td>
                     <td>{{ $employee->id_number }}</td>
@@ -437,7 +465,7 @@
       </div>
     </div>
   </div>
-
+  {{-- add violation modal --}}
   <div
     aria-hidden="true"
     aria-labelledby="addViolationModalLabel"
@@ -456,7 +484,7 @@
           <h5
             class="modal-title"
             id="addViolationModalLabel"
-          >Add Violation</h5>
+          >{{ $this->employee['name'] ?? '' }} VIOLATION</h5>
           <button
             aria-label="Close"
             class="btn-close"
@@ -506,6 +534,84 @@
             type="button"
             wire:click='storeViolation'
           >Add Violation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- update profile picture modal --}}
+  <div
+    aria-hidden="true"
+    aria-labelledby="editProfilePictureModalLabel"
+    class="modal fade"
+    id="editProfilePictureModal"
+    role="dialog"
+    tabindex="-1"
+    wire:ignore.self
+  >
+    <div
+      class="modal-dialog modal-dialog-centered"
+      role="document"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title"
+            id="editProfilePictureModalLabel"
+          >{{ $this->employee['name'] ?? '' }} PROFILE PICTURE</h5>
+          <button
+            aria-label="Close"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            type="button"
+          >
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="d-lg-flex align-items-center flex-column">
+            <div class="d-flex align-items-center mb-lg-0 mb-4">
+              <img
+                alt="avatar"
+                class="avatar-xl rounded-circle"
+                id="img-uploaded"
+                src="{{ $profilePicture?->temporaryUrl() ?? Avatar::create($this->employee['name'] ?? 'EM')->toBase64() }}"
+              />
+              <div class="ms-3">
+                <h4 class="mb-0">{{ $this->employee['name'] ?? '' }}</h4>
+                <p class="mb-0">PNG or JPG no bigger than 800px wide and tall.</p>
+              </div>
+            </div>
+            <div class="mt-4">
+              <div class="mb-3">
+                <input
+                  class="form-control"
+                  id="profilePicture"
+                  type="file"
+                  wire:model='profilePicture'
+                >
+                @error('profilePicture')
+                  <span class="error">{{ $message }}</span>
+                @enderror
+                <div
+                  wire:loading
+                  wire:target="profilePicture"
+                >Uploading...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            type="button"
+          >Close</button>
+          <button
+            class="btn btn-primary"
+            type="button"
+            wire:click='updateProfilePicture'
+          >Update</button>
         </div>
       </div>
     </div>

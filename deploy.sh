@@ -7,7 +7,7 @@ php artisan migrate --force
 php artisan route:clear
 php artisan event:clear
 php artisan view:clear
-sudo php artisan cache:clear
+php artisan cache:clear
 php artisan config:clear
 php artisan up
 php artisan db:seed --force

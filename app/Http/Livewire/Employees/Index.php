@@ -9,11 +9,13 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Violation;
+use Livewire\WithFileUploads;
 
 class Index extends Component
 {
     use WithPagination;
     use LivewireAlert;
+    use WithFileUploads;
 
     protected $paginationTheme = 'bootstrap';
     protected $queryString = ['search', 'employedFrom', 'employedTo', 'expired', 'resigned'];
@@ -25,6 +27,7 @@ class Index extends Component
     public $resigned;
     public $violation;
     public $committed_at;
+    public $profilePicture;
 
     public $employee;
 
@@ -157,5 +160,32 @@ class Index extends Component
         ]);
 
         $this->alert('success', 'Violation added successfully.');
+    }
+
+    public function editProfilePicture($id)
+    {
+        $this->employee = Employee::withCasts([
+            'birth_date' => 'date:Y-m-d',
+            'employed_at' => 'date:Y-m-d',
+            'expired_at' => 'date:Y-m-d',
+        ])->find($id)->toArray();
+    }
+
+    public function updatedProfilePicture()
+    {
+        Validator::make([
+            'profilePicture' => $this->profilePicture
+        ], [
+            'profilePicture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ])->validate();
+    }
+
+    public function updateProfilePicture()
+    {
+        $url = $this->profilePicture->storeAs('profile_pictures', $this->employee['id'] . '.' . $this->profilePicture->extension());
+        $employee = Employee::findorFail($this->employee['id']);
+        $employee->profile_picture_url = $url;
+        $employee->save();
+        $this->alert('success', 'Profile picture updated successfully.');
     }
 }
