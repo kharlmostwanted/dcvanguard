@@ -45,7 +45,8 @@ class Index extends Component
                 'birth_date' => 'date',
                 'employed_at' => 'datetime',
                 'expired_at' => 'datetime',
-            ])->when(!empty($this->search), function ($query) {
+                'resigned_at' => 'datetime',
+            ])->when(!empty(str($this->search)->trim()), function ($query) {
                 $query->whereAny([
                     'first_name',
                     'middle_name',
@@ -63,7 +64,7 @@ class Index extends Component
                     'status',
                     'id_number',
                     'address',
-                ], 'like', $this->search . '%');
+                ], 'like', str($this->search)->trim() . '%');
             })->when(!empty($this->employedFrom), function ($query) {
                 $query->where('employed_at', '>=', $this->employedFrom);
             })->when(!empty($this->employedTo), function ($query) {
@@ -100,6 +101,7 @@ class Index extends Component
             'employee.birth_date' => 'required|date',
             'employee.employed_at' => 'required|date',
             'employee.expired_at' => 'required|date',
+            'employee.resigned_at' => 'nullable|date',
         ], [
             'employee.first_name.required' => 'First name is required.',
             'employee.last_name.required' => 'Last name is required.',
@@ -109,12 +111,14 @@ class Index extends Component
             'employee.employed_at.date' => 'Employed date must be a valid date.',
             'employee.expired_at.required' => 'Expired date is required.',
             'employee.expired_at.date' => 'Expired date must be a valid date.',
+            'employee.resigned_at.date' => 'Resigned date must be a valid date.',
         ]);
 
         $this->employee['name'] = $this->employee['last_name'] . ' ' . $this->employee['first_name'] . ' ' . $this->employee['middle_name'];
         $this->employee['birth_date'] = Carbon::parse($this->employee['birth_date'])->format('Y-m-d');
         $this->employee['employed_at'] = Carbon::parse($this->employee['employed_at'])->format('Y-m-d');
         $this->employee['expired_at'] = Carbon::parse($this->employee['expired_at'])->format('Y-m-d');
+        $this->employee['resigned_at'] = isset($this->employee['resigned_at']) ? Carbon::parse($this->employee['resigned_at'])->format('Y-m-d') : null;
         $employee = Employee::updateOrCreate(['id' => $this->employee['id'] ?? null], $this->employee);
         $this->employee['id'] = $employee->id;
 
@@ -127,6 +131,7 @@ class Index extends Component
             'birth_date' => 'date:Y-m-d',
             'employed_at' => 'date:Y-m-d',
             'expired_at' => 'date:Y-m-d',
+            'resigned_at' => 'date:Y-m-d',
         ])->find($id)->toArray();
     }
 
@@ -136,6 +141,7 @@ class Index extends Component
             'birth_date' => 'date:Y-m-d',
             'employed_at' => 'date:Y-m-d',
             'expired_at' => 'date:Y-m-d',
+            'resigned_at' => 'date:Y-m-d',
         ])->find($id)->toArray();
     }
 

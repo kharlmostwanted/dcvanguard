@@ -105,7 +105,10 @@
             </button>
           </div>
           <!-- table  -->
-          <div class="table-responsive">
+          <div
+            class="table-responsive"
+            style="min-height: 400px"
+          >
             <table class="table-centered mb-0 table text-nowrap">
               <thead>
                 <tr>
@@ -124,13 +127,17 @@
                   <th>LICENSE</th>
                   <th>EXPIRY DATE</th>
                   <th>EMPLOYMENT DATE</th>
+                  <th>DATE RESIGNED</th>
                 </tr>
               </thead>
               <tbody>
                 @forelse ($this->employees as $employee)
                   <tr>
                     <td>
-                      <div class="dropdown">
+                      <div
+                        class="dropdown"
+                        wire:key="dropdown{{ $employee->id }}"
+                      >
                         <a
                           aria-expanded="false"
                           aria-haspopup="true"
@@ -215,6 +222,9 @@
                       @else
                         {{ $employee->employed_at?->diffForHumans(now(), true, true) }}
                       @endif
+                    </td>
+                    <td>
+                      {{ $employee->resigned_at?->format('m/d/Y') }}
                     </td>
                   </tr>
                 @empty
@@ -335,7 +345,7 @@
               />
             </div>
           </div>
-          <div class="row row-cols-3 g-2 justify-content-between mt-3">
+          <div class="row row-cols-4 g-2 justify-content-between mt-3">
             <div class="col">
               <label
                 class="form-label"
@@ -370,6 +380,18 @@
                 label="Employment Date"
                 placeholder="Employment Date"
                 wire:model.defer="employee.employed_at"
+              />
+            </div>
+            <div class="col">
+              <label
+                class="form-label"
+                for="employee.resigned_at"
+              >Date Resigned</label>
+              <x-inputs.date
+                id="employee.resigned_at"
+                label="Date Resigned"
+                placeholder="Date Resigned"
+                wire:model.defer="employee.resigned_at"
               />
             </div>
           </div>

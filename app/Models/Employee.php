@@ -28,6 +28,7 @@ class Employee extends Model
         'employed_at',
         'status',
         'id_number',
+        'resigned_at',
     ];
 
     public function violations()
