@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Employees;
 
 use App\Models\Employee;
+use App\Models\Image;
 use Illuminate\Support\Carbon;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
@@ -182,9 +183,15 @@ class Index extends Component
 
     public function updateProfilePicture()
     {
-        $url = $this->profilePicture->storeAs('profile_pictures', $this->employee['id'] . '.' . $this->profilePicture->extension());
+        $image = new Image();
+        $image->file_name = $this->profilePicture->getClientOriginalName();
+        $image->original_name = $this->profilePicture->getClientOriginalName();
+        $image->path = $this->profilePicture->storeAs('profile_images', $this->employee['id'] . '.' . $this->profilePicture->extension());
+        $image->extension = $this->profilePicture->extension();
+        $image->save();
+
         $employee = Employee::findorFail($this->employee['id']);
-        $employee->profile_picture_url = $url;
+        $employee->profile_img_id = $image->id;
         $employee->save();
         $this->alert('success', 'Profile picture updated successfully.');
     }

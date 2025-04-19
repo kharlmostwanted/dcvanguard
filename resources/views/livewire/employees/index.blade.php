@@ -143,8 +143,11 @@
                           <i class="fe fe-more-vertical"></i>
                           <span class="avatar avatar-sm">
                             <img
+                              @if (!empty($employee->profile_img_id)) src="{{ route('images.show', $employee->profile_img_id) }}"
+                              @else
+                                src="{{ Avatar::create($employee->name)->toBase64() }}" @endif
                               alt="avatar"
-                              src="{{ $employee->profile_picture_url ?? Avatar::create($employee->name)->toBase64() }}"
+                              class="avatar-xl rounded-circle"
                             />
                           </span>
                         </a>

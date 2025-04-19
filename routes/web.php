@@ -4,6 +4,7 @@ use App\Http\Livewire\Clients\Index;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Livewire\Billings\Create as BillingsCreate;
 use App\Http\Livewire\Billings\Index as BillingsIndex;
 use App\Http\Livewire\Billings\Show;
@@ -73,4 +74,10 @@ Route::prefix('employees')->name('employees.')
     ->group(function () {
         Route::get('/', EmployeesIndex::class)->name('index');
         Route::get('/{employee}', EmployeesShow::class)->name('show');
+    });
+
+Route::prefix('images')->name('images.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/{image}', [ImageController::class, 'show'])->name('show');
     });

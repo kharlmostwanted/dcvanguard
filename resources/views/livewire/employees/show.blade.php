@@ -16,10 +16,14 @@
                 <!--img-->
                 <div class="mt-n8">
                   <img
+                    @if (!empty($employee->profile_img_id)) 
+                      src="{{ route('images.show', $employee->profile_img_id) }}"
+                    @else
+                      src="{{ Avatar::create($employee->name)->toBase64() }}" 
+                    @endif
                     alt="mentor 1"
                     class="img-fluid rounded-4 mt-n8"
                     height="172px"
-                    src="{{ asset('/assets/images/mentor/mentor-img-single.jpg') }}"
                     width="172px"
                   />
                 </div>
