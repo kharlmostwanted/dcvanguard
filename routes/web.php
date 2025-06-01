@@ -16,6 +16,7 @@ use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Employees\Index as EmployeesIndex;
 use App\Http\Livewire\Employees\Show as EmployeesShow;
 use App\Http\Livewire\Payments\Create as PaymentsCreate;
+use App\Http\Livewire\Reports\EmployeeList;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,4 +81,11 @@ Route::prefix('images')->name('images.')
     ->middleware('auth')
     ->group(function () {
         Route::get('/{image}', [ImageController::class, 'show'])->name('show');
+    });
+
+
+Route::prefix('reports')->name('reports.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/employee-list', EmployeeList::class)->name('employee-list');
     });

@@ -94,15 +94,28 @@
           <!-- card header  -->
           <div class="card-header d-flex justify-content-between align-items-center">
             <h4 class="mb-1">Employee List</h4>
-            <button
-              class="btn btn-primary d-print-none"
-              data-bs-target="#addEmployeeModal"
-              data-bs-toggle="modal"
-              wire:click="createEmployee"
-            >
-              <i class="fe fe-plus"></i>
-              Add Employee
-            </button>
+            <div class="button-group">
+              <button
+                class="btn btn-primary d-print-none btn-sm"
+                data-bs-target="#addEmployeeModal"
+                data-bs-toggle="modal"
+                wire:click="createEmployee"
+              >
+                <i class="fe fe-plus"></i>
+                Add
+              </button>
+              <a
+                class="btn btn-primary btn-sm"
+                href="{{ route('reports.employee-list') }}"
+                onclick="window.open('{{ route('reports.employee-list') }}',
+                         'newwindow',
+                         'width=1024,height=768');
+              return false;"
+              >
+              <i class="fe fe-printer"></i>
+              Print
+            </a>
+            </div>
           </div>
           <!-- table  -->
           <div
